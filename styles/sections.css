@@ -15,6 +15,7 @@
     color: var(--color-navy);
     margin-bottom: var(--spacing-sm);
     position: relative;
+    letter-spacing: -0.5px;
 }
 
 .section__title::after {
@@ -31,9 +32,10 @@
 
 .section__subtitle {
     font-size: 1.2rem;
-    color: var(--color-gray);
+    color: var(--color-gray-light);
     max-width: 600px;
-    margin: 0 auto;
+    margin: 1.5rem auto 0;
+    line-height: 1.6;
 }
 
 /* Sección de presentación */

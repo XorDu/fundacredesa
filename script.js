@@ -387,50 +387,90 @@ window.addEventListener('scroll', () => {
     });
 });
 
-// ========== MOSTRAR SOLO UNA SECCIÓN A LA VEZ CON ANIMACIÓN UNIVERSAL ==========
-function showSection(sectionId) {
-    const sections = document.querySelectorAll('section');
-    sections.forEach(section => {
-        if (section.id === sectionId) {
-            // Si ya está visible y opaca, no hacer nada
-            if (section.style.display === 'none' || section.style.opacity === '0' || getComputedStyle(section).display === 'none') {
-                section.style.display = '';
-                section.style.transition = 'opacity 0.5s';
-                section.style.opacity = 0;
-                setTimeout(() => {
-                    section.style.opacity = 1;
-                }, 10);
-            }
-        } else {
-            if (section.style.display !== 'none' && getComputedStyle(section).display !== 'none') {
-                section.style.transition = 'opacity 0.5s';
-                section.style.opacity = 0;
-                setTimeout(() => {
-                    section.style.display = 'none';
-                }, 500);
-            }
+// ========== COMPORTAMIENTO DE PÁGINAS INDIVIDUALES ==========
+// Cada sección clickeable se muestra como página independiente
+
+// Secciones que se muestran como páginas separadas (no scroll)
+const separatePages = ['presentacion', 'propuestas-hero', 'propuestas-tecnologicas', 'estadisticas', 'recursos'];
+
+// Secciones que siempre deben estar visibles al hacer scroll
+const scrollSections = ['inicio', 'quienes-somos', 'mision'];
+
+// Inicializar: mantener las páginas separadas ocultas inicialmente
+window.addEventListener('DOMContentLoaded', () => {
+    separatePages.forEach(sectionId => {
+        const section = document.getElementById(sectionId);
+        if (section) {
+            section.style.display = 'none';
         }
     });
-}
-
-// Mostrar solo la sección de inicio al cargar
-window.addEventListener('DOMContentLoaded', () => {
-    showSection('inicio');
 });
 
-// Manejar clics en la barra de navegación para mostrar solo la sección correspondiente
+// Navigation click - mostrar sección correspondiente
 const navLinks = document.querySelectorAll('.nav__link');
 navLinks.forEach(link => {
     link.addEventListener('click', function(e) {
         const targetId = this.getAttribute('href').replace('#', '');
-        showSection(targetId);
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-        // Opcional: cerrar menú móvil si está abierto
+        
+        if (separatePages.includes(targetId)) {
+            // Es una página separada: mostrar SOLO esa sección
+            e.preventDefault();
+            showOnlySection(targetId);
+        } else if (scrollSections.includes(targetId)) {
+            // Es una sección de scroll: mostrar todas las secciones de scroll
+            e.preventDefault();
+            showScrollSections(targetId);
+        }
+        
+        // Cerrar menú móvil si está abierto
         navMenu.classList.remove('active');
-        // Prevenir el scroll automático por defecto
-        e.preventDefault();
     });
 });
+
+// Función para mostrar solo las secciones de scroll
+function showScrollSections(targetId) {
+    // Ocultar todas las páginas separadas
+    separatePages.forEach(sectionId => {
+        const section = document.getElementById(sectionId);
+        if (section) section.style.display = 'none';
+    });
+    
+    // Mostrar todas las secciones de scroll
+    scrollSections.forEach(sectionId => {
+        const section = document.getElementById(sectionId);
+        if (section) {
+            section.style.display = '';
+        }
+    });
+    
+    // Scroll a la sección deseada
+    scrollToSection(targetId);
+}
+
+// Función para mostrar SOLO una sección específica como página completa
+function showOnlySection(sectionId) {
+    // Ocultar TODAS las secciones primero
+    const allSections = document.querySelectorAll('section');
+    allSections.forEach(s => {
+        s.style.display = 'none';
+    });
+    
+    // Mostrar SOLO la sección seleccionada
+    const section = document.getElementById(sectionId);
+    if (!section) return;
+    
+    section.style.display = 'block';
+    section.style.position = 'relative';
+    section.style.top = '0';
+    section.style.left = '0';
+    section.style.width = '100%';
+    section.style.minHeight = '100vh';
+    section.style.zIndex = '100';
+    section.style.padding = '100px 20px 60px';
+    
+    // Scroll al inicio
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
 
 // Inicializar gráficos cuando se carga el DOM
 document.addEventListener('DOMContentLoaded', () => {

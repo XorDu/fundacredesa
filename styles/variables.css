@@ -9,16 +9,18 @@
     --color-green: #388E3C;
     --color-navy: #1A237E;
 
-    /* Colores adicionales */
+    /* Colores mejorados - mejor contraste */
     --color-white: #FFFFFF;
     --color-dark: #1A1A1A;
-    --color-gray: #666666;
-    --color-light-gray: #F8F9FA;
+    --color-gray: #4A4A4A;      /* Gris más oscuro para mejor contraste */
+    --color-gray-light: #888888; /* Gris claro para texto secundario */
+    --color-light-gray: #F5F7FA;
     --color-accent: #FF6B6B;
 
-    /* Gradientes */
-    --gradient-primary: linear-gradient(135deg, var(--color-navy) 0%, var(--color-green) 100%);
-    --gradient-accent: linear-gradient(135deg, var(--color-red) 0%, #D32F2F 100%);
+    /* Gradientes mejorados */
+    --gradient-primary: linear-gradient(135deg, #1A237E 0%, #2E4985 50%, #388E3C 100%);
+    --gradient-accent: linear-gradient(135deg, #C62828 0%, #D32F2F 100%);
+    --gradient-hero: linear-gradient(135deg, #1A237E 0%, #1565C0 50%, #388E3C 100%);
 
     /* Tipografía */
     --font-primary: 'Poppins', sans-serif;
@@ -36,10 +38,11 @@
     --border-radius-sm: 8px;
     --border-radius-lg: 20px;
 
-    /* Sombras */
-    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
-    --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.15);
-    --shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.2);
+    /* Sombras más pronunciadas para aspecto moderno */
+    --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.08);
+    --shadow-md: 0 4px 25px rgba(0, 0, 0, 0.12);
+    --shadow-lg: 0 10px 50px rgba(0, 0, 0, 0.18);
+    --shadow-xl: 0 20px 60px rgba(0, 0, 0, 0.22);
 
     /* Transiciones */
     --transition-fast: 0.2s ease;

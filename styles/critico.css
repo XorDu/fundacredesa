@@ -1,0 +1,22 @@
+/**
+ * =====================================================
+ * CRÍTICO - Estilos esenciales para el renderizado inicial
+ * =====================================================
+ * Este archivo contiene los estilos necesarios para 
+ * la pantalla de carga y elementos críticos que deben
+ * mostrarse inmediatamente al cargar la página.
+ * 
+ * @author Fundacredesa
+ * @version 1.0
+ */
+
+/* ============================================
+   ESTILOS BASE DEL BODY
+   ============================================ */
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    color: #1A1A1A;
+    overflow-x: hidden;
+}
