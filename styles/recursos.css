@@ -1,0 +1,49 @@
+/* =====================================================
+   RECURSOS - Fundacredesa
+   Estilos de la sección de recursos
+   ===================================================== */
+
+/* ========== SECCIÓN RECURSOS ========== */
+.recursos {
+    padding: 4rem 0;
+    background: #f5f7fa;
+}
+
+.recursos__content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: flex-start;
+}
+
+.recurso__item {
+    width: calc(33.333% - 2rem);
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 24px rgba(67,160,71,0.08);
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.recurso__image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.recurso__link {
+    display: inline-block;
+    margin-top: 1rem;
+    color: #1976d2;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+/* Responsive recursos */
+@media (max-width: 768px) {
+    .recurso__item {
+        width: 100%;
+    }
+}

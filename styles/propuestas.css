@@ -1,0 +1,71 @@
+/* =====================================================
+   PROPUESTAS TECNOLÓGICAS - Fundacredesa
+   Estilos de la sección de propuestas
+   ===================================================== */
+
+/* ========== SECCIÓN PROPUESTAS TECNOLÓGICAS ========== */
+.propuestas-tecnologicas {
+    background-color: var(--color-light-gray);
+    padding: var(--spacing-lg) 0;
+    text-align: center;
+}
+
+.propuestas-tecnologicas .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-sm);
+}
+
+.propuestas-tecnologicas .section__title {
+    color: var(--color-navy);
+    margin-bottom: var(--spacing-sm);
+}
+
+.propuestas-tecnologicas .section__subtitle,
+.propuestas-tecnologicas .section__description {
+    color: var(--color-gray);
+    max-width: 800px;
+    margin: 0 auto var(--spacing-md);
+    line-height: 1.8;
+}
+
+.propuestas__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-lg);
+}
+
+.propuesta__item {
+    background-color: var(--color-white);
+    padding: var(--spacing-md);
+    border-radius: var(--border-radius);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+    text-align: left;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-top: 5px solid var(--color-green);
+}
+
+.propuesta__item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+}
+
+.propuesta__item h3 {
+    color: var(--color-red);
+    margin-bottom: var(--spacing-sm);
+    font-size: 1.5rem;
+}
+
+.propuesta__item p {
+    color: var(--color-dark);
+    font-size: 1rem;
+    line-height: 1.7;
+}
+
+/* Responsive para propuestas */
+@media (max-width: 768px) {
+    .propuestas__grid {
+        grid-template-columns: 1fr;
+    }
+}

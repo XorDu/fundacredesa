@@ -1,0 +1,18 @@
+/* =====================================================
+   MAIN.CSS - Fundacredesa
+   Archivo principal que importa todos los módulos CSS
+   ===================================================== */
+
+/* Importación de módulos CSS */
+@import url('variables.css');
+@import url('reset.css');
+@import url('header.css');
+@import url('hero.css');
+@import url('sections.css');
+@import url('statistics.css');
+@import url('cta.css');
+@import url('propuestas.css');
+@import url('recursos.css');
+@import url('mapa.css');
+@import url('responsive.css');
+@import url('../animations.css');

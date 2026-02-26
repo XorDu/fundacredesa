@@ -1,0 +1,357 @@
+/* =====================================================
+   SECCIONES GENERALES - Fundacredesa
+   Estilos de secciones, quienes somos, misión, video
+   ===================================================== */
+
+/* ========== ESTILOS GENERALES DE SECCIONES ========== */
+.section__header {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+}
+
+.section__title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    color: var(--color-navy);
+    margin-bottom: var(--spacing-sm);
+    position: relative;
+}
+
+.section__title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: var(--color-red);
+    border-radius: 2px;
+}
+
+.section__subtitle {
+    font-size: 1.2rem;
+    color: var(--color-gray);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Sección de presentación */
+.presentation {
+    padding: var(--spacing-xl) 0;
+    background: var(--color-light-gray);
+}
+
+.video__container {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: var(--spacing-lg);
+    align-items: start;
+}
+
+.video__player {
+    background: var(--color-dark);
+    border-radius: var(--border-radius-lg);
+    overflow: hidden;
+    position: relative;
+    aspect-ratio: 16/9;
+    box-shadow: var(--shadow-lg);
+}
+
+.video__placeholder {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    cursor: pointer;
+    transition: var(--transition-normal);
+}
+
+.video__placeholder:hover {
+    background: linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 100%);
+}
+
+.video__play-btn {
+    width: 80px;
+    height: 80px;
+    background: var(--color-red);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: var(--spacing-sm);
+    transition: var(--transition-normal);
+    position: relative;
+}
+
+.video__play-btn:hover {
+    transform: scale(1.1);
+    background: #D32F2F;
+}
+
+.video__play-btn i {
+    font-size: 2rem;
+    color: var(--color-dark);
+    margin-left: 5px;
+}
+
+.video__info {
+    text-align: center;
+    color: var(--color-white);
+    padding: 0 var(--spacing-md);
+}
+
+.video__info h3 {
+    font-size: 1.5rem;
+    margin-bottom: var(--spacing-xs);
+}
+
+.video__info p {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.presentation__content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.content__card {
+    background: var(--color-white);
+    padding: var(--spacing-md);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-sm);
+    border-left: 4px solid var(--color-navy);
+    transition: var(--transition-normal);
+}
+
+.content__card h4 {
+    color: var(--color-navy);
+    margin-bottom: var(--spacing-xs);
+    font-size: 1.2rem;
+}
+
+.content__card p {
+    color: var(--color-gray);
+    line-height: 1.6;
+}
+
+/* ========== SECCIÓN QUIÉNES SOMOS ========== */
+.quienes-somos {
+    position: relative;
+    padding: 5rem 0 4rem 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.65) 60%, rgba(67,160,71,0.08)), url('../Portada 002.jpg') center/cover no-repeat;
+    min-height: 600px;
+    overflow: hidden;
+}
+
+.quienes-somos::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(255,255,255,0.38);
+    z-index: 1;
+}
+
+.quienes-somos .container {
+    position: relative;
+    z-index: 2;
+}
+
+.quienes-somos .section__title {
+    margin-bottom: 0.5rem;
+    font-size: 2.7rem;
+    text-align: center;
+    color: #1a237e;
+    font-weight: 700;
+    letter-spacing: -1px;
+}
+
+.quienes-somos .section__subtitle {
+    margin-bottom: 2.2rem;
+    font-size: 1.25rem;
+    text-align: center;
+    color: #388e3c;
+    font-weight: 500;
+}
+
+.quienes__content {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+    text-align: left;
+}
+
+.quienes__text {
+    max-width: 540px;
+    background: rgba(255,255,255,0.95);
+    border-radius: 18px;
+    box-shadow: 0 4px 24px rgba(67,160,71,0.08);
+    padding: 2rem 2.2rem 1.5rem 2.2rem;
+    margin-bottom: 1.5rem;
+}
+
+.quienes__desc { font-size: 1.08rem; color: #222; margin-bottom: 1.5rem; }
+.quienes__sub { font-size: 1.3rem; color: #1976d2; font-weight: 600; margin-bottom: 0.5rem; }
+.quienes__subdesc { font-size: 1.05rem; color: #444; margin-bottom: 1.2rem; }
+.quienes__img-box { display: flex; flex-direction: column; align-items: center; gap: 1.2rem; }
+.quienes__img-pres { width: 220px; height: 220px; object-fit: cover; border-radius: 50%; box-shadow: 0 4px 24px rgba(25, 118, 210, 0.13); border: 4px solid #fff; background: #e3f2fd; }
+.quienes__img-pres-name { font-size: 1.1rem; color: #1a237e; font-weight: 600; text-align: center; }
+
+@media (max-width: 900px) {
+    .quienes__content { flex-direction: column; align-items: center; text-align: center; }
+    .quienes__text { padding: 1.5rem 1rem; }
+}
+
+/* ========== SECCIÓN MISIÓN ========== */
+.mission {
+    padding: var(--spacing-xl) 0;
+    background: var(--gradient-primary);
+}
+
+.mission__content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-xl);
+    align-items: center;
+}
+
+.mission__text .section__title {
+    color: var(--color-white);
+    text-align: left;
+}
+
+.mission__text .section__title::after {
+    left: 0;
+    transform: none;
+}
+
+.mission__description,
+.mission__objective {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.1rem;
+    margin-bottom: var(--spacing-sm);
+    line-height: 1.7;
+}
+
+.mission__goals {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    margin-top: var(--spacing-lg);
+}
+
+.goal__item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    color: var(--color-white);
+    font-weight: 500;
+}
+
+.goal__icon {
+    width: 40px;
+    height: 40px;
+    background: var(--color-navy);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-white);
+    font-size: 1rem;
+}
+
+.strategy__card {
+    background: var(--color-white);
+    padding: var(--spacing-lg);
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-lg);
+}
+
+.strategy__card h3 {
+    color: var(--color-navy);
+    margin-bottom: var(--spacing-md);
+    font-size: 1.5rem;
+}
+
+.strategy__items {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+}
+
+.strategy__item {
+    display: flex;
+    gap: var(--spacing-sm);
+}
+
+.strategy__border {
+    width: 4px;
+    border-radius: 2px;
+    flex-shrink: 0;
+}
+
+.strategy__border--yellow {
+    background: var(--color-navy);
+}
+
+.strategy__border--celeste {
+    background: var(--color-green);
+}
+
+.strategy__border--blue {
+    background: var(--color-navy);
+}
+
+.strategy__item h4 {
+    color: var(--color-navy);
+    margin-bottom: var(--spacing-xs);
+    font-size: 1.1rem;
+}
+
+.strategy__item p {
+    color: var(--color-gray);
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.quote__box {
+    background: linear-gradient(135deg, #FFF9C4 0%, #FFF59D 100%);
+    padding: var(--spacing-md);
+    border-radius: var(--border-radius);
+    text-align: center;
+    position: relative;
+}
+
+.quote__icon {
+    color: var(--color-navy);
+    font-size: 1.2rem;
+    margin-bottom: var(--spacing-xs);
+}
+
+.quote__box p {
+    color: var(--color-dark);
+    font-weight: 600;
+    font-style: italic;
+    margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .video__container {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+
+    .mission__content {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+    }
+}

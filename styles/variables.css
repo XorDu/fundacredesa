@@ -1,0 +1,48 @@
+/* =====================================================
+   VARIABLES CSS - Fundacredesa
+   Definición de colores, tipografía, espaciado y más
+   ===================================================== */
+
+:root {
+    /* Colores de marca Fundacredesa */
+    --color-red: #C62828;
+    --color-green: #388E3C;
+    --color-navy: #1A237E;
+
+    /* Colores adicionales */
+    --color-white: #FFFFFF;
+    --color-dark: #1A1A1A;
+    --color-gray: #666666;
+    --color-light-gray: #F8F9FA;
+    --color-accent: #FF6B6B;
+
+    /* Gradientes */
+    --gradient-primary: linear-gradient(135deg, var(--color-navy) 0%, var(--color-green) 100%);
+    --gradient-accent: linear-gradient(135deg, var(--color-red) 0%, #D32F2F 100%);
+
+    /* Tipografía */
+    --font-primary: 'Poppins', sans-serif;
+    --font-secondary: 'Inter', sans-serif;
+
+    /* Espaciado */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 2rem;
+    --spacing-lg: 3rem;
+    --spacing-xl: 4rem;
+
+    /* Bordes */
+    --border-radius: 12px;
+    --border-radius-sm: 8px;
+    --border-radius-lg: 20px;
+
+    /* Sombras */
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.15);
+    --shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.2);
+
+    /* Transiciones */
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.3s ease;
+    --transition-slow: 0.5s ease;
+}
