@@ -64,10 +64,11 @@
 }
 
 .nav__logo-text span {
-    font-size: 0.8rem;
+    font-size: 0.6rem;
     color: var(--color-gray);
     display: block;
     line-height: 1;
+    max-width: 280px;
 }
 
 .nav__list {
@@ -111,6 +112,24 @@
     font-size: 1.5rem;
     color: var(--color-navy);
     cursor: pointer;
+}
+
+/* Banner para membrete */
+.membrete {
+    position: relative; 
+    width: 100%;
+    z-index: 10; 
+}
+.membrete img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 100px; 
+}
+
+/* give top padding so header doesn't cover first content element (membrete) */
+body {
+    padding-top: 70px; /* matches .header height */
 }
 
 /* Responsive Navigation */
