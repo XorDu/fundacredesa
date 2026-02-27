@@ -276,11 +276,73 @@
 /* ========== SECCIÓN HERO PROPUESTAS ========== */
 .propuestas-hero {
     min-height: 80vh;
+    background: var(--gradient-primary);
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.propuestas-hero .hero__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-sm);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-xl);
+    align-items: center;
+    min-height: 80vh;
+    width: 100%;
+}
+
+.propuestas-hero .hero__content {
+    z-index: 2;
+}
+
+.propuestas-hero .hero__title {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+.propuestas-hero .hero__title-highlight {
+    color: #43A047;
+}
+
+.propuestas-hero .hero__description {
+    font-size: 1.25rem;
+    color: rgba(255, 255, 255, 0.95);
+    font-weight: 400;
+    margin-bottom: 1.5rem;
+    max-width: 500px;
+}
+
+.propuestas-hero .hero__visual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+}
+
+.propuestas-hero .hero__brain {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.2);
 }
 
 .propuestas-hero .hero__brain i {
     font-size: 6rem;
-    color: var(--color-navy);
+    color: var(--color-white);
 }
 
 /* Responsive para propuestas */
