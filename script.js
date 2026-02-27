@@ -696,3 +696,19 @@ document.addEventListener("DOMContentLoaded", function() {
     console.log('🌐 Script principal cargado correctamente');
 });
 
+// ========== INTERACTIVIDAD DEL MAPA (MENSAJE DESDE SVG) ==========
+window.addEventListener("message", function(event) {
+    if (event.data && event.data.info && event.data.estado) {
+        const infoEstado = document.getElementById("info-estado");
+        if (infoEstado) {
+            infoEstado.innerHTML = `
+                <h2 style="color:#1976d2; margin-top:0;">${event.data.estado.toUpperCase()}</h2>
+                ${event.data.info}
+            `;
+            setTimeout(function() {
+                infoEstado.scrollIntoView({ behavior: "smooth", block: "start" });
+            }, 100);
+        }
+    }
+});
+
