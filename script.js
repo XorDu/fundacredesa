@@ -422,6 +422,12 @@ navLinks.forEach(link => {
             showScrollSections(targetId);
         }
         
+        // Caso especial: propuestas-hero debe mostrar también propuestas-tecnologicas
+        if (targetId === 'propuestas-hero') {
+            e.preventDefault();
+            showPropuestasPage();
+        }
+        
         // Cerrar menú móvil si está abierto
         navMenu.classList.remove('active');
     });
@@ -467,6 +473,38 @@ function showOnlySection(sectionId) {
     section.style.minHeight = '100vh';
     section.style.zIndex = '100';
     section.style.padding = '100px 20px 60px';
+    
+    // Scroll al inicio
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// Función especial para mostrar la página de propuestas tecnológicas completa
+function showPropuestasPage() {
+    // Ocultar TODAS las secciones primero
+    const allSections = document.querySelectorAll('section');
+    allSections.forEach(s => {
+        s.style.display = 'none';
+    });
+    
+    // Mostrar propuestas-hero y propuestas-tecnologicas
+    const heroSection = document.getElementById('propuestas-hero');
+    const contentSection = document.getElementById('propuestas-tecnologicas');
+    
+    if (heroSection) {
+        heroSection.style.display = 'block';
+        heroSection.style.position = 'relative';
+        heroSection.style.width = '100%';
+        heroSection.style.minHeight = '80vh';
+        heroSection.style.zIndex = '100';
+    }
+    
+    if (contentSection) {
+        contentSection.style.display = 'block';
+        contentSection.style.position = 'relative';
+        contentSection.style.width = '100%';
+        contentSection.style.zIndex = '100';
+        contentSection.style.padding = '80px 20px';
+    }
     
     // Scroll al inicio
     window.scrollTo({ top: 0, behavior: 'smooth' });
