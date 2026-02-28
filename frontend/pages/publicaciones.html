@@ -76,9 +76,22 @@
   <main style="padding: 30px 0;">
     <div class="container">
       <div class="section-tag section-tag--orange">PUBLICACIONES CIENTÍFICAS</div>
-      <p class="pub-intro">Repositorio de estudios e investigaciones sobre la población venezolana, desarrollados por
-        Fundacredesa.</p>
-      <div class="pub-grid" id="pub-grid"></div>
+      <p class="pub-intro" style="margin-bottom: 5px;">Repositorio de estudios e investigaciones sobre la población
+        venezolana, desarrollados por Fundacredesa.</p>
+
+      <!-- Contenedor dinámico de Filtros por Categoría UI Tabs -->
+      <div class="tabs-container" id="pub-tabs" style="display:flex; flex-wrap:wrap; gap:10px; margin-bottom: 25px;">
+        <button class="btn btn-outline"
+          style="background:var(--teal); color:white; border-color:var(--teal)">Todas</button>
+        <!-- Se llenará via Fetch -->
+      </div>
+
+      <div class="pub-grid" id="pub-grid">
+        <div style="text-align:center; grid-column: 1/-1; padding: 50px;">
+          <i class="fas fa-spinner fa-spin fa-3x" style="color:var(--teal)"></i>
+          <p style="margin-top:15px; color:var(--gray)">Obteniendo repositorio desde la Base de Datos...</p>
+        </div>
+      </div>
     </div>
   </main>
 
@@ -91,57 +104,6 @@
   </footer>
 
   <script src="../js/main.js" defer></script>
-  <script>
-    const publicaciones = [
-      { id: 1, title: 'Atlas de Maduración Ósea', desc: 'Referencia para la estimación de la edad ósea', file: 'AtlasMadOseaVenezolano.pdf', img: 'Atlasdemaduraciónoseadelvenezolano.png' },
-      { id: 2, title: 'Chino Julio e Indio Mara', desc: 'Caracterización Comunidad', file: 'Chino Julio e Indio Mara_Web.pdf', img: 'Caracterizacioncondicionesdevidadelascomunidadeschinojulioeindiomara.png' },
-      { id: 3, title: 'Comunidad El Contento', desc: 'Caracterización de condiciones de vida', file: 'El Contento_Web.pdf', img: 'caracterizacioncondicionesdevidadelacomunidadelcontento.png' },
-      { id: 4, title: 'Comunidad El Guaruro', desc: 'Estudio detallado socioeconómico', file: 'El Guaruro_Web.pdf', img: 'caracterizacioncondicionesdevidadelacomunidadelguaruro.png' },
-      { id: 5, title: 'Comuna El Maizal', desc: 'Experiencias de organización comunitaria', file: 'El Maizal_Web.pdf', img: 'caracterizaciondeexperienciasdeorganizaciondecomunascongestionexitosacomunasocialistaelmaizal.png' },
-      { id: 6, title: 'Comunidad El Motero', desc: 'Evaluación y caracterización social', file: 'El Motero_Web.pdf', img: 'caracterizaciondecondicionesdevidadelacomunidadelmotero.png' },
-      { id: 7, title: 'Comunidad Jaime Lusinchi', desc: 'Análisis de condiciones comunitarias', file: 'Jaime Lusinchi_Web.pdf', img: 'caracterizaciondecondicionesdevidadelacomunidadjaimelusinchi.png' },
-      { id: 8, title: 'Formación Universitaria Docentes', desc: 'Docentes Subsistemas Inicial y Primaria', file: 'Formacion_Univ_Web.pdf', img: 'laformacionuniversitariadelosdocentesvenezolanosenlossubsistemasdeducacioninicialyprimaria.png' },
-      { id: 9, title: 'Nuevos Urbanismos Zona Metropolitana', desc: 'Relaciones de convivencia existentes', file: 'Nuevos Urbanismos_Web.pdf', img: 'relacionesdeconvivenciaexistentesenlosnuevosurbanismosdelazonametropolitanadecaracas.png' },
-      { id: 10, title: 'SENACREDH Informe General', desc: 'Segundo Estudio Nacional de Crecimiento', file: 'SENACREDH INFORME GENERAL.pdf', img: 'informegeneralsegundoestudionacionaldecrecimientoydesarrollohumanodelarepublicabolivarianadevenezuela.png' },
-      { id: 11, title: 'SENACREDH Evaluación Psicomotora (Resumen)', desc: 'Desarrollo psicomotor en muestra de niñas y niños', file: 'SNCRDH_EDP_Resumen_Web.pdf', img: 'resumenevaluaciondeldesarrollopsicomotordeunamuestradeniñasyniños.png' },
-      { id: 12, title: 'SENACREDH Evaluación Psicomotora (Completo)', desc: 'Estudio psicomotor infantil completo', file: 'SNCRDH_EDP_Completo_Web.pdf', img: 'evaluaciondeldesarrollopsicomotordeunamuestradeniñasyniños.png' },
-      { id: 13, title: 'SENACREDH Hemoglobina y Anemia (Resumen)', desc: 'Prevalencia en niñas, niños y adolescentes', file: 'SNCRDH_ECHyA_Resumen_Web.pdf', img: 'resumenevaluaciondelaconcentraciondehemoglobinayanemiaenniñasniñosyadolescentes.png' },
-      { id: 14, title: 'SENACREDH Hemoglobina y Anemia (Completo)', desc: 'Estudio completo de anemia infantil', file: 'SNCRDH_ECHyA_Completo_Web.pdf', img: 'evaluaciondelaconcentraciondehemoglobinayanemiaenniñasniñosyadolescentes.png' },
-      { id: 15, title: 'Sociedad y Estratificación', desc: 'Método Graffar-Méndez Castellano', file: 'Sociedad y Estratificacion.pdf', img: 'sociedadyestratificacionmetodojaffarmendezcastellano.png' },
-      { id: 16, title: 'Tabla de Talla y Peso', desc: 'Circunferencia cefálica y de brazo', file: 'TABLA DE TALLA Y PESO FUNDACREDESA.jpg', img: 'tabladepesotallacircunferenciacefalicaycircunferenciadebrazodelasvenezolanasylosvenezolanos.png' }
-    ];
-
-    const fallbackImg = '../assets/images/logo_fundacredesa.png';
-    const grid = document.getElementById('pub-grid');
-
-    let htmlContent = '';
-    publicaciones.forEach(p => {
-      let encodedImg = encodeURIComponent(p.img).replace(/%20/g, '+');
-      let encodedPdf = encodeURIComponent(p.file).replace(/%20/g, '+');
-
-      let imgPath = p.img ? '../assets/portadas/' + encodedImg : fallbackImg;
-      let filePath = p.file.endsWith('.jpg') ? '../assets/pdf/' + encodedPdf : '../assets/pdf/' + encodedPdf;
-
-      htmlContent += `
-        <article class="pub-card animate-on-scroll">
-          <div class="pub-card__cover">
-            <img src="${imgPath}" onerror="this.src='${fallbackImg}'" alt="${p.title}">
-          </div>
-          <div class="pub-card__info">
-            <div>
-              <h3 class="pub-card__title">${p.title}</h3>
-              <p class="pub-card__desc">${p.desc}</p>
-            </div>
-            <a href="${filePath}" target="_blank" rel="noopener noreferrer" class="pub-card__btn" download>
-              <i class="fas fa-download"></i> Descargar
-            </a>
-          </div>
-        </article>
-      `;
-    });
-
-    grid.innerHTML = htmlContent;
-  </script>
 </body>
 
 </html>

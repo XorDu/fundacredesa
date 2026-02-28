@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Fundacredesa</title>
+    <link rel="icon" href="../assets/images/logo_fundacredesa.png" type="image/png">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- CSS Base de Fundacredesa -->
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/admin.css"> <!-- CSS Exclusivo de Admin -->
+</head>
+
+<body style="background:var(--gray-bg);">
+
+    <nav class="admin-nav">
+        <div class="container admin-nav__inner">
+            <div class="admin-nav__brand">
+                <i class="fas fa-shield-alt"></i> Panel de Administración - Repositorio
+            </div>
+            <div class="admin-nav__actions">
+                <a href="publicaciones.html" class="btn btn-outline" target="_blank"><i
+                        class="fas fa-external-link-alt"></i> Ver Web</a>
+                <a href="index.html" class="btn btn-logout"><i class="fas fa-sign-out-alt"></i> Salir</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="admin-container container">
+        <!-- Panel Izquierdo: Formulario de Subida -->
+        <section class="admin-card uploader-section">
+            <h2 class="admin-title"><i class="fas fa-cloud-upload-alt"></i> Subir Nueva Publicación</h2>
+            <p class="admin-desc">Gestione los nuevos artículos, defina su jerarquía y adjunte imagen y PDF oficial.</p>
+
+            <form id="uploadForm" class="admin-form" enctype="multipart/form-data">
+
+                <div class="form-group">
+                    <label for="titulo">Título de la Publicación</label>
+                    <input type="text" id="titulo" name="titulo" placeholder="Ej. Encuesta Nacional de Nutrición"
+                        required>
+                </div>
+
+                <div class="form-group">
+                    <label for="descripcion">Descripción Breve</label>
+                    <textarea id="descripcion" name="descripcion" rows="3" placeholder="Resumen del estudio..."
+                        required></textarea>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="id_categoria">Categoría</label>
+                        <select id="id_categoria" name="id_categoria" required>
+                            <option value="">Cargando conectores...</option>
+                            <!-- LLenado via JS -->
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="prioridad"
+                            title="Mientras mayor el número, más arriba aparecerá en la grilla">Prioridad
+                            (Orden)</label>
+                        <input type="number" id="prioridad" name="prioridad" value="0" min="0" placeholder="0">
+                    </div>
+                </div>
+
+                <div class="file-uploaders">
+                    <div class="file-box">
+                        <label for="portadaFile" class="file-label"><i class="fas fa-image"></i> Portada (PNG /
+                            JPG)</label>
+                        <input type="file" id="portadaFile" name="portada" accept="image/png, image/jpeg, image/jpg"
+                            required>
+                        <small id="portadaName" class="file-name-display">Ningún archivo subido</small>
+                    </div>
+
+                    <div class="file-box file-box--pdf">
+                        <label for="pdfFile" class="file-label"><i class="fas fa-file-pdf"></i> Archivo Doc
+                            (PDF)</label>
+                        <input type="file" id="pdfFile" name="pdf" accept="application/pdf" required>
+                        <small id="pdfName" class="file-name-display">Ningún archivo subido</small>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-submit" id="btnSubmit">
+                    <i class="fas fa-upload"></i> Publicar Documento
+                </button>
+            </form>
+            <div id="uploadFeedback" class="feedback-msg"></div>
+        </section>
+
+        <!-- Panel Derecho: Lista Administrativa -->
+        <section class="admin-card list-section">
+            <h2 class="admin-title"><i class="fas fa-list"></i> Inventario de Publicaciones (Base de Datos)</h2>
+            <p class="admin-desc">Aquí visualizas lo que ya fue publicado. Orden predeterminado por prioridad.</p>
+
+            <div class="admin-list-controls">
+                <button class="btn btn-refresh" onclick="cargarPublicacionesAdmin()"><i class="fas fa-sync-alt"></i>
+                    Actualizar</button>
+                <button id="saveOrderBtn" class="btn btn-outline"
+                    style="display: none; border-color: var(--teal); color: var(--teal); padding: 5px 15px; font-size: 0.85rem;"
+                    onclick="guardarNuevoOrden()">
+                    <i class="fas fa-save"></i> Guardar Nuevo Orden
+                </button>
+            </div>
+
+            <div class="table-responsive">
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th width="40"><i class="fas fa-arrows-alt-v"></i></th>
+                            <th>ID</th>
+                            <th>Portada</th>
+                            <th>Título</th>
+                            <th>Categoría</th>
+                            <th>Prioridad</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="publicacionesTbody">
+                        <tr>
+                            <td colspan="7" class="ta-c text-muted">Cargando datos desde MySQL...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal Oculto para Edición -->
+    <div id="editModal" class="modal"
+        style="display:none; position:fixed; z-index:9999; left:0; top:0; width:100%; height:100%; overflow:auto; background-color:rgba(0,0,0,0.5);">
+        <div class="modal-content"
+            style="background-color:#fff; margin:5% auto; padding:25px; border-radius:12px; border-top: 5px solid var(--teal); width:90%; max-width:500px; position:relative; box-shadow:0 10px 30px rgba(0,0,0,0.2);">
+            <span class="close-btn"
+                style="position:absolute; right:20px; top:15px; font-size:24px; font-weight:bold; color:var(--gray); cursor:pointer;"
+                onclick="cerrarModalEdicion()">&times;</span>
+            <h2 style="font-family:var(--font-ui); margin-bottom: 20px; color:var(--dark)"><i class="fas fa-edit"></i>
+                Edición Rápida</h2>
+
+            <form id="editForm">
+                <input type="hidden" id="edit_id" name="id">
+                <div class="form-group" style="margin-bottom: 15px;">
+                    <label for="edit_titulo"
+                        style="display:block; font-size:0.85rem; font-weight:600; margin-bottom:5px;">Título</label>
+                    <input type="text" id="edit_titulo" name="titulo" required
+                        style="width:100%; padding:10px; border:1px solid var(--border); border-radius:var(--radius); font-family:var(--font-text);">
+                </div>
+                <div class="form-group" style="margin-bottom: 15px;">
+                    <label for="edit_desc"
+                        style="display:block; font-size:0.85rem; font-weight:600; margin-bottom:5px;">Descripción
+                        Corta</label>
+                    <textarea id="edit_desc" name="descripcion" rows="3" required
+                        style="width:100%; padding:10px; border:1px solid var(--border); border-radius:var(--radius); font-family:var(--font-text);"></textarea>
+                </div>
+                <div class="form-group" style="margin-bottom: 20px;">
+                    <label for="edit_categoria"
+                        style="display:block; font-size:0.85rem; font-weight:600; margin-bottom:5px;">Categoría</label>
+                    <select id="edit_categoria" name="id_categoria" required
+                        style="width:100%; padding:10px; border:1px solid var(--border); border-radius:var(--radius); font-family:var(--font-text);">
+                        <!-- Se llenará vía JS al abrir el modal -->
+                    </select>
+                </div>
+                <button type="submit" id="btnSaveEdit" class="btn btn-primary" style="width:100%;"><i
+                        class="fas fa-save"></i> Guardar Cambios</button>
+            </form>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <div class="container site-footer__inner">
+            <div class="site-footer__copyright">
+                <p>&copy; 2024 Fundación Centro de Estudios Sobre Crecimiento y Desarrollo de la Población Venezolana.
+                </p>
+                <p>RIF: G-20000000-0</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- CDN de SortableJS para Drag and Drop -->
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+    <script src="../js/admin.js"></script>
+</body>
+
+</html>

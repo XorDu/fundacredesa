@@ -1,84 +1,20 @@
-# 🧠 Fundacredesa - Salud Mental en Venezuela
+# Portafolio Interactivo Fundacredesa 🇻🇪⚙️
 
-> **Socializando el Saber Científico** - Fundación Centro de Estudios sobre Crecimiento y Desarrollo de la Población Venezolana.
+Bienvenido a la versión refactorizada, escalable y protegida con Arquitectura API-Rest del Portal de **FUNDACREDESA**.
 
-## 📝 Descripción
-
-Este proyecto es la plataforma web institucional oficial de **Fundacredesa**. Ha sido rediseñada y reestructurada bajo una arquitectura moderna, escalable y modular para garantizar un excelente rendimiento, mantenimiento sostenible y una grata experiencia de usuario (UX/UI). 
-
-El sitio presenta:
-- **📊 Estadísticas Nacionales:** Indicadores epidemiológicos y un mapa interactivo de Venezuela.
-- **📚 Repositorio de Publicaciones:** Biblioteca digital de investigaciones científicas en PDF.
-- **🤖 Asistente Virtual:** Chatbot interactivo potenciado por Inteligencia Artificial incrustado de forma global.
+> **Nota Importante:** Este proyecto transicionó exitosamente de una web puramente estática hacia un **Ecosistema Dinámico Propio** soportado por Node.js, Express, Middleware JWT y Base de Datos MySQL.  
 
 ---
 
-## 🛠️ Tecnologías y Arquitectura
+### ¿Cómo Operarlo?
+Todo el motor se corre exclusivamente desde la carpeta `backend/`. Al ejecutar el servidor allí, Node.js automáticamente empaqueta y sirve por el Puerto Local de su Red la carpeta `/frontend` y todas sus interfaces gráficas, incluyendo el Panel Privado para la Administración.
 
-El proyecto está dividido estrictamente en **Frontend** y **Backend** para separar responsabilidades.
+### Pasos Rápidos
+1. Encienda Módulos MySQL y Apache en su Control **XAMPP**.
+2. Abra CMD Integrado en `/backend`
+3. Corra `npm install` (Para bajar Firebase, JsonWebToken, Expréss y Multer).
+4. Corra `npm run init_db` (Paso único para automatizar la creación de la Base de Datos).
+5. Corra su Servidor en Vivo: `npm start`.
 
-### Arquitectura de Carpetas
-
-```text
-fundacredesa/
-├── backend/
-│   └── app.py                  # Servidor Web en Flask (Python) para ruteo local y CORS
-├── documentacion/
-│   └── README.md               # Documentación técnica avanzada del portal
-└── frontend/
-    ├── assets/                 # Imágenes, mapa interactivo (SVG) y PDFs descargables
-    ├── css/                    # Hojas de estilo modulares (variables.css, hero.css, mapa.css, etc.)
-    ├── js/
-    │   └── main.js             # Lógica centralizada, segmentada en 10 módulos asíncronos
-    └── pages/                  # Vistas principales (index.html, estadisticas.html, publicaciones.html)
-```
-
-### Funcionalidades Destacadas (JavaScript puro)
-- **Carga Diferida & Intersection Observer:** Componentes que se animan suavemente conforme el usuario hace scroll para optimizar rendimiento.
-- **Mapa Interactivo SVG:** Carga asíncrona y manipulación del DOM nativa para mostrar información geolocalizada por cada estado de Venezuela (bug de *flickering* corregido).
-- **Generador de Gráficos Nativos:** Creación de gráficos de Torta y Barras matemáticamente mediante SVG, sin necesidad de pesadas librerías externas.
-- **Interfaz Universal de IA:** Ventana flotante de Chatbot inyectada globalmente desde `main.js` para brindar asistencia persistente.
-
----
-
-## 🚀 Instalación y Despliegue Local
-
-Para correr este ecosistema en tu computadora sin problemas de rutas o dependencias de carga (`Error 404`), se configuró un servidor dedicado en Python.
-
-### Requisitos:
-- Python 3.8 o superior
-- Flask (`pip install flask`)
-
-### Pasos:
-1. Asegúrate de estar en la carpeta principal del proyecto.
-2. Ejecuta el servidor backend:
-   ```bash
-   python backend/app.py
-   ```
-3. Tu terminal mostrará que el servidor está activo.
-4. Abre un navegador y visita: `http://localhost:8080`
-
-Todas las rutas internas (`/estadisticas.html`, `/publicaciones.html`) despacharán como una aplicación web nativa funcional.
-
----
-
-## 🎨 Identidad Visual (UI)
-
-El diseño y componentes repotenciados CSS se rigen por las siguientes variables formales (ubicadas en `frontend/css/variables.css`):
-- **Naranja Institucional:** `#E87722`
-- **Teal / Cyan Profundo:** `#00B5CC`
-- **Gris / Backgrounds:** `#F5F7FA` (Fondo principal) y `#5E6169` (Dark elements)
-- **Fuentes tipográficas:** Modernas de Google Fonts: `Inter` (cuerpo general) y `Poppins` (cabeceras).
-
----
-
-## 👨‍💻 Equipo de Desarrollo
-
-Este rediseño estructural, optimización de código, diseño UI/UX y modularización fue concebido y desarrollado por: 
-
-* **Leonardo** y **Sebastian**  
-*(Programadores de Fundacredesa)*
-
----
-
-*Copyright © Fundacredesa 1976 - 2024*
+Visite nuestro exhaustivo manual de arquitectura para aprender acerca de la Ciberseguridad IP Whitelist implementada, cómo funciona la Librería Drag And Drop o interactúa el frontend contra el Modelo Base de Datos en el siguiente directorio:  
+**📘 [Leer Documentación Oficial del Proyecto](./documentacion/README.md)**
