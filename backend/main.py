@@ -11,7 +11,7 @@ MAGICLOOPS_API_KEY = os.environ.get("MAGICLOOPS_API_KEY") or "https://magicloops
 MAGICLOOPS_URL = os.environ.get("MAGICLOOPS_URL") or "https://api.magicloops.dev"
 
 # Ruta a la carpeta de PDFs
-PDF_FOLDER = "./Estudios de Fundacredesa"
+PDF_FOLDER = "./frontend/assets/pdf"
 
 # Función para subir un PDF a MagicLoops y obtener el ID del documento
 def upload_pdf_to_magicloops(pdf_path):
