@@ -446,3 +446,106 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 
 console.info('%cFundacredesa 2024 — Socializando el Saber Científico', 'color:#E87722;font-weight:bold;font-size:13px;');
+
+/* ── 11. REPOSITORIO DINÁMICO DE PUBLICACIONES (CLIENTE) ────────── */
+if (document.getElementById('pub-grid')) {
+    const PUBLIC_API = 'http://localhost:8080/api';
+    let rawPublicaciones = [];
+
+    // Carga de categorías para crear los TABS filtradores
+    async function loadTabs() {
+        const tabsContainer = document.getElementById('pub-tabs');
+        if (!tabsContainer) return;
+        try {
+            const res = await fetch(`${PUBLIC_API}/categorias`);
+            const categorias = await res.json();
+
+            // Renderizamos los botones respetando el botón predeterminado "Todas"
+            let html = `<button class="btn btn-outline pub-tab active-tab" onclick="filterPubs('all', this)" style="background:var(--teal); color:white; border-color:var(--teal)">Todas</button>`;
+
+            categorias.forEach(cat => {
+                html += `<button class="btn btn-outline pub-tab" onclick="filterPubs('${cat.nombre}', this)" style="color:var(--dark); border-color:var(--border)">${cat.nombre}</button>`;
+            });
+            tabsContainer.innerHTML = html;
+        } catch (e) {
+            console.error('Error cargando los filtros Tabs:', e);
+        }
+    }
+
+    // Carga de la biblioteca completa y dibujo original
+    async function loadPublicaciones() {
+        const grid = document.getElementById('pub-grid');
+        try {
+            const res = await fetch(`${PUBLIC_API}/publicaciones`);
+            rawPublicaciones = await res.json();
+            renderPubs(rawPublicaciones);
+        } catch (e) {
+            grid.innerHTML = `
+                <div style="text-align:center; grid-column: 1/-1; padding: 50px;">
+                    <i class="fas fa-exclamation-triangle fa-3x" style="color:var(--orange)"></i>
+                    <p style="margin-top:15px; color:var(--dark)">No se pudo conectar con la base de datos.</p>
+                    <p style="font-size:0.85rem; color:var(--gray)">Verifique que el servidor (Node.js y XAMPP) estén activos.</p>
+                </div>
+            `;
+        }
+    }
+
+    // Dibuja el array de publicaciones sobre el DOM
+    function renderPubs(pubs) {
+        const grid = document.getElementById('pub-grid');
+        const fallbackImg = '../assets/images/logo_fundacredesa.png';
+
+        if (pubs.length === 0) {
+            grid.innerHTML = '<div style="grid-column:1/-1; text-align:center; padding:30px; color:var(--gray)">No hay publicaciones listadas en esta categoría. Revise el panel de administrador.</div>';
+            return;
+        }
+
+        let htmlContent = '';
+        pubs.forEach(p => {
+            htmlContent += `
+            <article class="pub-card animate-on-scroll visible">
+                <div class="pub-card__cover">
+                <img src="${p.portada_url}" onerror="this.src='${fallbackImg}'" alt="${p.titulo}">
+                </div>
+                <div class="pub-card__info">
+                <div>
+                    <span style="font-size:0.7rem; font-weight:700; color:var(--teal); text-transform:uppercase; margin-bottom: 5px; display:inline-block">${p.categoria_nombre || 'General'}</span>
+                    <h3 class="pub-card__title">${p.titulo}</h3>
+                    <p class="pub-card__desc">${p.descripcion}</p>
+                </div>
+                <a href="${p.pdf_url}" target="_blank" rel="noopener noreferrer" class="pub-card__btn" download>
+                    <i class="fas fa-download"></i> Descargar
+                </a>
+                </div>
+            </article>
+            `;
+        });
+        grid.innerHTML = htmlContent;
+    }
+
+    // Accionado desde el HTML al dar click en una Tab.
+    window.filterPubs = function (categoryName, btnEl) {
+        // Pintar pestaña activa
+        document.querySelectorAll('.pub-tab').forEach(b => {
+            b.style.background = 'transparent';
+            b.style.color = 'var(--dark)';
+            b.style.borderColor = 'var(--border)';
+        });
+        btnEl.style.background = 'var(--teal)';
+        btnEl.style.color = 'white';
+        btnEl.style.borderColor = 'var(--teal)';
+
+        if (categoryName === 'all') {
+            renderPubs(rawPublicaciones);
+        } else {
+            const filtradas = rawPublicaciones.filter(p => p.categoria_nombre === categoryName);
+            renderPubs(filtradas);
+        }
+    }
+
+    // Trigger de arranque para Publicaciones
+    window.addEventListener('DOMContentLoaded', () => {
+        loadTabs();
+        loadPublicaciones();
+    });
+}
