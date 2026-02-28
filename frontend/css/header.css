@@ -1,0 +1,434 @@
+/* ================================================================
+   FUNDACREDESA - header.css
+   Doble encabezado institucional + navegación + redes sociales
+   ================================================================ */
+
+/* ── UTILIDADES GLOBALES ── */
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 16px;
+}
+
+/* ── LOADING ── */
+.loading {
+    position: fixed;
+    inset: 0;
+    background: var(--white);
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    transition: opacity var(--t-normal);
+}
+
+.loading.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.loading__logo {
+    height: 52px;
+    object-fit: contain;
+}
+
+.loading__spinner {
+    width: 46px;
+    height: 46px;
+    border: 4px solid var(--gray-bg);
+    border-top-color: var(--orange);
+    border-radius: 50%;
+    animation: spin .8s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* ── BARRA SUPERIOR NARANJA ── */
+.header-top {
+    background: var(--orange);
+    padding: 5px 0;
+}
+
+.header-top__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.header-top__logos {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.header-top__logo-group {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--white);
+    font-size: .68rem;
+    font-family: var(--font-ui);
+    line-height: 1.25;
+    font-weight: 500;
+}
+
+.header-top__logo-group img {
+    height: 26px;
+    width: auto;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+}
+
+.header-top__divider {
+    width: 1px;
+    height: 26px;
+    background: rgba(255, 255, 255, .35);
+}
+
+.header-top__text {
+    color: var(--white);
+    font-size: .64rem;
+    font-family: var(--font-ui);
+    line-height: 1.3;
+}
+
+.header-top__right img {
+    height: 28px;
+    filter: brightness(0) invert(1);
+}
+
+/* ── BARRA PRINCIPAL: LOGO + BANNER ── */
+.header-main {
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    min-height: 108px;
+    position: relative;
+    overflow: hidden;
+}
+
+.header-main__inner {
+    display: flex;
+    align-items: stretch;
+    min-height: 108px;
+    position: relative;
+}
+
+.header-main__logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 20px 12px 0;
+    z-index: 2;
+    flex-shrink: 0;
+    background: var(--white);
+    text-decoration: none;
+}
+
+.header-main__logo-img {
+    height: 74px;
+    width: auto;
+    object-fit: contain;
+}
+
+.header-main__logo-text {
+    display: flex;
+    flex-direction: column;
+    color: var(--orange);
+}
+
+.header-main__logo-text strong {
+    font-size: 1.15rem;
+    font-weight: 800;
+    letter-spacing: -.5px;
+    font-family: var(--font-ui);
+}
+
+.header-main__logo-text span {
+    font-size: .62rem;
+    color: var(--gray);
+    font-family: var(--font-ui);
+}
+
+/* Banner diagonal */
+.header-main__banner {
+    flex: 1;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    overflow: hidden;
+    min-height: 108px;
+}
+
+.header-main__banner-shapes {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.header-main__banner-shapes svg {
+    width: 100%;
+    height: 100%;
+}
+
+.header-main__slogan {
+    position: relative;
+    z-index: 2;
+    text-align: right;
+    padding: 14px 18px;
+}
+
+.header-main__slogan em {
+    font-style: italic;
+    font-size: clamp(1.2rem, 2.4vw, 1.9rem);
+    font-weight: 700;
+    font-family: var(--font-body);
+    color: var(--dark);
+    text-shadow: 0 1px 2px rgba(255, 255, 255, .8);
+    display: block;
+}
+
+/* ── BARRA DE NAVEGACIÓN ── */
+.site-nav {
+    background: var(--nav-bg);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: var(--shadow-sm);
+}
+
+.site-nav__inner {
+    display: flex;
+    align-items: center;
+}
+
+.site-nav__list {
+    display: flex;
+    align-items: center;
+    flex: 1;
+}
+
+.site-nav__link {
+    display: block;
+    padding: 10px 13px;
+    color: var(--white);
+    font-size: .78rem;
+    font-weight: 500;
+    font-family: var(--font-ui);
+    text-transform: uppercase;
+    letter-spacing: .3px;
+    transition: background var(--t-fast);
+    white-space: nowrap;
+}
+
+.site-nav__link:hover,
+.site-nav__link.active {
+    background: var(--orange);
+}
+
+.site-nav__separator {
+    width: 1px;
+    height: 17px;
+    background: rgba(255, 255, 255, .22);
+    flex-shrink: 0;
+}
+
+.site-nav__search {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    background: rgba(255, 255, 255, .14);
+    border: 1px solid rgba(255, 255, 255, .28);
+    border-radius: 2px;
+    overflow: hidden;
+    min-width: 155px;
+}
+
+.site-nav__search input {
+    background: transparent;
+    color: var(--white);
+    font-size: .73rem;
+    padding: 5px 8px;
+    width: 100%;
+}
+
+.site-nav__search input::placeholder {
+    color: rgba(255, 255, 255, .55);
+}
+
+.site-nav__search button {
+    color: rgba(255, 255, 255, .75);
+    padding: 5px 8px;
+    font-size: .73rem;
+    transition: color var(--t-fast);
+}
+
+.site-nav__search button:hover {
+    color: var(--white);
+}
+
+.site-nav__toggle {
+    display: none;
+    color: var(--white);
+    font-size: 1.15rem;
+    padding: 8px;
+    margin-left: auto;
+}
+
+/* ── REDES SOCIALES LATERALES ── */
+.social-sidebar {
+    position: fixed;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 900;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.social-sidebar__btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 37px;
+    height: 37px;
+    color: var(--white);
+    font-size: .95rem;
+    transition: transform var(--t-fast), opacity var(--t-fast);
+    clip-path: polygon(0 10%, 100% 0%, 100% 100%, 0% 90%);
+}
+
+.social-sidebar__btn--fb {
+    background: #3B5998;
+}
+
+.social-sidebar__btn--ig {
+    background: #C13584;
+}
+
+.social-sidebar__btn--tw {
+    background: #1DA1F2;
+}
+
+.social-sidebar__btn--yt {
+    background: #FF0000;
+}
+
+.social-sidebar__btn:hover {
+    transform: translateX(-4px);
+    opacity: .9;
+}
+
+/* ── FOOTER ── */
+.site-footer {
+    background: var(--nav-bg);
+    color: rgba(255, 255, 255, .8);
+    padding: 13px 0;
+    font-size: .72rem;
+    font-family: var(--font-ui);
+    border-top: 3px solid var(--orange);
+}
+
+.site-footer__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.site-footer__copyright {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: rgba(255, 255, 255, .65);
+}
+
+.site-footer__links {
+    display: flex;
+    gap: 14px;
+}
+
+.site-footer__links a {
+    color: rgba(255, 255, 255, .6);
+    transition: color var(--t-fast);
+}
+
+.site-footer__links a:hover {
+    color: var(--white);
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+    .site-nav__list {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background: var(--nav-bg);
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        z-index: 100;
+    }
+
+    .site-nav__list.open {
+        display: flex;
+    }
+
+    .site-nav__inner {
+        flex-wrap: wrap;
+        position: relative;
+    }
+
+    .site-nav__separator {
+        display: none;
+    }
+
+    .site-nav__link {
+        padding: 11px 16px;
+        border-bottom: 1px solid rgba(255, 255, 255, .08);
+    }
+
+    .site-nav__search {
+        width: 100%;
+        min-width: unset;
+        border-radius: 0;
+    }
+
+    .site-nav__toggle {
+        display: block;
+    }
+
+    .header-top__text {
+        display: none;
+    }
+
+    .social-sidebar {
+        display: none;
+    }
+}
+
+@media (max-width: 576px) {
+    .header-main__logo-img {
+        height: 50px;
+    }
+
+    .header-main__logo-text strong {
+        font-size: .95rem;
+    }
+
+    .header-top__logo-group img {
+        height: 20px;
+    }
+}

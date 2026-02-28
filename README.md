@@ -1,126 +1,84 @@
-# Fundacredesa - Salud Mental en Venezuela
+# 🧠 Fundacredesa - Salud Mental en Venezuela
 
-![Fundacredesa](images/logo_fundacredesa.png)
+> **Socializando el Saber Científico** - Fundación Centro de Estudios sobre Crecimiento y Desarrollo de la Población Venezolana.
 
-## Descripción
+## 📝 Descripción
 
-Este proyecto es un sitio web informativo sobre la salud mental en Venezuela, desarrollado por **Fundacredesa**. El sitio presenta estadísticas, propuestas tecnológicas innovadoras y recursos sobre salud mental.
+Este proyecto es la plataforma web institucional oficial de **Fundacredesa**. Ha sido rediseñada y reestructurada bajo una arquitectura moderna, escalable y modular para garantizar un excelente rendimiento, mantenimiento sostenible y una grata experiencia de usuario (UX/UI). 
 
-## Requisitos
+El sitio presenta:
+- **📊 Estadísticas Nacionales:** Indicadores epidemiológicos y un mapa interactivo de Venezuela.
+- **📚 Repositorio de Publicaciones:** Biblioteca digital de investigaciones científicas en PDF.
+- **🤖 Asistente Virtual:** Chatbot interactivo potenciado por Inteligencia Artificial incrustado de forma global.
 
-### Frontend
-- Navegador web moderno (Chrome, Firefox, Safari, Edge)
-- Conexión a internet (para cargar fuentes y iconos)
+---
 
-### Backend (Opcional)
-- Python 3.8 o superior
-- Flask
+## 🛠️ Tecnologías y Arquitectura
 
-## Instalación
+El proyecto está dividido estrictamente en **Frontend** y **Backend** para separar responsabilidades.
 
-### Ver directamente en navegador
-Simplemente abre el archivo `index.html` en tu navegador web.
+### Arquitectura de Carpetas
 
-### Con servidor local Python
-```bash
-# Instalar dependencias
-pip install flask
-
-# Ejecutar el servidor
-python app.py
-# o
-python main.py
-```
-
-El servidor estará disponible en http://localhost:5000
-
-## Estructura del Proyecto
-
-```
+```text
 fundacredesa/
-├── index.html                   # Página principal
-├── script.js                   # Funcionalidad JavaScript principal
-├── animations.css              # Animaciones globales
-├── enhanced-animations.js      # Animaciones adicionales
-├── loading-fix.js              # Fix para pantalla de carga
-├── chatbase.js                 # Chat de soporte
-├── app.py                      # Servidor Flask
-├── main.py                     # Aplicación principal
-├── package.json                # Dependencias npm
-├── styles/                     # Estilos CSS modulares
-│   ├── main.css               # Archivo principal que importa módulos
-│   ├── variables.css          # Variables CSS (colores, espaciados)
-│   ├── reset.css              # Reset de estilos
-│   ├── header.css            # Estilos del encabezado
-│   ├── hero.css              # Estilos del hero principal
-│   ├── secciones.css         # Estilos de secciones generales
-│   ├── statistics.css        # Gráficos y estadísticas
-│   ├── propuestas.css        # Propuestas tecnológicas
-│   ├── recursos.css          # Recursos y estudios
-│   ├── cta.css              # Llamadas a la acción
-│   ├── mapa.css             # Mapa interactivo
-│   ├── navegacion.css       # Menú de navegación
-│   ├── responsive.css       # Diseño responsive
-│   └── critico.css         # Estilos críticos
-├── images/                    # Imágenes del proyecto
-├── portadas/                  # Portadas de estudios
-└── Estudios de Fundacredesa/  # Documentos PDF de estudios
+├── backend/
+│   └── app.py                  # Servidor Web en Flask (Python) para ruteo local y CORS
+├── documentacion/
+│   └── README.md               # Documentación técnica avanzada del portal
+└── frontend/
+    ├── assets/                 # Imágenes, mapa interactivo (SVG) y PDFs descargables
+    ├── css/                    # Hojas de estilo modulares (variables.css, hero.css, mapa.css, etc.)
+    ├── js/
+    │   └── main.js             # Lógica centralizada, segmentada en 10 módulos asíncronos
+    └── pages/                  # Vistas principales (index.html, estadisticas.html, publicaciones.html)
 ```
 
-## Secciones del Sitio
+### Funcionalidades Destacadas (JavaScript puro)
+- **Carga Diferida & Intersection Observer:** Componentes que se animan suavemente conforme el usuario hace scroll para optimizar rendimiento.
+- **Mapa Interactivo SVG:** Carga asíncrona y manipulación del DOM nativa para mostrar información geolocalizada por cada estado de Venezuela (bug de *flickering* corregido).
+- **Generador de Gráficos Nativos:** Creación de gráficos de Torta y Barras matemáticamente mediante SVG, sin necesidad de pesadas librerías externas.
+- **Interfaz Universal de IA:** Ventana flotante de Chatbot inyectada globalmente desde `main.js` para brindar asistencia persistente.
 
-1. **Inicio** - Hero principal sobre salud mental en Venezuela
-2. **¿Quiénes somos?** - Información sobre Fundacredesa
-3. **Presentación** - Video y contexto sobre salud mental
-4. **Estadísticas** - Datos interactivos sobre salud mental en Venezuela
-5. **Misión** - Objetivos de Fundacredesa
-6. **Propuestas Tecnológicas** - Proyectos de innovación:
-   - **PsicoEduca**: Plataforma de psicoeducación en línea gamificada
-   - **Memory Vision**: Sistema de diagnóstico y monitoreo de Alzheimer con IA
+---
 
-## Propuestas Tecnológicas
+## 🚀 Instalación y Despliegue Local
 
-### PsicoEduca
-Plataforma de psicoeducación en línea con las siguientes características:
-- Interfaz gamificada con sistema de logros
-- Contenido personalizado según perfil del usuario
-- Seguimiento de progreso y análisis de mejoras
-- Comunidad de apoyo integrada
-- Accesibilidad multiplataforma
+Para correr este ecosistema en tu computadora sin problemas de rutas o dependencias de carga (`Error 404`), se configuró un servidor dedicado en Python.
 
-### Memory Vision
-Sistema para diagnosticar y monitorear Alzheimer:
-- Algoritmos de machine learning avanzados
-- Análisis de patrones cognitivos en tiempo real
-- Interfaz intuitiva para familiares y cuidadores
-- Sistema de alertas personalizables
-- Integración con dispositivos wearables
+### Requisitos:
+- Python 3.8 o superior
+- Flask (`pip install flask`)
 
-## Colores del Proyecto
+### Pasos:
+1. Asegúrate de estar en la carpeta principal del proyecto.
+2. Ejecuta el servidor backend:
+   ```bash
+   python backend/app.py
+   ```
+3. Tu terminal mostrará que el servidor está activo.
+4. Abre un navegador y visita: `http://localhost:8080`
 
-- **Rojo:** #C62828
-- **Verde:** #388E3C
-- **Azul Marino:** #1A237E
+Todas las rutas internas (`/estadisticas.html`, `/publicaciones.html`) despacharán como una aplicación web nativa funcional.
 
-## Documentación
+---
 
-La documentación detallada se encuentra en la carpeta `documentacion/`.
+## 🎨 Identidad Visual (UI)
 
-## Archivos JavaScript
+El diseño y componentes repotenciados CSS se rigen por las siguientes variables formales (ubicadas en `frontend/css/variables.css`):
+- **Naranja Institucional:** `#E87722`
+- **Teal / Cyan Profundo:** `#00B5CC`
+- **Gris / Backgrounds:** `#F5F7FA` (Fondo principal) y `#5E6169` (Dark elements)
+- **Fuentes tipográficas:** Modernas de Google Fonts: `Inter` (cuerpo general) y `Poppins` (cabeceras).
 
-| Archivo | Descripción |
-|---------|-------------|
-| `script.js` | Funcionalidad principal: navegación, gráficos, animaciones |
-| `enhanced-animations.js` | Animaciones adicionales de scroll |
-| `loading-fix.js` | Fix para la pantalla de carga |
-| `chatbase.js` | Integración del chat de soporte |
+---
 
-## Navegación
+## 👨‍💻 Equipo de Desarrollo
 
-El sitio tiene dos tipos de navegación:
-- **Secciones de scroll**: Inicio, ¿Quiénes somos?, Misión (se muestran todas al hacer scroll)
-- **Páginas separadas**: Presentación, Estadísticas, Propuestas tecnológicas, Recursos (se muestran individualmente al hacer clic)
+Este rediseño estructural, optimización de código, diseño UI/UX y modularización fue concebido y desarrollado por: 
 
-## Licencia
+* **Leonardo** y **Sebastian**  
+*(Programadores de Fundacredesa)*
 
-Copyright © Fundacredesa
+---
+
+*Copyright © Fundacredesa 1976 - 2024*

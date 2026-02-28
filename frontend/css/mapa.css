@@ -1,0 +1,92 @@
+/* ── MAPA INTERACTIVO ── */
+.map-section {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 22px;
+    margin: 18px 0;
+}
+
+.map-section__title {
+    font-size: .95rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 5px;
+    font-family: var(--font-ui);
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.map-section__subtitle {
+    font-size: .76rem;
+    color: var(--gray);
+    margin-bottom: 14px;
+}
+
+.map-wrap {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 18px;
+    align-items: start;
+}
+
+.map-svg-container {
+    width: 100%;
+}
+
+.map-svg-container svg {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.map-svg-container svg path {
+    fill: #c8dae5;
+    stroke: #fff;
+    stroke-width: .5;
+    cursor: pointer;
+    transition: fill .1s ease-in-out;
+}
+
+.map-svg-container svg path:hover {
+    fill: var(--orange);
+}
+
+.map-svg-container svg path.map-selected {
+    fill: var(--teal) !important;
+}
+
+/* Islas / dependencias federales */
+.map-svg-container svg path#AW,
+.map-svg-container svg path#BQ,
+.map-svg-container svg path#CW {
+    fill: #b0cad5;
+}
+
+.map-info-panel {
+    background: var(--gray-bg);
+    border-left: 4px solid var(--teal);
+    border-radius: var(--radius);
+    padding: 16px;
+    font-size: .82rem;
+    color: var(--dark);
+    line-height: 1.65;
+    min-height: 80px;
+}
+
+.map-info-panel h3 {
+    font-size: .95rem;
+    font-weight: 700;
+    color: var(--teal);
+    margin-bottom: 7px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.map-info-panel .map-placeholder {
+    color: var(--gray);
+    font-style: italic;
+    font-size: .8rem;
+}
