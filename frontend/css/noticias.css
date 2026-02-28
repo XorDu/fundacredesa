@@ -1,0 +1,121 @@
+/* ── NOTICIAS ── */
+.noticias-section {
+    background: var(--white);
+    padding: 22px 0;
+    border-top: 3px solid var(--orange);
+}
+
+.noticias-section__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 14px;
+}
+
+.noticias-section__more {
+    font-size: .76rem;
+    color: var(--orange);
+    font-weight: 600;
+    transition: color var(--t-fast);
+}
+
+.noticias-section__more:hover {
+    color: var(--orange-dark);
+}
+
+.noticias-carousel-wrap {
+    position: relative;
+    padding: 0 20px;
+}
+
+.noticias-carousel {
+    overflow: hidden;
+}
+
+.noticias-track {
+    display: flex;
+    gap: 14px;
+    transition: transform .5s ease;
+}
+
+.noticia-card {
+    flex: 0 0 calc(20% - 11px);
+    min-width: 155px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    transition: box-shadow var(--t-fast);
+}
+
+.noticia-card:hover {
+    box-shadow: var(--shadow-md);
+}
+
+.noticia-card__thumb {
+    width: 100%;
+    height: 115px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    font-size: 1.9rem;
+}
+
+.noticia-card__body {
+    padding: 9px;
+}
+
+.noticia-card__title {
+    font-size: .76rem;
+    font-weight: 600;
+    color: var(--dark);
+    line-height: 1.35;
+    margin-bottom: 5px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.noticia-card__more {
+    font-size: .68rem;
+    color: var(--orange);
+    font-weight: 600;
+    transition: color var(--t-fast);
+}
+
+.noticia-card__more:hover {
+    color: var(--orange-dark);
+    text-decoration: underline;
+}
+
+.noticias-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--orange);
+    color: white;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: background var(--t-fast);
+    font-size: .75rem;
+}
+
+.noticias-btn:hover {
+    background: var(--orange-dark);
+}
+
+.noticias-btn--prev {
+    left: 0;
+}
+
+.noticias-btn--next {
+    right: 0;
+}

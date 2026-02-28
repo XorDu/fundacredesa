@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fundacredesa – Inicio</title>
+    <meta name="description"
+        content="Fundación Centro de Estudios sobre Crecimiento y Desarrollo de la Población Venezolana. Socializando el Saber Científico.">
+    <link rel="icon" href="../assets/images/logo_fundacredesa.png" type="image/png">
+
+    <!-- Fuentes -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- CSS Modulares -->
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <!-- Componentes de index -->
+    <link rel="stylesheet" href="../css/hero.css">
+    <link rel="stylesheet" href="../css/content.css">
+    <link rel="stylesheet" href="../css/noticias.css">
+    <link rel="stylesheet" href="../css/chatbot.css">
+</head>
+
+<body>
+
+    <!-- LOADING -->
+    <div id="loading" class="loading" aria-hidden="true">
+        <img src="../assets/images/logo_fundacredesa.png" alt="Fundacredesa" class="loading__logo">
+        <div class="loading__spinner"></div>
+    </div>
+
+    <!-- ========== HEADER SUPERIOR NARANJA ========== -->
+    <div class="header-top">
+        <div class="container header-top__inner">
+            <div class="header-top__logos">
+                <div class="header-top__logo-group">
+                    <img src="../assets/images/logo_fundacredesa.png" alt="Gobierno Bolivariano">
+                    <span>Gobierno Bolivariano<br>de Venezuela</span>
+                </div>
+                <div class="header-top__divider"></div>
+                <div class="header-top__text">Ministerio del Poder Popular<br>para las Comunas y los Movimientos
+                    Sociales</div>
+                <div class="header-top__divider"></div>
+                <div class="header-top__text">Fundación Centro de Estudios sobre Crecimiento<br>y Desarrollo de la
+                    Población Venezolana (FUNDACREDESA)</div>
+            </div>
+            <div class="header-top__right">
+                <img src="../assets/images/logo_fundacredesa.png" alt="Logo Zamora">
+            </div>
+        </div>
+    </div>
+
+    <!-- HEADER PRINCIPAL: Logo + Banner diagonal -->
+    <div class="header-main">
+        <div class="container header-main__inner">
+            <a href="index.html" class="header-main__logo">
+                <img src="../assets/images/logo_fundacredesa.png" alt="Fundacredesa" class="header-main__logo-img">
+                <div class="header-main__logo-text">
+                    <strong>FUNDACREDESA</strong>
+                    <span>1976 – 2024</span>
+                </div>
+            </a>
+            <div class="header-main__banner">
+                <div class="header-main__banner-shapes">
+                    <svg viewBox="0 0 700 110" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                        <polygon points="100,0 700,0 700,110 60,110" fill="#00B5CC" opacity=".94" />
+                        <polygon points="50,0 290,0 230,110 0,110" fill="#E87722" opacity=".92" />
+                        <polygon points="230,0 360,0 300,110 170,110" fill="#FFFFFF" opacity=".9" />
+                    </svg>
+                </div>
+                <div class="header-main__slogan"><em>Socializando el Saber Científico</em></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- NAVEGACIÓN -->
+    <nav class="site-nav" id="site-nav" role="navigation" aria-label="Menú principal">
+        <div class="container site-nav__inner">
+            <button class="site-nav__toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-list">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="site-nav__list" id="nav-list">
+                <li class="site-nav__item"><a href="index.html" class="site-nav__link active">Inicio</a></li>
+                <li class="site-nav__separator" role="separator"></li>
+                <li class="site-nav__item"><a href="estadisticas.html" class="site-nav__link">Estadísticas</a></li>
+                <li class="site-nav__separator" role="separator"></li>
+                <li class="site-nav__item"><a href="publicaciones.html" class="site-nav__link">Publicaciones</a></li>
+            </ul>
+            <div class="site-nav__search">
+                <input type="search" id="search-input" placeholder="Buscar..." aria-label="Buscar en el sitio">
+                <button onclick="buscarSitio()" aria-label="Buscar"><i class="fas fa-search"></i></button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- REDES SOCIALES FLOTANTES -->
+    <aside class="social-sidebar" aria-label="Redes sociales">
+        <a href="#" class="social-sidebar__btn social-sidebar__btn--fb" aria-label="Facebook"><i
+                class="fab fa-facebook-f"></i></a>
+        <a href="#" class="social-sidebar__btn social-sidebar__btn--ig" aria-label="Instagram"><i
+                class="fab fa-instagram"></i></a>
+        <a href="#" class="social-sidebar__btn social-sidebar__btn--tw" aria-label="Twitter"><i
+                class="fab fa-twitter"></i></a>
+        <a href="#" class="social-sidebar__btn social-sidebar__btn--yt" aria-label="YouTube"><i
+                class="fab fa-youtube"></i></a>
+    </aside>
+
+    <!-- ========== MAIN ========== -->
+    <main id="main-content">
+
+        <!-- HERO SLIDER -->
+        <section class="hero-slider" aria-label="Slider principal">
+            <div class="hero-slider__track" id="slider-track">
+
+                <div class="hero-slide">
+                    <div class="hero-slide__body" style="background:linear-gradient(135deg,#E87722 60%,#cc6000);">
+                        <i class="fas fa-users"></i>
+                        <h2>Comunidades Venezolanas</h2>
+                        <p>Trabajo de campo en todo el territorio nacional</p>
+                    </div>
+                    <div class="hero-slide__caption">Operativo a cielo abierto en Charallave</div>
+                </div>
+
+                <div class="hero-slide">
+                    <div class="hero-slide__body" style="background:linear-gradient(135deg,#00B5CC 60%,#007a8a);">
+                        <i class="fas fa-chart-line"></i>
+                        <h2>Datos para el Desarrollo</h2>
+                        <p>Investigación científica al servicio del pueblo venezolano</p>
+                    </div>
+                    <div class="hero-slide__caption">Estudio Nacional de Crecimiento y Desarrollo</div>
+                </div>
+
+                <div class="hero-slide">
+                    <div class="hero-slide__body" style="background:linear-gradient(135deg,#5E6169 60%,#333);">
+                        <i class="fas fa-heartbeat"></i>
+                        <h2>Salud y Bienestar</h2>
+                        <p>Evaluación integral de la salud mental y física de los venezolanos</p>
+                    </div>
+                    <div class="hero-slide__caption">PsicoEduca · Memory Vision</div>
+                </div>
+
+            </div>
+            <button class="hero-slider__btn hero-slider__btn--prev" onclick="sliderPrev()" aria-label="Anterior"><i
+                    class="fas fa-chevron-left"></i></button>
+            <button class="hero-slider__btn hero-slider__btn--next" onclick="sliderNext()" aria-label="Siguiente"><i
+                    class="fas fa-chevron-right"></i></button>
+        </section>
+
+        <!-- NOTICIAS -->
+        <section class="noticias-section">
+            <div class="container">
+                <div class="noticias-section__header">
+                    <div class="section-tag section-tag--teal">Fundacredesa al Día</div>
+                    <a href="#" class="noticias-section__more">Ver todas →</a>
+                </div>
+                <div class="noticias-carousel-wrap">
+                    <button class="noticias-btn noticias-btn--prev" onclick="noticiasCarouselMove(-1)"
+                        aria-label="Anterior"><i class="fas fa-chevron-left"></i></button>
+                    <div class="noticias-carousel" aria-label="Noticias recientes">
+                        <div class="noticias-track" id="noticias-track">
+
+                            <article class="noticia-card">
+                                <div class="noticia-card__thumb"
+                                    style="background:linear-gradient(135deg,#E87722,#cc6000);">
+                                    <i class="fas fa-file-alt"></i>
+                                </div>
+                                <div class="noticia-card__body">
+                                    <p class="noticia-card__title">Censo Condiciones de Vida 2024</p>
+                                    <a href="#" class="noticia-card__more">leer más</a>
+                                </div>
+                            </article>
+
+                            <article class="noticia-card">
+                                <div class="noticia-card__thumb"
+                                    style="background:linear-gradient(135deg,#00B5CC,#007a8a);">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                                <div class="noticia-card__body">
+                                    <p class="noticia-card__title">En la Comunidad La Cruz de Chacao</p>
+                                    <a href="#" class="noticia-card__more">leer más</a>
+                                </div>
+                            </article>
+
+                            <article class="noticia-card">
+                                <div class="noticia-card__thumb"
+                                    style="background:linear-gradient(135deg,#5E6169,#333);">
+                                    <i class="fas fa-stethoscope"></i>
+                                </div>
+                                <div class="noticia-card__body">
+                                    <p class="noticia-card__title">Operativo a cielo abierto en Charallave</p>
+                                    <a href="#" class="noticia-card__more">leer más</a>
+                                </div>
+                            </article>
+
+                            <article class="noticia-card">
+                                <div class="noticia-card__thumb"
+                                    style="background:linear-gradient(135deg,#2E7D32,#1B5E20);">
+                                    <i class="fas fa-graduation-cap"></i>
+                                </div>
+                                <div class="noticia-card__body">
+                                    <p class="noticia-card__title">Apoyando a los jóvenes estudiantes</p>
+                                    <a href="#" class="noticia-card__more">leer más</a>
+                                </div>
+                            </article>
+
+                            <article class="noticia-card">
+                                <div class="noticia-card__thumb"
+                                    style="background:linear-gradient(135deg,#00897B,#004D40);">
+                                    <i class="fas fa-leaf"></i>
+                                </div>
+                                <div class="noticia-card__body">
+                                    <p class="noticia-card__title">Jornada de Siembra de Árboles</p>
+                                    <a href="#" class="noticia-card__more">leer más</a>
+                                </div>
+                            </article>
+
+                            <article class="noticia-card">
+                                <div class="noticia-card__thumb"
+                                    style="background:linear-gradient(135deg,#6A1B9A,#4A148C);">
+                                    <i class="fas fa-book-open"></i>
+                                </div>
+                                <div class="noticia-card__body">
+                                    <p class="noticia-card__title">Publicación de nuevos resultados del SENACREDH</p>
+                                    <a href="#" class="noticia-card__more">leer más</a>
+                                </div>
+                            </article>
+
+                        </div>
+                    </div>
+                    <button class="noticias-btn noticias-btn--next" onclick="noticiasCarouselMove(1)"
+                        aria-label="Siguiente"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </section>
+
+        <!-- QUIÉNES SOMOS -->
+        <section class="content-section content-section--gray" id="quienes-somos">
+            <div class="container">
+                <div class="section-tag section-tag--orange">Fundacredesa</div>
+                <div class="section-grid section-grid--2">
+                    <div>
+                        <p style="font-size:.85rem;color:var(--gray);line-height:1.75;margin-bottom:14px;">
+                            Somos la <strong>Fundación Centro de Estudios sobre Crecimiento y Desarrollo de la Población
+                                Venezolana (FUNDACREDESA)</strong>, institución científica creada en 1976 para estudiar
+                            y mejorar las condiciones de vida del pueblo venezolano.
+                        </p>
+                        <p style="font-size:.85rem;color:var(--gray);line-height:1.75;margin-bottom:14px;">
+                            Realizamos investigaciones interdisciplinarias en crecimiento físico, desarrollo psicomotor,
+                            condiciones de vida, salud mental y factores socioeconómicos.
+                        </p>
+                        <div class="stat-mini-grid">
+                            <div class="stat-mini stat-mini--orange">
+                                <div class="stat-mini__num stat-mini__num--orange">48+</div>
+                                <div class="stat-mini__label">Años de trayectoria</div>
+                            </div>
+                            <div class="stat-mini stat-mini--teal">
+                                <div class="stat-mini__num stat-mini__num--teal">23</div>
+                                <div class="stat-mini__label">Estados investigados</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="section-grid section-grid--2" style="align-content:start;">
+                        <div class="inv-card">
+                            <div class="inv-card__thumb" style="background:linear-gradient(135deg,#E87722,#cc6000);">
+                                <i class="fas fa-microscope"></i>
+                            </div>
+                            <div class="inv-card__body">
+                                <p class="inv-card__title">Investigación</p>
+                                <p class="inv-card__desc">Estudios científicos de alcance nacional e internacional.</p>
+                            </div>
+                        </div>
+                        <div class="inv-card">
+                            <div class="inv-card__thumb" style="background:linear-gradient(135deg,#00B5CC,#007a8a);">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="inv-card__body">
+                                <p class="inv-card__title">Comunidades</p>
+                                <p class="inv-card__desc">Trabajo directo en los sectores más vulnerables del país.</p>
+                            </div>
+                        </div>
+                        <div class="inv-card">
+                            <div class="inv-card__thumb" style="background:linear-gradient(135deg,#5E6169,#333);">
+                                <i class="fas fa-book"></i>
+                            </div>
+                            <div class="inv-card__body">
+                                <p class="inv-card__title">Publicaciones</p>
+                                <p class="inv-card__desc">Documentación científica disponible para el público.</p>
+                            </div>
+                        </div>
+                        <div class="inv-card">
+                            <div class="inv-card__thumb" style="background:linear-gradient(135deg,#2E7D32,#1B5E20);">
+                                <i class="fas fa-chart-bar"></i>
+                            </div>
+                            <div class="inv-card__body">
+                                <p class="inv-card__title">Estadísticas</p>
+                                <p class="inv-card__desc">Datos actualizados sobre la población venezolana.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- INVESTIGACIÓN -->
+        <section class="content-section content-section--white" id="investigacion">
+            <div class="container">
+                <div class="section-tag section-tag--teal">Investigación</div>
+                <div class="section-grid section-grid--4">
+                    <div class="inv-card">
+                        <div class="inv-card__thumb" style="background:linear-gradient(135deg,#E87722,#F5A044);">
+                            <i class="fas fa-child"></i>
+                        </div>
+                        <div class="inv-card__body">
+                            <p class="inv-card__title">Crecimiento y Desarrollo</p>
+                            <p class="inv-card__desc">Patrones nacionales de referencia para el desarrollo infantil
+                                venezolano.</p>
+                        </div>
+                    </div>
+                    <div class="inv-card">
+                        <div class="inv-card__thumb" style="background:linear-gradient(135deg,#00B5CC,#0099AC);">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <div class="inv-card__body">
+                            <p class="inv-card__title">Salud Mental</p>
+                            <p class="inv-card__desc">Prevalencia de trastornos mentales y factores de riesgo en la
+                                población.</p>
+                        </div>
+                    </div>
+                    <div class="inv-card">
+                        <div class="inv-card__thumb" style="background:linear-gradient(135deg,#6A1B9A,#9C27B0);">
+                            <i class="fas fa-heartbeat"></i>
+                        </div>
+                        <div class="inv-card__body">
+                            <p class="inv-card__title">Nutrición</p>
+                            <p class="inv-card__desc">Evaluación nutricional y estado de salud de familias venezolanas.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="inv-card">
+                        <div class="inv-card__thumb" style="background:linear-gradient(135deg,#C62828,#E53935);">
+                            <i class="fas fa-home"></i>
+                        </div>
+                        <div class="inv-card__body">
+                            <p class="inv-card__title">Condiciones de Vida</p>
+                            <p class="inv-card__desc">Caracterización de las condiciones en comunidades venezolanas.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROYECTOS -->
+        <section class="content-section content-section--gray" id="proyectos">
+            <div class="container">
+                <div class="section-tag section-tag--orange">Proyectos</div>
+                <div class="section-grid section-grid--2">
+                    <div class="project-card project-card--teal">
+                        <div class="project-card__head">
+                            <div class="project-card__icon project-card__icon--teal"><i class="fas fa-brain"></i></div>
+                            <p class="project-card__title">PsicoEduca</p>
+                        </div>
+                        <p class="project-card__desc">Proyecto de psicoeducación para promover la salud mental en
+                            comunidades venezolanas, con énfasis en ansiedad, depresión e ideaciones suicidas.</p>
+                        <div>
+                            <span class="tag tag--teal">Salud Mental</span>
+                            <span class="tag tag--gray">Comunidades</span>
+                        </div>
+                    </div>
+                    <div class="project-card project-card--orange">
+                        <div class="project-card__head">
+                            <div class="project-card__icon project-card__icon--orange"><i class="fas fa-memory"></i>
+                            </div>
+                            <p class="project-card__title">Memory Vision</p>
+                        </div>
+                        <p class="project-card__desc">Evaluación cognitiva y neuropsicológica con herramientas
+                            digitales. Monitoreo de la memoria y funciones ejecutivas en diferentes grupos etarios.</p>
+                        <div>
+                            <span class="tag tag--orange">Neuropsicología</span>
+                            <span class="tag tag--gray">Digital</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer" role="contentinfo">
+        <div class="container site-footer__inner">
+            <div class="site-footer__copyright">
+                <i class="fas fa-copyright"></i>
+                <span>COPYRIGHT – CONTENIDO DE LIBRE REPRODUCCIÓN · FUNDACREDESA © 2024</span>
+            </div>
+            <nav class="site-footer__links" aria-label="Pie de página">
+                <a href="publicaciones.html">Publicaciones</a>
+                <a href="estadisticas.html">Estadísticas</a>
+                <a href="mailto:info@fundacredesa.gob.ve">Contacto</a>
+            </nav>
+        </div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script src="../js/main.js" defer></script>
+
+</body>
+
+</html>
