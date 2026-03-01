@@ -341,19 +341,25 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 
 /* ── 9. CHATBOT IA ───────────────────────────────────────────────── */
-const AI_URL = 'https://magicloops.dev/loop/b0a77adb-d5f4-4a25-974b-0604c96891bc';
+const AI_URL = '/api/chat';
 
 function usarPregunta(btn) {
-    const input = document.getElementById('ai-input');
+    const input = document.getElementById('ai-input') || document.getElementById('chatInput');
     if (!input) return;
     input.value = btn.textContent.trim();
     input.focus();
 }
 
 async function enviarMensajeIA(inputId = 'ai-input', msgBoxId = 'ai-messages', btnId = 'ai-send-btn') {
-    const input = document.getElementById(inputId);
-    const msgBox = document.getElementById(msgBoxId);
-    const sendBtn = document.getElementById(btnId);
+    // Soporte para IDs antiguos (chat global vs estadisticas)
+    const inId = document.getElementById(inputId) ? inputId : 'chatInput';
+    const mbId = document.getElementById(msgBoxId) ? msgBoxId : 'chatMessages';
+    const bId = document.getElementById(btnId) ? btnId : 'sendChatBtn';
+
+    const input = document.getElementById(inId);
+    const msgBox = document.getElementById(mbId);
+    const sendBtn = document.getElementById(bId);
+
     if (!input || !msgBox) return;
 
     const text = input.value.trim();
@@ -378,16 +384,19 @@ async function enviarMensajeIA(inputId = 'ai-input', msgBoxId = 'ai-messages', b
             body: JSON.stringify({ message: text })
         });
         document.getElementById(typingId)?.remove();
-        const data = res.ok ? await res.json() : null;
-        const reply = data?.answer || data?.response || data?.output
-            || 'He recibido tu consulta. Por favor intenta nuevamente en unos momentos.';
+
+        const data = await res.json();
+        const reply = data.answer || 'Lo siento, no pude procesar sintácticamente tu pregunta.';
         addMsg(msgBox, reply, 'bot');
     } catch {
         document.getElementById(typingId)?.remove();
-        addMsg(msgBox, 'No se pudo conectar con el servidor. Verifica tu conexión.', 'bot');
+        addMsg(msgBox, 'Error de conexión con el Cerebro NLP Local.', 'bot');
     }
 
-    if (sendBtn) { sendBtn.disabled = false; sendBtn.innerHTML = '<i class="fas fa-paper-plane"></i>' + (btnId === 'ai-send-btn' ? ' Enviar' : ''); }
+    if (sendBtn) {
+        sendBtn.disabled = false;
+        sendBtn.innerHTML = bId === 'ai-send-btn' ? '<i class="fas fa-paper-plane"></i> Enviar' : '<i class="fas fa-paper-plane"></i>';
+    }
     msgBox.scrollTop = msgBox.scrollHeight;
 }
 
