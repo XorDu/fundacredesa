@@ -286,22 +286,28 @@ const ESTADOS = {
     'VE-Z': { nombre: 'Amazonas', info: 'Investigación próxima a realizar.' }
 };
 
-window.addEventListener('DOMContentLoaded', () => {
+window.initInteractiveMap = function () {
     const panel = document.getElementById('map-info-panel');
     let selected = null;
 
     Object.keys(ESTADOS).forEach(id => {
-        // El SVG puede estar inline en el documento
+        // El SVG puede estar inline en el documento o insertado dinámicamente
         document.querySelectorAll(`#${id}`).forEach(path => {
             path.style.cursor = 'pointer';
             path.setAttribute('tabindex', '0');
             path.setAttribute('role', 'button');
             path.setAttribute('aria-label', ESTADOS[id].nombre);
 
-            path.addEventListener('click', () => selectEstado(id, path));
-            path.addEventListener('keydown', e => {
-                if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); selectEstado(id, path); }
+            // Remover listeners anteriores si hubieran quedado 'zombies'
+            const clonedPath = path.cloneNode(true);
+            path.parentNode.replaceChild(clonedPath, path);
+
+            clonedPath.addEventListener('click', () => selectEstado(id, clonedPath));
+            clonedPath.addEventListener('keydown', e => {
+                if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); selectEstado(id, clonedPath); }
             });
+            // Remover cualquier clase map-selected anterior
+            clonedPath.classList.remove('map-selected');
         });
     });
 
@@ -310,10 +316,12 @@ window.addEventListener('DOMContentLoaded', () => {
         const estado = ESTADOS[id];
         if (!estado) return;
 
-        // Deseleccionar anterior
-        if (selected && selected !== path) {
-            selected.classList.remove('map-selected');
+        // Deseleccionar anterior localizando el elemento actualmente activo
+        const prevSelected = document.querySelector('.map-selected');
+        if (prevSelected && prevSelected !== path) {
+            prevSelected.classList.remove('map-selected');
         }
+
         path.classList.toggle('map-selected', true);
         selected = path;
 
@@ -322,6 +330,13 @@ window.addEventListener('DOMContentLoaded', () => {
       <p>${estado.info}</p>
     `;
         panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+};
+
+// Si el mapa ya estaba en el HTML síncrono, correr de una vez:
+window.addEventListener('DOMContentLoaded', () => {
+    if (document.getElementById('svg-map-wrapper') && document.getElementById('svg-map-wrapper').innerHTML.trim() !== '') {
+        window.initInteractiveMap();
     }
 });
 

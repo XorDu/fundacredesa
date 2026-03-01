@@ -28,39 +28,83 @@
 
 <body class="page-nosotros">
 
-    <!-- CABECERA GLOBAL DE LA APLICACIÓN -->
-    <header class="site-header">
-        <div class="header-top">
-            <div class="container container--nav">
-                <div class="contact-info">
-                    <span><i class="fas fa-envelope"></i> fundacredesa5520@gmail.com</span>
-                    <span><i class="fab fa-instagram"></i> @fundacredesa</span>
-                    <span><i class="fab fa-x-twitter"></i> @fundacredesa_</span>
+    <!-- ========== HEADER SUPERIOR NARANJA ========== -->
+    <div class="header-top">
+        <div class="container header-top__inner">
+            <div class="header-top__logos">
+                <div class="header-top__logo-group">
+                    <img src="../assets/images/logo_fundacredesa.png" alt="Gobierno Bolivariano">
+                    <span>Gobierno Bolivariano<br>de Venezuela</span>
                 </div>
+                <div class="header-top__divider"></div>
+                <div class="header-top__text">Ministerio del Poder Popular<br>para las Comunas y los Movimientos
+                    Sociales</div>
+                <div class="header-top__divider"></div>
+                <div class="header-top__text">Fundación Centro de Estudios sobre Crecimiento<br>y Desarrollo de la
+                    Población Venezolana (FUNDACREDESA)</div>
+            </div>
+            <div class="header-top__right">
+                <img src="../assets/images/logo_fundacredesa.png" alt="Logo Zamora">
             </div>
         </div>
+    </div>
 
-        <div class="header-main">
-            <div class="container container--flex">
-                <a href="../index.html" class="logo-link">
-                    <img src="../assets/images/membrete.jpg" alt="Logo FUNDACREDESA Venezuela" class="site-logo">
-                </a>
-
-                <nav class="site-nav">
-                    <!-- ENLACES PRINCIPALES -->
-                    <a href="../index.html" class="nav-link"><i class="fas fa-home"></i> INICIO</a>
-                    <!-- Nuevo Botón Agregado: Institución -->
-                    <a href="nosotros.html" class="nav-link is-active"><i class="fas fa-building"></i> FUNDACREDESA</a>
-                    <a href="estadisticas.html" class="nav-link"><i class="fas fa-chart-pie"></i> ESTADÍSTICAS</a>
-                    <a href="publicaciones.html" class="nav-link"><i class="fas fa-book-reader"></i> PUBLICACIONES</a>
-                </nav>
-
-                <div class="mobile-menu-toggle">
-                    <i class="fas fa-bars"></i>
+    <!-- HEADER PRINCIPAL: Logo + Banner diagonal -->
+    <div class="header-main">
+        <div class="container header-main__inner">
+            <a href="index.html" class="header-main__logo">
+                <img src="../assets/images/logo_fundacredesa.png" alt="Fundacredesa" class="header-main__logo-img">
+                <div class="header-main__logo-text">
+                    <strong>FUNDACREDESA</strong>
+                    <span>1976 – 2024</span>
                 </div>
+            </a>
+            <div class="header-main__banner">
+                <div class="header-main__banner-shapes">
+                    <svg viewBox="0 0 700 110" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                        <polygon points="100,0 700,0 700,110 60,110" fill="#00B5CC" opacity=".94" />
+                        <polygon points="50,0 290,0 230,110 0,110" fill="#E87722" opacity=".92" />
+                        <polygon points="230,0 360,0 300,110 170,110" fill="#FFFFFF" opacity=".9" />
+                    </svg>
+                </div>
+                <div class="header-main__slogan"><em>Socializando el Saber Científico</em></div>
             </div>
         </div>
-    </header>
+    </div>
+
+    <!-- NAVEGACIÓN -->
+    <nav class="site-nav" id="site-nav" role="navigation" aria-label="Menú principal">
+        <div class="container site-nav__inner">
+            <button class="site-nav__toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-list">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="site-nav__list" id="nav-list">
+                <li class="site-nav__item"><a href="index.html" class="site-nav__link">Inicio</a></li>
+                <li class="site-nav__separator" role="separator"></li>
+                <li class="site-nav__item"><a href="nosotros.html" class="site-nav__link active">FUNDACREDESA</a></li>
+                <li class="site-nav__separator" role="separator"></li>
+                <li class="site-nav__item"><a href="estadisticas.html" class="site-nav__link">Estadísticas</a></li>
+                <li class="site-nav__separator" role="separator"></li>
+                <li class="site-nav__item"><a href="publicaciones.html" class="site-nav__link">Publicaciones</a></li>
+            </ul>
+            <div class="site-nav__search">
+                <input type="search" id="search-input" placeholder="Buscar..." aria-label="Buscar en el sitio">
+                <button onclick="buscarSitio()" aria-label="Buscar"><i class="fas fa-search"></i></button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- REDES SOCIALES FLOTANTES -->
+    <aside class="social-sidebar" aria-label="Redes sociales">
+        <a href="https://www.instagram.com/fundacredesa_" class="social-sidebar__btn social-sidebar__btn--fb"
+            aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" class="social-sidebar__btn social-sidebar__btn--ig" aria-label="Instagram"><i
+                class="fab fa-instagram"></i></a>
+        <a href="#" class="social-sidebar__btn social-sidebar__btn--tw" aria-label="Twitter"><i
+                class="fab fa-twitter"></i></a>
+        <a href="#" class="social-sidebar__btn social-sidebar__btn--yt" aria-label="YouTube"><i
+                class="fab fa-youtube"></i></a>
+    </aside>
 
     <main>
         <!-- SECCIÓN HERO: Título Principal -->

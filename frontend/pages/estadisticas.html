@@ -213,12 +213,13 @@
           const wrapper = document.getElementById('svg-map-wrapper');
           if (wrapper) wrapper.innerHTML = svgCode;
 
-          // Reinicializar los eventos del mapa después de inyectarlo
-          const evt = new Event('DOMContentLoaded', {
-            bubbles: true,
-            cancelable: true
-          });
-          document.dispatchEvent(evt);
+          // Iniciar los eventos del mapa después de inyectarlo en el DOM
+          if (typeof window.initInteractiveMap === 'function') {
+            window.initInteractiveMap();
+          } else {
+            // Fallback por si carga tarde
+            setTimeout(() => { if (typeof window.initInteractiveMap === 'function') window.initInteractiveMap(); }, 500);
+          }
         })
         .catch(err => console.error("Error al cargar mapa SVG:", err));
     });
