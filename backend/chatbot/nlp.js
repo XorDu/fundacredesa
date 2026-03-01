@@ -3,6 +3,15 @@ const fs = require('fs');
 const path = require('path');
 const PDFParser = require("pdf2json");
 
+// Bloquear Warnings masivos inútiles de pdf2json en la consola del servidor
+const originalWarn = console.warn;
+console.warn = function (message) {
+    if (typeof message === 'string' && (message.includes('fake worker') || message.includes('to be implemented:') || message.includes('Unsupported:'))) {
+        return; // Silenciar
+    }
+    originalWarn.apply(console, arguments);
+};
+
 // Instanciar Gemini con la API Key del entorno
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
@@ -103,6 +112,7 @@ REGLAS ESTRICTAS DE RESPUESTA:
 2. CERO ALUCINACIONES: Basa tus respuestas rigurosamente en la Base de Conocimientos que se anexa a continuación. No inventes datos, nombres ni fechas.
 3. SI TE PREGUNTAN ALGO FUERA DE CONTEXTO (como matemáticas genéricas, historia mundial, cómo hacer código, chistes): Debes disculparte educadamente e indicar que tu propósito es hablar estrictamente sobre FUNDACREDESA y el desarrollo bio-psicosocial venezolano.
 4. Tono Empático: Usa frases naturales y fluidas, agradeciendo la consulta y mostrándote dispuesto a ayudar con más datos de investigaciones si te lo solicitan. Promueve la "socialización del conocimiento científico".
+5. FORMATO DE TEXTO (IMPORTANTE): Está terminantemente PROHIBIDO utilizar sintaxis Markdown (como asteriscos dobles ** para negrita o asteriscos simples * para listas). Redacta en texto plano. Si requieres enfatizar algo, utiliza únicamente MAYÚSCULAS o el uso de comillas "". Tus listas deben usarse con guiones normales (-) o números (1. 2.). No uses jamás asteriscos.
 
 --- BASE DE CONOCIMIENTOS INSTITUCIONAL ---
 ${corpusData}

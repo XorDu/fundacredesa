@@ -1,3 +1,19 @@
+/**
+ * FUNDACREDESA Backend Server
+ * -----------------------------
+ * Módulo Principal (Entrypoint) de la API RESTful.
+ * Desarrollado con Node.js y Express.
+ * 
+ * Funciones Principales:
+ * 1. Inicialización y Conexión Automática a Base de Datos MySQL (Pool).
+ * 2. Carga y Mantenimiento del Sistema de Chatbot (IA Google Gemini).
+ * 3. Rutas Públicas para Consulta del Repositorio de Publicaciones (CORS abierto).
+ * 4. Rutas Privadas / Panel Administrativo (Protegidas mediante Token JWT y Whitelist de IPs).
+ * 5. Sistema de Gestión y Almacenamiento Dinámico de Archivos Multi-Part locales mediante Multer.
+ * 
+ * Dependencias Críticas: express, multer, jsonwebtoken, bcryptjs, google/generative-ai
+ */
+
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
