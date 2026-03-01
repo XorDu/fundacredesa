@@ -1,58 +1,156 @@
-const { NlpManager } = require('node-nlp');
+const { GoogleGenerativeAI } = require("@google/generative-ai");
 const fs = require('fs');
 const path = require('path');
+const PDFParser = require("pdf2json");
 
-// Instanciar un nuevo manager de NLP para el idioma Español
-// forceNER fuerza a la red a no perder entidades aunque las respuestas sean fijas
-const manager = new NlpManager({ languages: ['es'], forceNER: true });
+// Instanciar Gemini con la API Key del entorno
+const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+
+let chatSession = null;
+let systemContext = "";
+
+// Diccionario de información por estado (Extraído del Frontend)
+const MAPA_ESTADOS = {
+    'Distrito Capital': 'Se abordó el cuestionario digital en: Superintendencia de la Seguridad Social, Casa Petra Barreto de la Vega, CDI Pedro Fontes de Montalbán, Universidad Bolivariana de Venezuela (UBV), INASS, U.E. Pedro Fontes y UNES.',
+    'Anzoátegui': 'Investigación próxima a realizar.',
+    'Apure': 'Investigación próxima a realizar.',
+    'Aragua': 'Investigación próxima a realizar.',
+    'Barinas': 'Investigación próxima a realizar.',
+    'Bolívar': 'Investigación próxima a realizar.',
+    'Carabobo': 'Durante noviembre 2024 se realizaron visitas a FONDECO y la comunidad Charneca. En diciembre 2024 se desarrolló un taller vivencial con trabajadores de la institución y miembros de los BRAC.',
+    'Cojedes': 'Investigación próxima a realizar.',
+    'Falcón': 'Investigación próxima a realizar.',
+    'Guárico': 'Investigación próxima a realizar.',
+    'Lara': 'Investigación próxima a realizar.',
+    'Mérida': 'Investigación próxima a realizar.',
+    'Miranda': 'En noviembre 2024 se realizaron reuniones en la Sede del PSUV y en la comunidad de Charallave (municipio Cristóbal Rojas) para presentar el proyecto e inducir sobre el cuestionario digital.',
+    'Monagas': 'Investigación próxima a realizar.',
+    'Nueva Esparta': 'Investigación próxima a realizar.',
+    'Portuguesa': 'Investigación próxima a realizar.',
+    'Sucre': 'Investigación próxima a realizar.',
+    'Táchira': 'Investigación próxima a realizar.',
+    'Trujillo': 'Investigación próxima a realizar.',
+    'Yaracuy': 'Investigación próxima a realizar.',
+    'Zulia': 'Investigación próxima a realizar.',
+    'Dependencias Federales': 'Investigación próxima a realizar.',
+    'Vargas (La Guaira)': 'En noviembre 2024 se inició el abordaje gracias a representantes de la Comuna Guaicamacuto, visitando distintas casas en el sector parte baja del teleférico.',
+    'Delta Amacuro': 'Investigación próxima a realizar.',
+    'Amazonas': 'Investigación próxima a realizar.'
+};
+
+function readPDF(filePath) {
+    return new Promise((resolve, reject) => {
+        const pdfParser = new PDFParser(this, 1);
+        pdfParser.on("pdfParser_dataError", errData => reject(errData.parserError));
+        pdfParser.on("pdfParser_dataReady", () => {
+            resolve(pdfParser.getRawTextContent().replace(/\r\n/g, " "));
+        });
+        pdfParser.loadPDF(filePath);
+    });
+}
+
+async function loadPDFsContext() {
+    let pdfText = "";
+    const pdfDir = path.join(__dirname, '../../frontend/assets/pdf');
+    try {
+        if (fs.existsSync(pdfDir)) {
+            const files = fs.readdirSync(pdfDir).filter(f => f.toLowerCase().endsWith('.pdf'));
+            let pdfsToProcess = files.slice(0, 5);
+
+            for (const file of pdfsToProcess) {
+                try {
+                    const data = await readPDF(path.join(pdfDir, file));
+                    const textSnippet = data.substring(0, 4000).replace(/\s+/g, ' ');
+                    pdfText += `\n--- Archivo/Investigación: ${file} ---\n${textSnippet}...\n`;
+                } catch (e) {
+                    console.error(`Error leyendo PDF ${file}:`, e);
+                }
+            }
+            if (files.length > 5) {
+                pdfText += `\nNota: Existen ${files.length - 5} investigaciones adicionales en el archivo que no han sido precargadas en contexto activo.`;
+            }
+        }
+    } catch (err) {
+        console.log("No se pudo leer el directorio de PDFs: ", err);
+    }
+    return pdfText;
+}
 
 async function trainChatbot() {
-    const modelPath = path.join(__dirname, 'model.nlp');
+    console.log('🤖 Inicializando cerebro LLM Gemini 2.5 Flash...');
+
+    // 1. Cargar el corpus básico original (Preguntas Frecuentes Institucionales)
     const corpusPath = path.join(__dirname, 'corpus-es.json');
+    let corpusData = "";
+    if (fs.existsSync(corpusPath)) {
+        const corpus = JSON.parse(fs.readFileSync(corpusPath, 'utf8'));
+        corpusData = corpus.data.map(item => `(Tema: ${item.intent})\nPosibles preguntas usuarias: ${item.utterances.join(' | ')}\nRespuesta Oficial: ${item.answers[0]}`).join('\n\n');
+    }
 
-    // Intentar cargar modelo existente para no reentrenar innecesariamente si no hay cambios
-    // Aunque usualmente se reentrena en desarrollo, si ya existe y cargamos, es más rápido en prod
-    if (fs.existsSync(modelPath)) {
-        console.log('Cargando modelo NLP existente...');
-        manager.load(modelPath);
-    } else {
-        console.log('No existe modelo NLP local. Iniciando entrenamiento desde el Corpus...');
+    // 2. Extraer datos del mapa de estados
+    let mapData = Object.entries(MAPA_ESTADOS).map(([estado, info]) => `- Estado ${estado}: ${info}`).join('\n');
 
-        // Agregar intenciones y respuestas desde el archivo corpus-es.json
-        try {
-            const corpus = JSON.parse(fs.readFileSync(corpusPath, 'utf8'));
+    // 3. Cargar conocimiento de los PDFs
+    console.log('📚 Extrayendo contexto investigativo de los PDFs...');
+    const pdfContext = await loadPDFsContext();
 
-            for (const item of corpus.data) {
-                const { intent, utterances, answers } = item;
+    // 4. Crear la Instrucción Global (System Prompt)
+    systemContext = `Eres el Asistente Virtual Oficial e Inteligente de FUNDACREDESA (Fundación Centro de Estudios sobre Crecimiento y Desarrollo de la Población Venezolana).
+Tu rol es orientar a investigadores, ciudadanos y funcionarios con un tono profesional, institucional, amable y altamente preciso.
 
-                // Añadir frases de entrenamiento
-                utterances.forEach(utterance => {
-                    manager.addDocument('es', utterance, intent);
-                });
+REGLAS ESTRICTAS DE RESPUESTA:
+1. ERES EXCLUSIVO DE FUNDACREDESA: Solo puedes responder preguntas sobre Fundacredesa, sus investigaciones, su historia, autoridades, estados que abarcan y proyectos científicos.
+2. CERO ALUCINACIONES: Basa tus respuestas rigurosamente en la Base de Conocimientos que se anexa a continuación. No inventes datos, nombres ni fechas.
+3. SI TE PREGUNTAN ALGO FUERA DE CONTEXTO (como matemáticas genéricas, historia mundial, cómo hacer código, chistes): Debes disculparte educadamente e indicar que tu propósito es hablar estrictamente sobre FUNDACREDESA y el desarrollo bio-psicosocial venezolano.
+4. Tono Empático: Usa frases naturales y fluidas, agradeciendo la consulta y mostrándote dispuesto a ayudar con más datos de investigaciones si te lo solicitan. Promueve la "socialización del conocimiento científico".
 
-                // Añadir respuestas posibles
-                answers.forEach(answer => {
-                    manager.addAnswer('es', intent, answer);
-                });
+--- BASE DE CONOCIMIENTOS INSTITUCIONAL ---
+${corpusData}
+
+--- ESTATUS DE ESTUDIOS POR ESTADO (MAPA ESTADÍSTICO NACIONAL) ---
+Utiliza esta base para informar si un estado ya fue censado, estudiado o si está "próximo a realizar":
+${mapData}
+
+--- FRAGMENTOS DE INVESTIGACIONES Y PUBLICACIONES (PDFs RECIENTES) ---
+Utiliza el texto a continuación si el usuario te consulta sobre temas científicos específicos o resúmenes de investigaciones publicadas en la plataforma:
+${pdfContext}
+`;
+
+    try {
+        const model = genAI.getGenerativeModel({
+            model: "gemini-2.5-flash",
+            systemInstruction: systemContext
+        });
+
+        chatSession = model.startChat({
+            history: [],
+            generationConfig: {
+                temperature: 0.25, // Temperatura baja para respuestas factuales
+                maxOutputTokens: 600, // Respuestas completas pero que no superen tamaño de la UI del chat
             }
+        });
 
-            console.log('Entrenando red neuronal local...');
-            await manager.train();
-            manager.save(modelPath);
-            console.log('Modelo NLP Entrenado y guardado exitosamente.');
-        } catch (error) {
-            console.error('Error durante el entrenamiento del chatbot:', error);
-        }
+        console.log('✅ Inteligencia Artificial Gemini conectada y lista para razonar sobre Fundacredesa.');
+    } catch (e) {
+        console.error("Error al configurar Módulo Gemini LLM: ", e);
     }
 }
 
 async function processMessage(message) {
     try {
-        const response = await manager.process('es', message);
-        return response;
+        if (!process.env.GEMINI_API_KEY) {
+            return { answer: "Falta configurar la Clave de API en el servidor. El administrador debe proveer GEMINI_API_KEY en las variables de entorno (.env)." };
+        }
+        if (!chatSession) {
+            return { answer: "Mis sistemas cognitivos aún están iniciando. Por favor, danos un minuto." };
+        }
+
+        const result = await chatSession.sendMessage(message);
+        const text = result.response.text();
+        return { answer: text };
     } catch (error) {
-        console.error('Error procesando mensaje:', error);
-        return { answer: 'Ocurrió un error en mi procesamiento neuronal.' };
+        console.error('Error iterando con Gemini API:', error);
+        return { answer: 'Lo siento mucho, mis conexiones neuronales en la nube están temporalmente fuera de servicio o límite excedido. Intenta más tarde.' };
     }
 }
 

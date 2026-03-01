@@ -13,6 +13,7 @@
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
+    "@google/generative-ai": "^0.24.1",
     "bcryptjs": "^3.0.3",
     "cors": "^2.8.6",
     "dotenv": "^17.3.1",
@@ -20,6 +21,7 @@
     "jsonwebtoken": "^9.0.3",
     "multer": "^2.1.0",
     "mysql2": "^3.18.2",
-    "node-nlp": "^5.0.0-alpha.5"
+    "pdf-parse": "^2.4.5",
+    "pdf2json": "^4.0.2"
   }
 }
