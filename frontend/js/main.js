@@ -286,7 +286,7 @@ const ESTADOS = {
     'VE-Z': { nombre: 'Amazonas', info: 'Investigación próxima a realizar.' }
 };
 
-window.addEventListener('DOMContentLoaded', () => {
+window.initMap = function() {
     const panel = document.getElementById('map-info-panel');
     let selected = null;
 
@@ -323,6 +323,10 @@ window.addEventListener('DOMContentLoaded', () => {
     `;
         panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
+};
+
+window.addEventListener('DOMContentLoaded', () => {
+    if (window.initMap) window.initMap();
 });
 
 /* ── 9. CHATBOT IA ───────────────────────────────────────────────── */

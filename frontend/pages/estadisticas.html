@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 
 <head>
@@ -207,12 +207,8 @@
           const wrapper = document.getElementById('svg-map-wrapper');
           if (wrapper) wrapper.innerHTML = svgCode;
 
-          // Reinicializar los eventos del mapa después de inyectarlo
-          const evt = new Event('DOMContentLoaded', {
-            bubbles: true,
-            cancelable: true
-          });
-          document.dispatchEvent(evt);
+          // Inicializar los eventos del mapa después de inyectarlo
+          if (window.initMap) window.initMap();
         })
         .catch(err => console.error("Error al cargar mapa SVG:", err));
     });
