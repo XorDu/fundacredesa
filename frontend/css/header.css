@@ -50,6 +50,19 @@
 }
 
 /* ── BARRA SUPERIOR NARANJA ── */
+.cintillo {
+    width: 100%;
+    padding: 2px 0;
+    text-align: center;
+}
+
+.cintillo img {
+    width: 75%;
+    height: 50px;
+    object-fit: fill;
+    display: inline-block;
+}
+
 .header-top {
     background: var(--orange);
     padding: 5px 0;
@@ -432,3 +445,4 @@
         height: 20px;
     }
 }
+
