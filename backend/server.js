@@ -1,3 +1,19 @@
+/**
+ * FUNDACREDESA Backend Server
+ * -----------------------------
+ * Módulo Principal (Entrypoint) de la API RESTful.
+ * Desarrollado con Node.js y Express.
+ * 
+ * Funciones Principales:
+ * 1. Inicialización y Conexión Automática a Base de Datos MySQL (Pool).
+ * 2. Carga y Mantenimiento del Sistema de Chatbot (IA Google Gemini).
+ * 3. Rutas Públicas para Consulta del Repositorio de Publicaciones (CORS abierto).
+ * 4. Rutas Privadas / Panel Administrativo (Protegidas mediante Token JWT y Whitelist de IPs).
+ * 5. Sistema de Gestión y Almacenamiento Dinámico de Archivos Multi-Part locales mediante Multer.
+ * 
+ * Dependencias Críticas: express, multer, jsonwebtoken, bcryptjs, google/generative-ai
+ */
+
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
@@ -6,6 +22,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const db = require('./config/db');
 const { ipWhitelistMiddleware, verifyToken, JWT_SECRET } = require('./middleware/auth');
+const { trainChatbot, processMessage } = require('./chatbot/nlp');
 require('dotenv').config();
 
 const app = express();
@@ -182,6 +199,23 @@ app.delete('/api/publicaciones/:id', ipWhitelistMiddleware, verifyToken, async (
     }
 });
 
+// 7. Ruta de IA Local (Chatbot) - PÚBLICO
+app.post('/api/chat', async (req, res) => {
+    try {
+        const { message } = req.body;
+        if (!message) return res.status(400).json({ error: 'Mensaje vacío.' });
+
+        const response = await processMessage(message);
+        // Retornar answer o fallback si no hay inferencia clara
+        const finalAnswer = response.answer || "Actualmente solo estoy capacitado para responder consultas institucionales sobre FUNDACREDESA, su directiva, sus proyectos científicos o estadísticos.";
+
+        res.json({ answer: finalAnswer });
+    } catch (error) {
+        console.error("Error en el chatbot:", error);
+        res.status(500).json({ error: 'Fallo neuronal del Asistente Virtual.' });
+    }
+});
+
 // ==========================================
 // SERVIR FRONTEND COMO APP UNIFICADA
 // ==========================================
@@ -206,7 +240,9 @@ app.use((req, res, next) => {
     });
 });
 
-app.listen(PORT, () => {
+app.listen(PORT, async () => {
     console.log(`🚀 Servidor Node.js corriendo dinámicamente en http://localhost:${PORT}`);
     console.log(`🔧 Las conexiones a la BD Local MySQL buscan procesarse en puerto default 3306.`);
+    // Iniciar entrenamiento de la Red Neuronal
+    await trainChatbot();
 });
