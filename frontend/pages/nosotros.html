@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Acerca de FUNDACREDESA: Misión, Visión y objetivos de la Fundación Centro de Estudios sobre Crecimiento y Desarrollo de la Población Venezolana.">
+    <title>FUNDACREDESA - Institución</title>
+
+    <!-- FUENTES GOOGLE -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- CSS MODULAR SISTEMA BEM -->
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/nosotros.css">
+
+    <!-- CSS UNIVERSAL DEL CEREBRO (Para Chatbot) -->
+    <link rel="stylesheet" href="../css/chatbot.css">
+</head>
+
+<body class="page-nosotros">
+
+    <!-- ========== HEADER SUPERIOR NARANJA ========== -->
+    <div class="header-top">
+        <div class="container header-top__inner">
+            <div class="header-top__logos">
+                <div class="header-top__logo-group">
+                    <img src="../assets/images/logo_fundacredesa.png" alt="Gobierno Bolivariano">
+                    <span>Gobierno Bolivariano<br>de Venezuela</span>
+                </div>
+                <div class="header-top__divider"></div>
+                <div class="header-top__text">Ministerio del Poder Popular<br>para las Comunas y los Movimientos
+                    Sociales</div>
+                <div class="header-top__divider"></div>
+                <div class="header-top__text">Fundación Centro de Estudios sobre Crecimiento<br>y Desarrollo de la
+                    Población Venezolana (FUNDACREDESA)</div>
+            </div>
+            <div class="header-top__right">
+                <img src="../assets/images/logo_fundacredesa.png" alt="Logo Zamora">
+            </div>
+        </div>
+    </div>
+
+    <!-- HEADER PRINCIPAL: Logo + Banner diagonal -->
+    <div class="header-main">
+        <div class="container header-main__inner">
+            <a href="index.html" class="header-main__logo">
+                <img src="../assets/images/logo_fundacredesa.png" alt="Fundacredesa" class="header-main__logo-img">
+                <div class="header-main__logo-text">
+                    <strong>FUNDACREDESA</strong>
+                    <span>1976 – 2024</span>
+                </div>
+            </a>
+            <div class="header-main__banner">
+                <div class="header-main__banner-shapes">
+                    <svg viewBox="0 0 700 110" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                        <polygon points="100,0 700,0 700,110 60,110" fill="#00B5CC" opacity=".94" />
+                        <polygon points="50,0 290,0 230,110 0,110" fill="#E87722" opacity=".92" />
+                        <polygon points="230,0 360,0 300,110 170,110" fill="#FFFFFF" opacity=".9" />
+                    </svg>
+                </div>
+                <div class="header-main__slogan"><em>Socializando el Saber Científico</em></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- NAVEGACIÓN -->
+    <nav class="site-nav" id="site-nav" role="navigation" aria-label="Menú principal">
+        <div class="container site-nav__inner">
+            <button class="site-nav__toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-list">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="site-nav__list" id="nav-list">
+                <li class="site-nav__item"><a href="index.html" class="site-nav__link">Inicio</a></li>
+                <li class="site-nav__separator" role="separator"></li>
+                <li class="site-nav__item"><a href="nosotros.html" class="site-nav__link active">FUNDACREDESA</a></li>
+                <li class="site-nav__separator" role="separator"></li>
+                <li class="site-nav__item"><a href="estadisticas.html" class="site-nav__link">Estadísticas</a></li>
+                <li class="site-nav__separator" role="separator"></li>
+                <li class="site-nav__item"><a href="publicaciones.html" class="site-nav__link">Publicaciones</a></li>
+            </ul>
+            <div class="site-nav__search">
+                <input type="search" id="search-input" placeholder="Buscar..." aria-label="Buscar en el sitio">
+                <button onclick="buscarSitio()" aria-label="Buscar"><i class="fas fa-search"></i></button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- REDES SOCIALES FLOTANTES -->
+    <aside class="social-sidebar" aria-label="Redes sociales">
+        <a href="https://www.instagram.com/fundacredesa_" class="social-sidebar__btn social-sidebar__btn--fb"
+            aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" class="social-sidebar__btn social-sidebar__btn--ig" aria-label="Instagram"><i
+                class="fab fa-instagram"></i></a>
+        <a href="#" class="social-sidebar__btn social-sidebar__btn--tw" aria-label="Twitter"><i
+                class="fab fa-twitter"></i></a>
+        <a href="#" class="social-sidebar__btn social-sidebar__btn--yt" aria-label="YouTube"><i
+                class="fab fa-youtube"></i></a>
+    </aside>
+
+    <main>
+        <!-- SECCIÓN HERO: Título Principal -->
+        <section class="nosotros-hero">
+            <div class="container">
+                <h1 class="nosotros-hero__title">Acerca de FUNDACREDESA</h1>
+                <p class="nosotros-hero__subtitle">
+                    Somos la institución pionera en el estudio biológico, psicológico y social del venezolano,
+                    orientando el desarrollo humano, la nutrición y el crecimiento de la Nación desde nuestras raíces.
+                </p>
+            </div>
+        </section>
+
+        <!-- SECCIÓN MULTIMEDIA: El Video Institucional -->
+        <section class="nosotros-media">
+            <div class="container">
+                <div class="media-container">
+                    <!-- ESPACIO DEL VIDEO: Sustituir la URL del src por el Video Local o Youtube Iframe -->
+                    <div class="video-wrapper">
+                        <!-- EJEMPLO IFRAME (YouTube):  
+                        <iframe src="https://www.youtube.com/embed/TU_VIEDO_AQUI" title="Video Institucional" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        -->
+
+                        <!-- EJEMPLO HTML5 VIDEO LOCAL (Si lo van a subir a la carpeta assets/): -->
+                        <video controls poster="../assets/images/membrete.jpg">
+                            <!-- <source src="../assets/video/institucional.mp4" type="video/mp4"> -->
+                            El navegador no soporta el etiquetado de video.
+                        </video>
+                    </div>
+
+                    <div class="media-caption">
+                        <h3>Nuestra Trayectoria Científica</h3>
+                        <p>Reproduce este audiovisual para conocer a fondo la labor analítica, demográfica y social que
+                            nuestro equipo de especialistas lleva a cabo diariamente por el futuro de Venezuela.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN INFO: Misión y Visión (Tarjetas) -->
+        <section class="nosotros-info">
+            <div class="container">
+                <div class="info-grid">
+                    <!-- Tarjeta Misión -->
+                    <div class="info-card">
+                        <i class="fas fa-bullseye info-card__icon"></i>
+                        <h3 class="info-card__title">Nuestra Misión</h3>
+                        <p class="info-card__text">
+                            Generar, divulgar y aplicar conocimientos científicos sobre el crecimiento, desarrollo
+                            físico y estado nutricional de la población venezolana en el contexto de sus condiciones de
+                            vida, para orientar la formulación de políticas públicas asertivas.
+                        </p>
+                    </div>
+
+                    <!-- Tarjeta Visión -->
+                    <div class="info-card">
+                        <i class="fas fa-eye info-card__icon"></i>
+                        <h3 class="info-card__title">Nuestra Visión</h3>
+                        <p class="info-card__text">
+                            Ser el Centro de Investigación Científica de Referencia Nacional e Internacional, rector
+                            indiscutible en la generación de conocimiento bio-sicosocial de la población venezolana, con
+                            un equipo humano de altísimo nivel ético y excelencia.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- BURBUJA DEL CHATBOT IA (Global) -->
+    <div id="chatBubble" class="chat-bubble">
+        <i class="fas fa-robot"></i>
+    </div>
+
+    <!-- PANEL DEL CHATBOT OCULTO -->
+    <div id="chatBox" class="chat-box" style="display: none;">
+        <div class="chat-header">
+            <h4><i class="fas fa-robot"></i> Asistente FUNDACREDESA</h4>
+            <button id="closeChatBtn" class="close-chat"><i class="fas fa-times"></i></button>
+        </div>
+        <div id="chatMessages" class="chat-messages">
+            <div class="message bot-message">
+                Hola, soy el asistente virtual con Inteligencia Artificial de Fundacredesa. ¿En qué puedo ayudarte hoy
+                sobre nuestra institución?
+            </div>
+        </div>
+        <div class="chat-input-area">
+            <input type="text" id="chatInput" placeholder="Escribe tu consulta aquí..." autocomplete="off">
+            <button id="sendChatBtn"><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
+
+    <!-- PIE DE PÁGINA (Footer) -->
+    <footer class="site-footer">
+        <div class="container site-footer__inner">
+            <div class="site-footer__copyright">
+                <p>&copy; 2024 Fundación Centro de Estudios Sobre Crecimiento y Desarrollo de la Población Venezolana.
+                </p>
+                <p>RIF: G-20000000-0</p>
+            </div>
+            <div class="site-footer__admin">
+                <a href="login.html" class="admin-link"
+                    style="color:var(--orange); font-size:0.9rem; text-decoration:none;"><i class="fas fa-lock"></i>
+                    Entrar al Panel de Control</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SCRIPT CEREBRO ASINCRONICO (Módulo de Chatbot e IUs Globales) -->
+    <script src="../js/main.js"></script>
+
+</body>
+
+</html>
