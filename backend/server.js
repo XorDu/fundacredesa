@@ -183,6 +183,91 @@ app.delete('/api/publicaciones/:id', ipWhitelistMiddleware, verifyToken, async (
 });
 
 // ==========================================
+// HERO SLIDER API (Panel Admin & Frontend)
+// ==========================================
+
+// Obtener sliders (Público)
+app.get('/api/sliders', async (req, res) => {
+    try {
+        const [rows] = await db.query('SELECT * FROM hero_sliders ORDER BY prioridad DESC, fecha_creacion DESC');
+        res.json(rows);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Error al obtener sliders de la BD.' });
+    }
+});
+
+// Crear slider (Panel Admin)
+app.post('/api/sliders', ipWhitelistMiddleware, verifyToken, upload.single('imagen'), async (req, res) => {
+    try {
+        const { titulo, descripcion, prioridad } = req.body;
+        if (!req.file) return res.status(400).json({ error: 'Debes incluir la imagen del slider.' });
+
+        const imagen_url = '../assets/portadas/' + req.file.filename;
+
+        const [result] = await db.query(`
+            INSERT INTO hero_sliders (titulo, descripcion, imagen_url, prioridad) 
+            VALUES (?, ?, ?, ?)
+        `, [titulo || '', descripcion || '', imagen_url, prioridad || 0]);
+
+        res.status(201).json({ message: 'Slider guardado exitosamente.', sliderId: result.insertId });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Fallo al procesar el slider.' });
+    }
+});
+
+// Reordenar sliders (Panel Admin)
+app.post('/api/sliders/reorder', ipWhitelistMiddleware, verifyToken, async (req, res) => {
+    try {
+        const { orderData } = req.body;
+        if (!Array.isArray(orderData)) return res.status(400).json({ error: 'Datos inválidos.' });
+        const updatePromises = orderData.map(item => {
+            return db.query('UPDATE hero_sliders SET prioridad = ? WHERE id = ?', [item.nuevaPrioridad, item.id]);
+        });
+        await Promise.all(updatePromises);
+        res.json({ message: 'Reordenamiento exitoso.' });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Fallo al reordenar sliders.' });
+    }
+});
+
+// Editar slider (Panel Admin)
+app.put('/api/sliders/:id', ipWhitelistMiddleware, verifyToken, async (req, res) => {
+    try {
+        const { titulo, descripcion } = req.body;
+        const sliderId = req.params.id;
+
+        const [result] = await db.query(`
+            UPDATE hero_sliders 
+            SET titulo = ?, descripcion = ?
+            WHERE id = ?
+        `, [titulo || '', descripcion || '', sliderId]);
+
+        if (result.affectedRows === 0) {
+            return res.status(404).json({ error: 'Slider no encontrado.' });
+        }
+        res.json({ message: 'Slider actualizado exitosamente.' });
+    } catch (error) {
+        console.error("Error al editar slider: ", error);
+        res.status(500).json({ error: 'Fallo al intentar editar el registro.' });
+    }
+});
+
+// Eliminar slider (Panel Admin)
+app.delete('/api/sliders/:id', ipWhitelistMiddleware, verifyToken, async (req, res) => {
+    try {
+        const [result] = await db.query('DELETE FROM hero_sliders WHERE id = ?', [req.params.id]);
+        if (result.affectedRows === 0) return res.status(404).json({ error: 'Slider no encontrado.' });
+        res.json({ message: 'Borrado con éxito.' });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Error al eliminar slider.' });
+    }
+});
+
+// ==========================================
 // SERVIR FRONTEND COMO APP UNIFICADA
 // ==========================================
 // Esto sustituye la tarea estática de Flask

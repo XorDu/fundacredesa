@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
     }
 
-    const API_BASE = 'http://localhost:8080/api/auth/login';
+    const API_BASE = '/api/auth/login';
     const form = document.getElementById('loginForm');
     const feedback = document.getElementById('loginFeedback');
     const btnSubmit = document.getElementById('btnSubmit');

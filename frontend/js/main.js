@@ -72,6 +72,7 @@ document.getElementById('search-input')?.addEventListener('keydown', e => {
     const count = () => slides().length;
 
     function goTo(i) {
+        if(count() === 0) return;
         idx = ((i % count()) + count()) % count();
         track.style.transform = `translateX(-${idx * 100}%)`;
     }
@@ -83,11 +84,50 @@ document.getElementById('search-input')?.addEventListener('keydown', e => {
         timer = setInterval(next, 5000);
     }
 
-    // Exponer para botones HTML onclick
     window.sliderNext = next;
     window.sliderPrev = prev;
 
-    reset();
+    // Carga de Sliders desde BD
+    async function loadDynamicSliders() {
+        try {
+            const res = await fetch('/api/sliders');
+            const data = await res.json();
+            
+            if(data.length > 0) {
+                track.innerHTML = '';
+                data.forEach(s => {
+                    track.innerHTML += `
+                        <div class="hero-slide">
+                            <img src="${s.imagen_url}" alt="${s.titulo}">
+                            <div class="hero-slide__caption">
+                                <b style="display:block;margin-bottom:3px;">${s.titulo}</b>
+                                <span style="font-weight:400; font-size:0.8rem">${s.descripcion}</span>
+                            </div>
+                        </div>
+                    `;
+                });
+            } else {
+                // Fallback local por defecto: Mostrar el slide original manual
+                track.innerHTML = `
+                    <div class="hero-slide">
+                        <img src="../assets/images/ciudad_caribia.png" alt="Ciudad Caribia">
+                        <div class="hero-slide__body" style="background:linear-gradient(135deg, rgba(232,119,34,0.85) 60%, rgba(204,96,0,0.85));">
+                            <i class="fas fa-users"></i>
+                            <h2>¡Abuelos atendidos en Ciudad Caribia! 👵🏻👴🏾✨</h2>
+                            <p>Jornada de Atención Nutricional Antropométrica dirigida al Círculo de Abuelos</p>
+                        </div>
+                        <div class="hero-slide__caption">Operativo a cielo abierto en Charallave</div>
+                    </div>
+                `;
+            }
+            reset();
+        } catch (e) {
+            console.error('Error cargando sliders:', e);
+            reset(); // Arranca con fallback si falla intermitente
+        }
+    }
+
+    loadDynamicSliders();
 })();
 
 /* ── 5. CAROUSEL DE NOTICIAS ─────────────────────────────────────── */
@@ -453,7 +493,7 @@ console.info('%cFundacredesa 2024 — Socializando el Saber Científico', 'color
 
 /* ── 11. REPOSITORIO DINÁMICO DE PUBLICACIONES (CLIENTE) ────────── */
 if (document.getElementById('pub-grid')) {
-    const PUBLIC_API = 'http://localhost:8080/api';
+    const PUBLIC_API = '/api';
     let rawPublicaciones = [];
 
     // Carga de categorías para crear los TABS filtradores

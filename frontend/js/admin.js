@@ -2,7 +2,7 @@
 // LÓGICA DEL PANEL DE ADMINISTRACIÓN (BACKOFFICE)
 // ==========================================
 
-const API_BASE = 'http://localhost:8080/api';
+const API_BASE = '/api';
 let authToken = '';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -16,8 +16,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
     cargarCategoriasAdmin();
     cargarPublicacionesAdmin();
+    cargarSlidersAdmin();
     configurarInputsArchivo();
 });
+
+// Selector de Tabs
+window.showTab = function(tabName) {
+    document.getElementById('tab-publicaciones').style.display = 'none';
+    document.getElementById('tab-sliders').style.display = 'none';
+    document.getElementById('btnTabPub').style.background = 'transparent';
+    document.getElementById('btnTabPub').style.color = 'var(--teal)';
+    document.getElementById('btnTabSlider').style.background = 'transparent';
+    document.getElementById('btnTabSlider').style.color = 'var(--teal)';
+
+    if (tabName === 'publicaciones') {
+        document.getElementById('tab-publicaciones').style.display = 'flex';
+        document.getElementById('btnTabPub').style.background = 'var(--teal)';
+        document.getElementById('btnTabPub').style.color = '#fff';
+    } else {
+        document.getElementById('tab-sliders').style.display = 'flex';
+        document.getElementById('btnTabSlider').style.background = 'var(--teal)';
+        document.getElementById('btnTabSlider').style.color = '#fff';
+    }
+}
 
 // Función centralizada para desloguearse (borrar el token)
 function cerrarSesion() {
@@ -33,9 +54,9 @@ document.querySelector('.btn-logout')?.addEventListener('click', (e) => {
 
 // Estética para inputs de validación visual de subida de ficheros (File)
 function configurarInputsArchivo() {
-    ['portada', 'pdf'].forEach(tipo => {
-        const input = document.getElementById(`${tipo} File`);
-        const labelName = document.getElementById(`${tipo} Name`);
+    ['portada', 'pdf', 'sliderImagen'].forEach(tipo => {
+        const input = document.getElementById(`${tipo}File`);
+        const labelName = document.getElementById(`${tipo}Name`);
         if (input && labelName) {
             input.addEventListener('change', function () {
                 if (this.files && this.files.length > 0) {
@@ -291,6 +312,213 @@ document.getElementById('editForm')?.addEventListener('submit', async (e) => {
             cerrarSesion();
         } else {
             alert('Error en el backend al modificar datos.');
+        }
+    } catch (error) {
+        alert('Fallo de conexión al enviar edición.');
+    } finally {
+        btn.innerHTML = '<i class="fas fa-save"></i> Guardar Cambios';
+        btn.disabled = false;
+    }
+});
+
+// ==========================================
+// HERO SLIDERS: LOGICA DE ADMINISTRACIÓN
+// ==========================================
+
+// Cargar Sliders
+async function cargarSlidersAdmin() {
+    const tbody = document.getElementById('slidersTbody');
+    if (!tbody) return;
+    tbody.innerHTML = '<tr><td colspan="6" class="ta-c">Cargando datos... <i class="fas fa-spinner fa-spin"></i></td></tr>';
+
+    try {
+        const res = await fetch(`${API_BASE}/sliders`);
+        const data = await res.json();
+
+        if (data.length === 0) {
+            tbody.innerHTML = '<tr><td colspan="6" class="ta-c text-muted">Aún no se han subido sliders.</td></tr>';
+            return;
+        }
+
+        tbody.innerHTML = '';
+        data.forEach(slider => {
+            tbody.innerHTML += `
+                <tr data-id="${slider.id}">
+                    <td class="drag-handle-slider" style="cursor:grab; color:#94a3b8"><i class="fas fa-grip-vertical"></i></td>
+                    <td>#${slider.id}</td>
+                    <td><img src="${slider.imagen_url}" class="thumb-mini" style="max-width:80px;border-radius:4px" alt="..."></td>
+                    <td title="${slider.titulo}"><strong>${slider.titulo.substring(0, 30)}...</strong></td>
+                    <td><b style="color:var(--orange)">${slider.prioridad}</b></td>
+                    <td>
+                        <button onclick="abrirModalEdicionSlider(${slider.id}, \`${slider.titulo.replace(/`/g, '')}\`, \`${slider.descripcion.replace(/`/g, '')}\`)" class="btn btn-outline" title="Editar" style="color:var(--orange); border-color:var(--orange); margin-right:5px;"><i class="fas fa-edit"></i></button>
+                        <button onclick="eliminarSlider(${slider.id})" class="btn btn-delete" title="Eliminar"><i class="fas fa-trash"></i></button>
+                    </td>
+                </tr>
+            `;
+        });
+
+        if (typeof Sortable !== 'undefined') initSliderSortable();
+    } catch (error) {
+        tbody.innerHTML = '<tr><td colspan="6" class="ta-c text-muted">Error conectando al Servidor.</td></tr>';
+    }
+}
+
+// Subir Slider (POST)
+document.getElementById('uploadSliderForm')?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const formData = new FormData(form);
+    const feedback = document.getElementById('uploadSliderFeedback');
+    const submitBtn = document.getElementById('btnSubmitSlider');
+
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Subiendo...';
+    feedback.className = 'feedback-msg';
+
+    try {
+        const res = await fetch(`${API_BASE}/sliders`, {
+            method: 'POST',
+            headers: { 'Authorization': `Bearer ${authToken}` },
+            body: formData,
+        });
+        const data = await res.json();
+        if (res.ok) {
+            feedback.textContent = '¡Slider subido con éxito!';
+            feedback.classList.add('success');
+            form.reset();
+            document.getElementById('sliderImagenName').textContent = 'Ningún archivo subido';
+            cargarSlidersAdmin();
+        } else {
+            feedback.textContent = data.error || 'Ocurrió un error al subir el slider.';
+            feedback.classList.add('error');
+        }
+    } catch (error) {
+        feedback.textContent = 'Error de conexión.';
+        feedback.classList.add('error');
+    } finally {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = '<i class="fas fa-upload"></i> Publicar Slider';
+        setTimeout(() => feedback.style.display = 'none', 8000);
+    }
+});
+
+// Eliminar Slider
+async function eliminarSlider(id) {
+    if (!confirm('¿Seguro que deseas eliminar este slider?')) return;
+    try {
+        const res = await fetch(`${API_BASE}/sliders/${id}`, {
+            method: 'DELETE',
+            headers: { 'Authorization': `Bearer ${authToken}` }
+        });
+        if (res.ok) {
+            cargarSlidersAdmin();
+        } else {
+            alert('Error eliminando el slider.');
+        }
+    } catch (error) {
+        alert('Fallo de conexión.');
+    }
+}
+
+// Drag & Drop Sliders
+function initSliderSortable() {
+    const tbody = document.getElementById('slidersTbody');
+    if (!tbody || window.sliderSortableInstance) return;
+    window.sliderSortableInstance = new Sortable(tbody, {
+        animation: 150,
+        handle: '.drag-handle-slider',
+        onEnd: function () {
+            document.getElementById('saveSliderOrderBtn').style.display = 'inline-flex';
+        }
+    });
+}
+
+// Guardar Orden Sliders
+async function guardarNuevoOrdenSliders() {
+    const rows = document.querySelectorAll('#slidersTbody tr');
+    let orderData = [];
+    let total = rows.length;
+    rows.forEach((row, index) => {
+        const id = row.getAttribute('data-id');
+        orderData.push({ id: parseInt(id), nuevaPrioridad: total - index });
+    });
+
+    const btn = document.getElementById('saveSliderOrderBtn');
+    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Guardando...';
+
+    try {
+        const res = await fetch(`${API_BASE}/sliders/reorder`, {
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${authToken}`,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ orderData })
+        });
+        if (res.ok) {
+            btn.innerHTML = '<i class="fas fa-check"></i> ¡Orden Guardado!';
+            btn.style.color = '#10b981';
+            btn.style.borderColor = '#10b981';
+            setTimeout(() => {
+                btn.style.display = 'none';
+                btn.innerHTML = '<i class="fas fa-save"></i> Guardar Orden Sliders';
+                btn.style.color = 'var(--orange)';
+                btn.style.borderColor = 'var(--orange)';
+            }, 2000);
+            cargarSlidersAdmin();
+        } else {
+            alert('Falló el reordenamiento.');
+        }
+    } catch (e) {
+        alert('Fallo de conexión.');
+    }
+}
+
+// ==========================================
+// EDICIÓN DE SLIDERS MODAL 
+// ==========================================
+
+window.abrirModalEdicionSlider = function (id, titulo, descripcion) {
+    document.getElementById('edit_slider_id').value = id;
+    document.getElementById('edit_slider_titulo').value = titulo;
+    document.getElementById('edit_slider_desc').value = descripcion;
+    document.getElementById('editSliderModal').style.display = 'block';
+};
+
+window.cerrarModalEdicionSlider = function () {
+    document.getElementById('editSliderModal').style.display = 'none';
+};
+
+document.getElementById('editSliderForm')?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = document.getElementById('btnSaveEditSlider');
+    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Guardando...';
+    btn.disabled = true;
+
+    const id = document.getElementById('edit_slider_id').value;
+    const data = {
+        titulo: document.getElementById('edit_slider_titulo').value,
+        descripcion: document.getElementById('edit_slider_desc').value
+    };
+
+    try {
+        const res = await fetch(`${API_BASE}/sliders/${id}`, {
+            method: 'PUT',
+            headers: {
+                'Authorization': `Bearer ${authToken}`,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        });
+
+        if (res.ok) {
+            cerrarModalEdicionSlider();
+            cargarSlidersAdmin();
+        } else if (res.status === 401 || res.status === 403) {
+            alert('Sin Permisos. Token Inválido o IP Bloqueada.');
+            cerrarSesion();
+        } else {
+            alert('Error en el backend al modificar datos del slider.');
         }
     } catch (error) {
         alert('Fallo de conexión al enviar edición.');
