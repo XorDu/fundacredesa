@@ -58,7 +58,7 @@
 
 .cintillo img {
     width: 70%;
-    max-width: 85%;
+    max-width: 80%;
     height: auto;
     max-height: 45px;
     object-fit: fill;
@@ -134,13 +134,17 @@
     align-items: stretch;
     min-height: 108px;
     position: relative;
+    padding-left: 0;
+    margin-left: 0;
+    max-width: 100%;
+    width: 100%;
 }
 
 .header-main__logo {
     display: flex;
     align-items: center;
     gap: 10px;
-    padding: 12px 20px 12px 0;
+    padding: 12px 20px 12px 16px;
     z-index: 2;
     flex-shrink: 0;
     background: var(--white);
@@ -160,14 +164,15 @@
 }
 
 .header-main__logo-text strong {
-    font-size: 1.15rem;
+    font-size: 3rem;
     font-weight: 800;
     letter-spacing: -.5px;
     font-family: var(--font-ui);
 }
 
 .header-main__logo-text span {
-    font-size: .62rem;
+    font-size: 0.9rem;
+    text-align: center;
     color: var(--gray);
     font-family: var(--font-ui);
 }
@@ -335,6 +340,10 @@
     background: #1DA1F2;
 }
 
+.social-sidebar__btn--tt {
+    background: #000000;
+}
+
 .social-sidebar__btn--yt {
     background: #FF0000;
 }
@@ -447,4 +456,3 @@
         height: 20px;
     }
 }
-
