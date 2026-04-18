@@ -127,3 +127,32 @@
 .noticias-btn--next {
     right: 0;
 }
+
+dialog {
+    margin: auto;
+    padding: 0;
+    border: none;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+dialog::backdrop {
+    background: rgba(0, 0, 0, 0.713);
+}
+
+dialog form {
+    width: 100%;
+    padding: 10px;
+    background: #222;
+    justify-content: center;
+    display: flex;
+    border: none;
+}
+
+dialog button{
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 10px 20px;
+    margin: auto;
+}
