@@ -1,4 +1,4 @@
-/**
+﻿/**
  * FUNDACREDESA Backend Server
  * -----------------------------
  * Módulo Principal (Entrypoint) de la API RESTful.
@@ -328,13 +328,20 @@ app.delete('/api/sliders/:id', ipWhitelistMiddleware, verifyToken, async (req, r
 // CURRÍCULUM VITAE (CV) - POSTULACIONES
 // ==========================================
 
-// Asegurar que el directorio de CVs existe
+// Asegurar que los directorios de subida de archivos existan
 const fs = require('fs');
-const cvDir = path.join(__dirname, '../frontend/assets/curricula');
-if (!fs.existsSync(cvDir)) {
-    fs.mkdirSync(cvDir, { recursive: true });
-    console.log('📁 Directorio curricula creado:', cvDir);
-}
+const dirs = [
+    path.join(__dirname, '../frontend/assets/curricula'),
+    path.join(__dirname, '../frontend/assets/pdf'),
+    path.join(__dirname, '../frontend/assets/portadas')
+];
+
+dirs.forEach(dir => {
+    if (!fs.existsSync(dir)) {
+        fs.mkdirSync(dir, { recursive: true });
+        console.log('📁 Directorio de assets creado:', dir);
+    }
+});
 
 // POST /api/curricula - Envío público de CV (sin autenticación, sin IP whitelist)
 app.post('/api/curricula', uploadCV.single('cv_pdf'), async (req, res) => {
@@ -433,3 +440,4 @@ app.listen(PORT, async () => {
     // Iniciar entrenamiento de la Red Neuronal
     await trainChatbot();
 });
+

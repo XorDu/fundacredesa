@@ -155,4 +155,22 @@ dialog button{
     cursor: pointer;
     padding: 10px 20px;
     margin: auto;
+}.noticia-card__more {
+    text-decoration: none;
+    color: var(--gray);
+    font-size: 0.8rem;
+    line-height: 1.4;
+    display: block;
+    padding-top: 8px;
 }
+.thumb-orange { background: linear-gradient(135deg, #E87722, #F5A044); }
+.thumb-teal { background: linear-gradient(135deg, #00B5CC, #0099AC); }
+.thumb-red { background: linear-gradient(135deg, #C62828, #E53935); }
+.thumb-pointer { cursor: pointer; width: 200px; }
+.dialog-img { width: 80vw; max-width: 500px; }
+.thumb-gradient-orange { background: linear-gradient(135deg, #E87722, #cc6000); }
+.thumb-gradient-teal { background: linear-gradient(135deg, #00B5CC, #007a8a); }
+.thumb-gradient-gray { background: linear-gradient(135deg, #5E6169, #333); }
+.thumb-gradient-green { background: linear-gradient(135deg, #2E7D32, #1B5E20); }
+.thumb-gradient-teal-dark { background: linear-gradient(135deg, #00897B, #004D40); }
+.thumb-gradient-purple { background: linear-gradient(135deg, #6A1B9A, #4A148C); }

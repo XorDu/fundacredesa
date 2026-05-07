@@ -472,4 +472,34 @@
 .cv-full-table .btn-del:hover {
     background: #ef4444;
     color: white;
-}
+}.admin-body { background: var(--gray-bg); }
+.admin-tab-btn-active { background: var(--teal) !important; color: #fff !important; border-color: var(--teal) !important; }
+.admin-tab-btn-inactive { background: transparent; color: var(--gray); border-color: var(--border); }
+.tab-content { display: none; width: 100%; grid-column: 1 / -1; }
+.tab-content.active { display: flex; gap: 2rem; width: 100%; }
+.admin-card-1 { flex: 1; }
+.admin-card-2 { flex: 2; }
+.admin-status-msg { display: none; padding: 5px 15px; font-size: 0.85rem; border: 1px solid; border-radius: 4px; margin-top: 10px; }
+.admin-status-teal { border-color: var(--teal); color: var(--teal); }
+.admin-status-orange { border-color: var(--orange); color: var(--orange); }
+.btn-submit-orange { background-color: var(--orange); }
+.cv-count-text { font-size: 0.85rem; color: var(--gray); white-space: nowrap; }
+.modal-overlay { display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.5); }
+.modal-box { background-color: #fff; margin: 5% auto; padding: 25px; border-radius: 12px; width: 90%; max-width: 500px; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+.modal-box-teal { border-top: 5px solid var(--teal); }
+.modal-box-orange { border-top: 5px solid var(--orange); }
+.modal-close { position: absolute; right: 20px; top: 15px; font-size: 24px; font-weight: bold; color: var(--gray); cursor: pointer; }
+.modal-title { font-family: var(--font-ui); margin-bottom: 20px; color: var(--dark); }
+.modal-form-group { margin-bottom: 15px; }
+.modal-label { display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 5px; }
+.modal-input { width: 100%; padding: 10px; border: 1px solid var(--border); border-radius: var(--radius); font-family: var(--font-text); }
+.modal-btn-save { width: 100%; }
+.w-50 { width: 50px; }
+.w-110 { width: 110px; }
+.w-120 { width: 120px; }
+.w-160 { width: 160px; }
+.w-145 { width: 145px; }
+.w-90 { width: 90px; }
+.w-70 { width: 70px; }
+.flex-center-gap { display: flex; align-items: center; gap: 12px; }
+.btn-save-slider { width: 100%; background-color: var(--orange); border-color: var(--orange); }

@@ -146,4 +146,4 @@
     font-size: .8rem;
     color: var(--gray);
     line-height: 1.5;
-}
+}.estadisticas-main { background: var(--gray-bg); padding: 30px 0; }

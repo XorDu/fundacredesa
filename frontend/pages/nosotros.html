@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 
 <head>
@@ -159,30 +159,66 @@
                 </div>
             </div>
         </section>
+
+        <!-- SECCIÓN LÍNEA DE TIEMPO: Historia de Fundacredesa -->
+        <section class="timeline-section">
+            <div class="container">
+                <h2 class="timeline-section__title">Nuestra Historia</h2>
+                <div class="timeline">
+                    <!-- Evento 1 -->
+                    <div class="timeline-item" onclick="this.classList.toggle('expanded')">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <span class="timeline-date">13 de Julio, 1976</span>
+                            <h3 class="timeline-title">Creación de la Fundación <i class="fas fa-chevron-down"></i></h3>
+                            <div class="timeline-expandable">
+                                <img src="../assets/images/timeline/fundacion_1976.png" alt="Sede antigua de Fundacredesa" class="timeline-img">
+                                <p class="timeline-text">FUNDACREDESA fue fundada gracias a la visión del Dr. Hernán Méndez Castellano, con el propósito inicial de entender de manera profunda las condiciones biomédicas, psicosociales y fisiológicas de los ciudadanos venezolanos.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Evento 2 -->
+                    <div class="timeline-item" onclick="this.classList.toggle('expanded')">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <span class="timeline-date">1978 - 1981</span>
+                            <h3 class="timeline-title">Proyecto Venezuela <i class="fas fa-chevron-down"></i></h3>
+                            <div class="timeline-expandable">
+                                <img src="../assets/images/timeline/proyecto_1978.png" alt="Proyecto Venezuela trabajo de campo" class="timeline-img">
+                                <p class="timeline-text">Dio inicio el "Estudio Nacional de Crecimiento y Desarrollo Humano", uno de los hitos fundacionales de salud pública más importantes de América Latina, el cual levantó los primeros datos poblacionales a gran escala mediante visitas de campo.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Evento 3 -->
+                    <div class="timeline-item" onclick="this.classList.toggle('expanded')">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <span class="timeline-date">1981 - 1986</span>
+                            <h3 class="timeline-title">Tablas de Referencia Nacional <i class="fas fa-chevron-down"></i></h3>
+                            <div class="timeline-expandable">
+                                <img src="../assets/images/timeline/tablas_1981.png" alt="Tablas de crecimiento pediátrico" class="timeline-img">
+                                <p class="timeline-text">Tras años de estudio, se finaliza el análisis inicial, publicándose las históricas tablas de crecimiento físico (Talla/Peso) y desarrollo humano. Estas tablas se convirtieron en un estándar biomédico inédito utilizado por todos los pediatras del país.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Evento 4 -->
+                    <div class="timeline-item" onclick="this.classList.toggle('expanded')">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <span class="timeline-date">Actualidad</span>
+                            <h3 class="timeline-title">SENACREDH y el Futuro <i class="fas fa-chevron-down"></i></h3>
+                            <div class="timeline-expandable">
+                                <img src="../assets/images/timeline/senacredh_actualidad.png" alt="Investigadores modernos analizando datos" class="timeline-img">
+                                <p class="timeline-text">La institución, fortalecida y adscrita a nuevos lineamientos nacionales, se encuentra utilizando herramientas tecnológicas avanzadas para culminar el Segundo Estudio Nacional (SENACREDH) y actualizar todos los indicadores demográficos y nutricionales del país.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
-    <!-- BURBUJA DEL CHATBOT IA (Global) -->
-    <div id="chatBubble" class="chat-bubble">
-        <i class="fas fa-robot"></i>
-    </div>
-
-    <!-- PANEL DEL CHATBOT OCULTO -->
-    <div id="chatBox" class="chat-box" style="display: none;">
-        <div class="chat-header">
-            <h4><i class="fas fa-robot"></i> Asistente FUNDACREDESA</h4>
-            <button id="closeChatBtn" class="close-chat"><i class="fas fa-times"></i></button>
-        </div>
-        <div id="chatMessages" class="chat-messages">
-            <div class="message bot-message">
-                Hola, soy el asistente virtual con Inteligencia Artificial de Fundacredesa. ¿En qué puedo ayudarte hoy
-                sobre nuestra institución?
-            </div>
-        </div>
-        <div class="chat-input-area">
-            <input type="text" id="chatInput" placeholder="Escribe tu consulta aquí..." autocomplete="off">
-            <button id="sendChatBtn"><i class="fas fa-paper-plane"></i></button>
-        </div>
-    </div>
+    <!-- NOTA: El Chatbot fue removido de esta sección por solicitud para mantener el diseño limpio -->
 
     <!-- PIE DE PÁGINA (Footer) -->
     <footer class="site-footer">
@@ -194,7 +230,7 @@
             </div>
             <div class="site-footer__admin">
                 <a href="login.html" class="admin-link"
-                    style="color:var(--orange); font-size:0.9rem; text-decoration:none;"><i class="fas fa-lock"></i>
+                    class="footer-lock"><i class="fas fa-lock"></i>
                     Entrar al Panel de Control</a>
             </div>
         </div>
@@ -207,3 +243,5 @@
 </body>
 
 </html>
+
+

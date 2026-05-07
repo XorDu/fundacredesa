@@ -1,4 +1,4 @@
-/* ==========================================
+﻿/* ==========================================
    CSS EXCLUSIVO PARA: /pages/nosotros.html
    Implementa layouts para el Perfil Institucional y grilla de Video
    ========================================== */
@@ -162,5 +162,260 @@
 
     .media-caption {
         padding: 15px 20px;
+    }
+}.footer-lock { color: var(--orange); font-size: 0.9rem; text-decoration: none; }
+
+/* TIMELINE DE HISTORIA - DISEÑO ORGÁNICO DE NUBES / ÁRBOL */
+.timeline-section {
+    padding: 60px 0;
+    background: var(--light);
+}
+
+.timeline-section__title {
+    text-align: center;
+    color: var(--teal);
+    font-size: 2rem;
+    margin-bottom: 40px;
+    font-family: var(--font-ui);
+    position: relative;
+}
+
+.timeline-section__title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: var(--orange);
+    margin: 10px auto 0;
+    border-radius: 5px;
+}
+
+/* ÁRBOL Y RAMAS */
+.timeline {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+/* Tronco central */
+.timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 6px;
+    background: linear-gradient(to bottom, var(--teal), var(--orange));
+    margin-left: -3px;
+    border-radius: 4px;
+    box-shadow: 0 0 15px rgba(0,181,204,0.3);
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 50px;
+    width: 50%;
+    padding-right: 50px;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeUpIn 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    cursor: pointer;
+}
+
+.timeline-item:nth-child(even) {
+    left: 50%;
+    padding-left: 50px;
+    padding-right: 0;
+}
+
+/* Ramas conectoras (Branch) */
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    top: 30px;
+    right: 15px;
+    width: 35px;
+    height: 3px;
+    background: var(--teal);
+    z-index: 0;
+    transition: all 0.3s;
+}
+.timeline-item:nth-child(even)::before {
+    left: 15px;
+    right: auto;
+}
+.timeline-item:hover::before {
+    background: var(--orange);
+    width: 45px;
+}
+
+/* Círculos / Nodos con forma de nube (Blob) */
+.timeline-dot {
+    position: absolute;
+    top: 15px;
+    right: -15px;
+    width: 35px;
+    height: 35px;
+    background: #fff;
+    border: 4px solid var(--teal);
+    border-radius: 60% 40% 50% 50% / 50% 50% 50% 50%;
+    z-index: 2;
+    box-shadow: 0 0 0 4px rgba(0,181,204,0.2);
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    animation: floatingCloud 6s ease-in-out infinite alternate;
+}
+
+.timeline-item:nth-child(even) .timeline-dot {
+    left: -15px;
+    right: auto;
+}
+
+.timeline-item:hover .timeline-dot, .timeline-item.expanded .timeline-dot {
+    background: var(--orange);
+    border-color: #fff;
+    box-shadow: 0 0 0 6px rgba(232,119,34,0.3);
+    transform: scale(1.3);
+    border-radius: 50% 50% 40% 60% / 50% 50% 60% 40%;
+}
+
+/* Contenido de la Tarjeta con forma orgánica */
+.timeline-content {
+    background: #fff;
+    padding: 30px;
+    border-radius: 40px 40px 40px 40px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+    position: relative;
+    transition: all 0.4s ease;
+    border: 2px solid transparent;
+    z-index: 1;
+}
+
+.timeline-item:nth-child(odd) .timeline-content {
+    border-radius: 40px 10px 40px 40px;
+}
+
+.timeline-item:nth-child(even) .timeline-content {
+    border-radius: 10px 40px 40px 40px;
+}
+
+.timeline-item:hover .timeline-content {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+    border-color: rgba(0,181,204,0.3);
+}
+
+.timeline-title {
+    color: var(--dark);
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    font-family: var(--font-ui);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.timeline-title i {
+    color: var(--teal);
+    font-size: 1.2rem;
+    background: rgba(0,181,204,0.1);
+    border-radius: 50%;
+    padding: 8px;
+    transition: all 0.4s;
+}
+
+.timeline-item.expanded .timeline-title i {
+    transform: rotate(180deg);
+    color: #fff;
+    background: var(--orange);
+}
+
+/* El desplegable */
+.timeline-expandable {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease, margin-top 0.4s;
+    opacity: 0;
+}
+
+.timeline-item.expanded .timeline-expandable {
+    max-height: 800px;
+    opacity: 1;
+    margin-top: 20px;
+}
+
+/* Imágenes estilo nubes / blobs */
+.timeline-img {
+    width: 100%;
+    margin-bottom: 20px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    border: 3px solid rgba(0, 181, 204, 0.1);
+    object-fit: cover;
+    max-height: 250px;
+    border-radius: 60% 40% 50% 50% / 50% 50% 50% 50%;
+    animation: floatingCloud 8s ease-in-out infinite alternate;
+}
+
+.timeline-date {
+    display: inline-block;
+    padding: 6px 16px;
+    background: var(--teal);
+    color: #fff;
+    border-radius: 30px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 10px rgba(0,181,204,0.3);
+}
+
+.timeline-text {
+    color: var(--gray);
+    font-size: 1rem;
+    line-height: 1.6;
+    text-align: center;
+}
+
+/* Animaciones */
+@keyframes fadeUpIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes floatingCloud {
+    0% { border-radius: 60% 40% 50% 50% / 50% 50% 50% 50%; transform: translateY(0); }
+    50% { border-radius: 50% 50% 40% 60% / 50% 50% 60% 40%; transform: translateY(-5px); }
+    100% { border-radius: 40% 60% 50% 50% / 60% 40% 40% 60%; transform: translateY(0); }
+}
+
+.timeline-item:nth-child(1) { animation-delay: 0.1s; }
+.timeline-item:nth-child(2) { animation-delay: 0.3s; }
+.timeline-item:nth-child(3) { animation-delay: 0.5s; }
+.timeline-item:nth-child(4) { animation-delay: 0.7s; }
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+    .timeline::before {
+        left: 30px;
+    }
+    .timeline-item {
+        width: 100%;
+        padding-left: 80px;
+        padding-right: 0;
+        left: 0 !important;
+    }
+    .timeline-item::before {
+        left: 30px !important;
+        right: auto !important;
+        width: 40px;
+    }
+    .timeline-dot {
+        left: 15px !important;
+        right: auto !important;
+    }
+    .timeline-item:nth-child(odd) .timeline-content,
+    .timeline-item:nth-child(even) .timeline-content {
+        border-radius: 10px 40px 40px 40px;
     }
 }

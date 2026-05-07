@@ -584,8 +584,11 @@ if (document.getElementById('pub-grid')) {
         grid.innerHTML = htmlContent;
     }
 
+    let currentCategory = 'all';
+
     // Accionado desde el HTML al dar click en una Tab.
     window.filterPubs = function (categoryName, btnEl) {
+        currentCategory = categoryName;
         // Pintar pestaña activa
         document.querySelectorAll('.pub-tab').forEach(b => {
             b.style.background = 'transparent';
@@ -596,12 +599,34 @@ if (document.getElementById('pub-grid')) {
         btnEl.style.color = 'white';
         btnEl.style.borderColor = 'var(--teal)';
 
-        if (categoryName === 'all') {
-            renderPubs(rawPublicaciones);
-        } else {
-            const filtradas = rawPublicaciones.filter(p => p.categoria_nombre === categoryName);
-            renderPubs(filtradas);
+        applyFilters();
+    }
+
+    // Listener de barra de búsqueda
+    const searchInput = document.getElementById('pub-search-input');
+    if (searchInput) {
+        searchInput.addEventListener('input', applyFilters);
+    }
+
+    function applyFilters() {
+        let filtradas = rawPublicaciones;
+
+        // 1. Filtrar por Tab seleccionada
+        if (currentCategory !== 'all') {
+            filtradas = filtradas.filter(p => p.categoria_nombre === currentCategory);
         }
+
+        // 2. Filtrar por Búsqueda de Texto
+        const term = (searchInput ? searchInput.value : '').toLowerCase().trim();
+        if (term.length > 0) {
+            filtradas = filtradas.filter(p => 
+                (p.titulo && p.titulo.toLowerCase().includes(term)) || 
+                (p.descripcion && p.descripcion.toLowerCase().includes(term)) ||
+                (p.categoria_nombre && p.categoria_nombre.toLowerCase().includes(term))
+            );
+        }
+
+        renderPubs(filtradas);
     }
 
     // Trigger de arranque para Publicaciones
@@ -610,3 +635,17 @@ if (document.getElementById('pub-grid')) {
         loadPublicaciones();
     });
 }
+
+// Cargar mapa SVG en estadisticas.html
+document.addEventListener("DOMContentLoaded", () => {
+  const wrapper = document.getElementById('svg-map-wrapper');
+  if (wrapper) {
+    fetch('../assets/map/venezuela.svg')
+      .then(res => res.text())
+      .then(svgCode => {
+        wrapper.innerHTML = svgCode;
+        if (window.initMap) window.initMap();
+      })
+      .catch(err => console.error("Error al cargar mapa SVG:", err));
+  }
+});

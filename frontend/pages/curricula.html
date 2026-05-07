@@ -240,7 +240,7 @@
 
                                 <div class="cv-drop-zone" id="cvDropZone">
                                     <input type="file" id="cv_archivo" name="cv_pdf" accept="application/pdf" required
-                                        style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;cursor:pointer;"
+                                        class="cv-drop-zone__input"
                                         id="cv_file_input">
                                     <div class="cv-drop-zone__content" id="cvDropContent">
                                         <i class="fas fa-cloud-upload-alt"></i>
@@ -248,7 +248,7 @@
                                         <p class="cv-drop-zone__subtitle">o haz clic para seleccionar</p>
                                         <span class="cv-drop-zone__hint">Solo PDF · Máximo 5 MB</span>
                                     </div>
-                                    <div class="cv-drop-zone__preview" id="cvDropPreview" style="display:none;">
+                                    <div class="cv-drop-zone__preview d-none" id="cvDropPreview">
                                         <i class="fas fa-file-pdf cv-drop-zone__preview-icon"></i>
                                         <div class="cv-drop-zone__preview-info">
                                             <span id="cvFileName" class="cv-drop-zone__preview-name"></span>
@@ -298,7 +298,7 @@
                         </form>
 
                         <!-- Mensaje de éxito -->
-                        <div class="cv-success" id="cvSuccess" style="display:none;">
+                        <div class="cv-success d-none" id="cvSuccess">
                             <div class="cv-success__icon">
                                 <i class="fas fa-check-circle"></i>
                             </div>
@@ -317,7 +317,7 @@
                         </div>
 
                         <!-- Mensaje de error -->
-                        <div class="cv-error-msg" id="cvErrorMsg" style="display:none;"></div>
+                        <div class="cv-error-msg d-none" id="cvErrorMsg"></div>
                     </div>
                 </div>
 
@@ -346,4 +346,6 @@
 </body>
 
 </html>
+
+
 

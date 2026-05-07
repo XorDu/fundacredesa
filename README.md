@@ -1,4 +1,4 @@
-<div align="center">
+﻿<div align="center">
   <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Bandera_de_Venezuela_%28institucional%29.svg/800px-Bandera_de_Venezuela_%28institucional%29.svg.png" alt="Bandera Venezuela" width="100" />
   
   # 🇻🇪 Portal Interactivo FUNDACREDESA
@@ -256,3 +256,4 @@ Para un análisis técnico profundo de cada módulo, directivas de seguridad, la
 <div align="center">
   <i>Desarrollado con dedicación para potenciar la investigación y el conocimiento científico en Venezuela 🇻🇪</i>
 </div>
+

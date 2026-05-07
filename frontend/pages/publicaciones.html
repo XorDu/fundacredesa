@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 
 <head>
@@ -20,7 +20,7 @@
 <link rel="stylesheet" href="../css/devpanel.css">
 </head>
 
-<body style="background:var(--gray-bg);">
+<body class="pub-body">
 
   <!-- HEADER PRINCIPAL: Logo + Banner diagonal -->
   <div class="header-main">
@@ -73,23 +73,30 @@
                 class="fab fa-youtube"></i></a>
     </aside>
 
-  <main style="padding: 30px 0;">
+  <main class="pub-main">
     <div class="container">
       <div class="section-tag section-tag--orange">PUBLICACIONES CIENTÍFICAS</div>
-      <p class="pub-intro" style="margin-bottom: 5px;">Repositorio de estudios e investigaciones sobre la población
+      <p class="pub-intro">Repositorio de estudios e investigaciones sobre la población
         venezolana, desarrollados por Fundacredesa.</p>
 
+      <!-- Barra de Búsqueda Estética -->
+      <div class="pub-search-wrapper">
+        <div class="pub-search-box">
+          <i class="fas fa-search pub-search-icon"></i>
+          <input type="text" id="pub-search-input" placeholder="Buscar revistas, libros, boletines..." autocomplete="off">
+        </div>
+      </div>
+
       <!-- Contenedor dinámico de Filtros por Categoría UI Tabs -->
-      <div class="tabs-container" id="pub-tabs" style="display:flex; flex-wrap:wrap; gap:10px; margin-bottom: 25px;">
-        <button class="btn btn-outline"
-          style="background:var(--teal); color:white; border-color:var(--teal)">Todas</button>
+      <div class="tabs-container pub-tabs-wrapper" id="pub-tabs">
+        <button class="btn btn-outline pub-tab-btn active">Todas</button>
         <!-- Se llenará via Fetch -->
       </div>
 
       <div class="pub-grid" id="pub-grid">
-        <div style="text-align:center; grid-column: 1/-1; padding: 50px;">
-          <i class="fas fa-spinner fa-spin fa-3x" style="color:var(--teal)"></i>
-          <p style="margin-top:15px; color:var(--gray)">Obteniendo repositorio desde la Base de Datos...</p>
+        <div class="pub-loading">
+          <i class="fas fa-spinner fa-spin fa-3x"></i>
+          <p>Obteniendo repositorio desde la Base de Datos...</p>
         </div>
       </div>
     </div>

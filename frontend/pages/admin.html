@@ -19,7 +19,7 @@
 <link rel="stylesheet" href="../css/devpanel.css">
 </head>
 
-<body style="background:var(--gray-bg);">
+<body class="admin-body">
 
     <nav class="admin-nav">
         <div class="container admin-nav__inner">
@@ -27,7 +27,7 @@
                 <i class="fas fa-shield-alt"></i> Panel de Administración - Repositorio
             </div>
             <div class="admin-nav__actions">
-                <button onclick="showTab('publicaciones')" class="btn btn-outline" id="btnTabPub" style="background:var(--teal); color:#fff; border-color:var(--teal)">📚 Publicaciones</button>
+                <button onclick="showTab('publicaciones')" class="btn btn-outline admin-tab-btn-active" id="btnTabPub">📚 Publicaciones</button>
                 <button onclick="showTab('sliders')" class="btn btn-outline" id="btnTabSlider">🖼️ Hero Slider</button>
                 <button onclick="showTab('cvs')" class="btn btn-outline" id="btnTabCVs">📄 Currículums</button>
                 <a href="publicaciones.html" class="btn btn-outline" target="_blank"><i
@@ -38,9 +38,9 @@
     </nav>
 
     <main class="admin-container container">
-        <div id="tab-publicaciones" style="display: flex; gap: 2rem; width: 100%;">
+        <div id="tab-publicaciones" class="tab-content active">
             <!-- Panel Izquierdo: Formulario de Subida -->
-            <section class="admin-card uploader-section" style="flex: 1;">
+            <section class="admin-card uploader-section admin-card-1">
                 <h2 class="admin-title"><i class="fas fa-cloud-upload-alt"></i> Subir Nueva Publicación</h2>
                 <p class="admin-desc">Gestione los nuevos artículos, defina su jerarquía y adjunte imagen y PDF oficial.</p>
 
@@ -99,7 +99,7 @@
             </section>
 
             <!-- Panel Derecho: Lista Administrativa -->
-            <section class="admin-card list-section" style="flex: 2;">
+            <section class="admin-card list-section admin-card-2">
                 <h2 class="admin-title"><i class="fas fa-list"></i> Inventario de Publicaciones (Base de Datos)</h2>
                 <p class="admin-desc">Aquí visualizas lo que ya fue publicado. Orden predeterminado por prioridad.</p>
 
@@ -107,7 +107,7 @@
                     <button class="btn btn-refresh" onclick="cargarPublicacionesAdmin()"><i class="fas fa-sync-alt"></i>
                         Actualizar</button>
                     <button id="saveOrderBtn" class="btn btn-outline"
-                        style="display: none; border-color: var(--teal); color: var(--teal); padding: 5px 15px; font-size: 0.85rem;"
+                        class="admin-status-msg admin-status-teal"
                         onclick="guardarNuevoOrden()">
                         <i class="fas fa-save"></i> Guardar Nuevo Orden
                     </button>
@@ -137,9 +137,9 @@
         </div>
 
         <!-- TAB SLIDERS -->
-        <div id="tab-sliders" style="display: none; gap: 2rem; width: 100%;">
+        <div id="tab-sliders" class="tab-content">
             <!-- Panel Izquierdo: Formulario de Subida Slider -->
-            <section class="admin-card uploader-section" style="flex: 1;">
+            <section class="admin-card uploader-section admin-card-1">
                 <h2 class="admin-title"><i class="fas fa-images"></i> Subir Nuevo Hero Slider</h2>
                 <p class="admin-desc">Añade imágenes destacadas para la página de inicio. Tamaño recomendado: 1200x600px.</p>
 
@@ -167,7 +167,7 @@
                         </div>
                     </div>
 
-                    <button type="submit" class="btn btn-submit" id="btnSubmitSlider" style="background-color: var(--orange);">
+                    <button type="submit" class="btn btn-submit btn-submit-orange" id="btnSubmitSlider">
                         <i class="fas fa-upload"></i> Publicar Slider
                     </button>
                 </form>
@@ -175,14 +175,14 @@
             </section>
 
             <!-- Panel Derecho: Lista Sliders -->
-            <section class="admin-card list-section" style="flex: 2;">
+            <section class="admin-card list-section admin-card-2">
                 <h2 class="admin-title"><i class="fas fa-list"></i> Sliders Activos</h2>
                 <p class="admin-desc">Administra las imágenes promocionales que aparecen en el carrusel principal.</p>
 
                 <div class="admin-list-controls">
                     <button class="btn btn-refresh" onclick="cargarSlidersAdmin()"><i class="fas fa-sync-alt"></i> Actualizar</button>
                     <button id="saveSliderOrderBtn" class="btn btn-outline"
-                        style="display: none; border-color: var(--orange); color: var(--orange); padding: 5px 15px; font-size: 0.85rem;"
+                        class="admin-status-msg admin-status-orange"
                         onclick="guardarNuevoOrdenSliders()">
                         <i class="fas fa-save"></i> Guardar Orden Sliders
                     </button>
@@ -211,15 +211,15 @@
         </div>
 
         <!-- TAB CVs -->
-        <div id="tab-cvs" style="display: none; width: 100%; grid-column: 1 / -1;">
+        <div id="tab-cvs" class="tab-content">
             <section class="admin-card cv-admin-section">
                 <div class="cv-admin-header">
                     <div>
                         <h2 class="admin-title"><i class="fas fa-file-alt"></i> Currículums Recibidos</h2>
                         <p class="admin-desc">Postulaciones ordenadas de más reciente a más antigua. Haz clic en «Ver CV» para abrir el documento.</p>
                     </div>
-                    <div style="display:flex; align-items:center; gap:12px;">
-                        <span id="cvCount" style="font-size:0.85rem; color:var(--gray); white-space:nowrap;"></span>
+                    <div class="flex-center-gap">
+                        <span id="cvCount" class="cv-count-text"></span>
                         <button class="btn btn-refresh" onclick="cargarCVsAdmin()"><i class="fas fa-sync-alt"></i> Actualizar</button>
                     </div>
                 </div>
@@ -227,15 +227,15 @@
                 <table class="admin-table cv-full-table">
                     <thead>
                         <tr>
-                            <th style="width:50px">ID</th>
+                            <th class="w-50">ID</th>
                             <th>Nombre</th>
-                            <th style="width:110px">Cédula</th>
+                            <th class="w-110">Cédula</th>
                             <th>Correo</th>
-                            <th style="width:120px">Teléfono</th>
-                            <th style="width:160px">Área</th>
-                            <th style="width:145px">Fecha de Subida</th>
-                            <th style="width:90px">CV</th>
-                            <th style="width:70px">Acción</th>
+                            <th class="w-120">Teléfono</th>
+                            <th class="w-160">Área</th>
+                            <th class="w-145">Fecha de Subida</th>
+                            <th class="w-90">CV</th>
+                            <th class="w-70">Acción</th>
                         </tr>
                     </thead>
                     <tbody id="cvsTbody">
@@ -248,39 +248,39 @@
 
     <!-- Modal Oculto para Edición -->
     <div id="editModal" class="modal"
-        style="display:none; position:fixed; z-index:9999; left:0; top:0; width:100%; height:100%; overflow:auto; background-color:rgba(0,0,0,0.5);">
+        class="modal-overlay">
         <div class="modal-content"
-            style="background-color:#fff; margin:5% auto; padding:25px; border-radius:12px; border-top: 5px solid var(--teal); width:90%; max-width:500px; position:relative; box-shadow:0 10px 30px rgba(0,0,0,0.2);">
+            class="modal-box modal-box-teal">
             <span class="close-btn"
-                style="position:absolute; right:20px; top:15px; font-size:24px; font-weight:bold; color:var(--gray); cursor:pointer;"
+                class="modal-close"
                 onclick="cerrarModalEdicion()">&times;</span>
-            <h2 style="font-family:var(--font-ui); margin-bottom: 20px; color:var(--dark)"><i class="fas fa-edit"></i>
+            <h2 class="modal-title"><i class="fas fa-edit"></i>
                 Edición Rápida (Publicación)</h2>
 
             <form id="editForm">
                 <input type="hidden" id="edit_id" name="id">
-                <div class="form-group" style="margin-bottom: 15px;">
+                <div class="form-group modal-form-group">
                     <label for="edit_titulo"
-                        style="display:block; font-size:0.85rem; font-weight:600; margin-bottom:5px;">Título</label>
+                        class="modal-label">Título</label>
                     <input type="text" id="edit_titulo" name="titulo" required
-                        style="width:100%; padding:10px; border:1px solid var(--border); border-radius:var(--radius); font-family:var(--font-text);">
+                        class="modal-input">
                 </div>
-                <div class="form-group" style="margin-bottom: 15px;">
+                <div class="form-group modal-form-group">
                     <label for="edit_desc"
-                        style="display:block; font-size:0.85rem; font-weight:600; margin-bottom:5px;">Descripción
+                        class="modal-label">Descripción
                         Corta</label>
                     <textarea id="edit_desc" name="descripcion" rows="3" required
-                        style="width:100%; padding:10px; border:1px solid var(--border); border-radius:var(--radius); font-family:var(--font-text);"></textarea>
+                        class="modal-input"></textarea>
                 </div>
-                <div class="form-group" style="margin-bottom: 20px;">
+                <div class="form-group modal-form-group">
                     <label for="edit_categoria"
-                        style="display:block; font-size:0.85rem; font-weight:600; margin-bottom:5px;">Categoría</label>
+                        class="modal-label">Categoría</label>
                     <select id="edit_categoria" name="id_categoria" required
-                        style="width:100%; padding:10px; border:1px solid var(--border); border-radius:var(--radius); font-family:var(--font-text);">
+                        class="modal-input">
                         <!-- Se llenará vía JS al abrir el modal -->
                     </select>
                 </div>
-                <button type="submit" id="btnSaveEdit" class="btn btn-primary" style="width:100%;"><i
+                <button type="submit" id="btnSaveEdit" class="btn btn-primary modal-btn-save"><i
                         class="fas fa-save"></i> Guardar Cambios</button>
             </form>
         </div>
@@ -288,26 +288,26 @@
 
     <!-- Modal Oculto para Edición Slider -->
     <div id="editSliderModal" class="modal"
-        style="display:none; position:fixed; z-index:9999; left:0; top:0; width:100%; height:100%; overflow:auto; background-color:rgba(0,0,0,0.5);">
+        class="modal-overlay">
         <div class="modal-content"
-            style="background-color:#fff; margin:5% auto; padding:25px; border-radius:12px; border-top: 5px solid var(--orange); width:90%; max-width:500px; position:relative; box-shadow:0 10px 30px rgba(0,0,0,0.2);">
+            class="modal-box modal-box-orange">
             <span class="close-btn"
-                style="position:absolute; right:20px; top:15px; font-size:24px; font-weight:bold; color:var(--gray); cursor:pointer;"
+                class="modal-close"
                 onclick="cerrarModalEdicionSlider()">&times;</span>
-            <h2 style="font-family:var(--font-ui); margin-bottom: 20px; color:var(--dark)"><i class="fas fa-edit"></i>
+            <h2 class="modal-title"><i class="fas fa-edit"></i>
                 Edición de Slider</h2>
 
             <form id="editSliderForm">
                 <input type="hidden" id="edit_slider_id" name="id">
-                <div class="form-group" style="margin-bottom: 15px;">
-                    <label for="edit_slider_titulo" style="display:block; font-size:0.85rem; font-weight:600; margin-bottom:5px;">Título</label>
-                    <input type="text" id="edit_slider_titulo" name="titulo" required style="width:100%; padding:10px; border:1px solid var(--border); border-radius:var(--radius); font-family:var(--font-text);">
+                <div class="form-group modal-form-group">
+                    <label for="edit_slider_titulo" class="modal-label">Título</label>
+                    <input type="text" id="edit_slider_titulo" name="titulo" required class="modal-input">
                 </div>
-                <div class="form-group" style="margin-bottom: 15px;">
-                    <label for="edit_slider_desc" style="display:block; font-size:0.85rem; font-weight:600; margin-bottom:5px;">Descripción Corta</label>
-                    <textarea id="edit_slider_desc" name="descripcion" rows="3" required style="width:100%; padding:10px; border:1px solid var(--border); border-radius:var(--radius); font-family:var(--font-text);"></textarea>
+                <div class="form-group modal-form-group">
+                    <label for="edit_slider_desc" class="modal-label">Descripción Corta</label>
+                    <textarea id="edit_slider_desc" name="descripcion" rows="3" required class="modal-input"></textarea>
                 </div>
-                <button type="submit" id="btnSaveEditSlider" class="btn btn-primary" style="width:100%; background-color: var(--orange); border-color: var(--orange);"><i class="fas fa-save"></i> Guardar Cambios</button>
+                <button type="submit" id="btnSaveEditSlider" class="btn btn-primary" class="btn-save-slider"><i class="fas fa-save"></i> Guardar Cambios</button>
             </form>
         </div>
     </div>
@@ -329,3 +329,5 @@
 </body>
 
 </html>
+
+

@@ -81,7 +81,7 @@
                 class="fab fa-youtube"></i></a>
     </aside>
 
-  <main style="background:var(--gray-bg); padding: 30px 0;">
+  <main class="estadisticas-main">
     <div class="container">
       <div class="section-tag section-tag--orange">INDICADORES NACIONALES</div>
 
@@ -210,22 +210,10 @@
   </footer>
 
   <script src="../js/main.js" defer></script>
-  <!-- Script para inyectar el SVG -->
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      fetch('../assets/map/venezuela.svg')
-        .then(res => res.text())
-        .then(svgCode => {
-          const wrapper = document.getElementById('svg-map-wrapper');
-          if (wrapper) wrapper.innerHTML = svgCode;
 
-          // Inicializar los eventos del mapa después de inyectarlo
-          if (window.initMap) window.initMap();
-        })
-        .catch(err => console.error("Error al cargar mapa SVG:", err));
-    });
-  </script>
 <script src="../js/devpanel.js" defer></script>
 </body>
 
 </html>
+
+
