@@ -1,0 +1,349 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Envía tu Currículum – Fundacredesa</title>
+    <meta name="description"
+        content="Envía tu currículum vitae a Fundacredesa. Oportunidades de trabajo en investigación científica y desarrollo humano.">
+    <link rel="icon" href="../assets/images/logo_fundacredesa.png" type="image/png">
+
+    <!-- Fuentes -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- CSS Base -->
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/curricula.css">
+<link rel="stylesheet" href="../css/devpanel.css">
+</head>
+
+<body>
+
+    <!-- LOADING -->
+    <div id="loading" class="loading" aria-hidden="true">
+        <img src="../assets/images/logo_fundacredesa.png" alt="Fundacredesa" class="loading__logo">
+        <div class="loading__spinner"></div>
+    </div>
+
+    <!-- HEADER PRINCIPAL -->
+    <div class="header-main">
+        <div class="container header-main__inner">
+            <a href="index.html" class="header-main__logo">
+                <img src="../assets/images/cintillo.png" alt="Cintillo Institucional" class="header-main__logo-img">
+                <div class="header-main__logo-text"></div>
+            </a>
+        </div>
+    </div>
+
+    <!-- NAVEGACIÓN -->
+    <nav class="site-nav" id="site-nav" role="navigation" aria-label="Menú principal">
+        <div class="container site-nav__inner">
+            <a href="index.html" class="header-main__logo">
+                <img src="../assets/images/logo_fundacredesa.png" alt="Fundacredesa" class="header-main__logo-img">
+            </a>
+            <button class="site-nav__toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-list">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="site-nav__list" id="nav-list">
+                <li class="site-nav__item"><a href="index.html" class="site-nav__link">Inicio</a></li>
+                <li class="site-nav__separator" role="separator"></li>
+                <li class="site-nav__item"><a href="nosotros.html" class="site-nav__link">FUNDACREDESA</a></li>
+                <li class="site-nav__separator" role="separator"></li>
+                <li class="site-nav__item"><a href="estadisticas.html" class="site-nav__link">Estadísticas</a></li>
+                <li class="site-nav__separator" role="separator"></li>
+                <li class="site-nav__item"><a href="publicaciones.html" class="site-nav__link">Publicaciones</a></li>
+                <li class="site-nav__separator" role="separator"></li>
+                <li class="site-nav__item"><a href="investigaciones.html" class="site-nav__link">Investigaciones</a></li>
+                <li class="site-nav__separator" role="separator"></li>
+                <li class="site-nav__item"><a href="proyectos.html" class="site-nav__link">Proyectos</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- REDES SOCIALES FLOTANTES -->
+    <aside class="social-sidebar" aria-label="Redes sociales">
+        <a href="https://www.facebook.com/people/Fundacredesa/100069182470822/"
+            class="social-sidebar__btn social-sidebar__btn--fb" aria-label="Facebook"><i
+                class="fab fa-facebook-f"></i></a>
+        <a href="https://www.instagram.com/fundacredesa_" class="social-sidebar__btn social-sidebar__btn--ig"
+            aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://x.com/FundacredesaR" class="social-sidebar__btn social-sidebar__btn--tw"
+            aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+        <a href="https://www.tiktok.com/@fundacredesa_" class="social-sidebar__btn social-sidebar__btn--tt"
+            aria-label="Tiktok"><i class="fab fa-tiktok"></i></a>
+        <a href="https://www.youtube.com/@fundacredesa1730" class="social-sidebar__btn social-sidebar__btn--yt"
+            aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+    </aside>
+
+    <!-- MAIN -->
+    <main id="main-content">
+
+        <!-- HERO BANNER -->
+        <section class="cv-hero">
+            <div class="cv-hero__overlay"></div>
+            <div class="container cv-hero__content">
+                <div class="cv-hero__badge">
+                    <i class="fas fa-briefcase"></i> Trabaja con Nosotros
+                </div>
+                <h1 class="cv-hero__title">Envía tu Currículum<br><span>Vitae</span></h1>
+                <p class="cv-hero__subtitle">Forma parte del equipo de investigadores y científicos que transforman el
+                    conocimiento en bienestar para la población venezolana.</p>
+                <div class="cv-hero__stats">
+                    <div class="cv-hero__stat">
+                        <i class="fas fa-flask"></i>
+                        <span>Investigación Científica</span>
+                    </div>
+                    <div class="cv-hero__stat">
+                        <i class="fas fa-users"></i>
+                        <span>Impacto Social</span>
+                    </div>
+                    <div class="cv-hero__stat">
+                        <i class="fas fa-chart-line"></i>
+                        <span>Desarrollo Humano</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FORM SECTION -->
+        <section class="cv-section">
+            <div class="container cv-section__inner">
+
+                <!-- Info lateral -->
+                <aside class="cv-info">
+                    <div class="cv-info__card">
+                        <div class="cv-info__icon">
+                            <i class="fas fa-file-upload"></i>
+                        </div>
+                        <h3>¿Cómo postularte?</h3>
+                        <ol class="cv-info__steps">
+                            <li><strong>Completa</strong> tus datos personales</li>
+                            <li><strong>Adjunta</strong> tu CV en formato PDF</li>
+                            <li><strong>Verifica</strong> el captcha de seguridad</li>
+                            <li><strong>Envía</strong> tu postulación</li>
+                        </ol>
+                    </div>
+
+                    <div class="cv-info__card cv-info__card--teal">
+                        <div class="cv-info__icon">
+                            <i class="fas fa-info-circle"></i>
+                        </div>
+                        <h3>Requisitos del CV</h3>
+                        <ul class="cv-info__list">
+                            <li><i class="fas fa-check-circle"></i> Formato PDF únicamente</li>
+                            <li><i class="fas fa-check-circle"></i> Tamaño máximo: 5 MB</li>
+                            <li><i class="fas fa-check-circle"></i> Datos de contacto actualizados</li>
+                            <li><i class="fas fa-check-circle"></i> Cédula de identidad válida</li>
+                        </ul>
+                    </div>
+
+                    <div class="cv-info__card cv-info__card--orange">
+                        <div class="cv-info__icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <h3>Contáctanos</h3>
+                        <p>¿Tienes dudas sobre el proceso?</p>
+                        <a href="tel:+582122613765" class="cv-info__contact-link">
+                            <i class="fas fa-phone"></i> (0212) 261-3765
+                        </a>
+                    </div>
+                </aside>
+
+                <!-- Formulario principal -->
+                <div class="cv-form-wrapper">
+                    <div class="cv-form-card" id="cvFormCard">
+                        <div class="cv-form-card__header">
+                            <i class="fas fa-id-card"></i>
+                            <div>
+                                <h2>Formulario de Postulación</h2>
+                                <p>Todos los campos marcados con <span class="required-star">*</span> son obligatorios</p>
+                            </div>
+                        </div>
+
+                        <form id="cvUploadForm" class="cv-form" enctype="multipart/form-data" novalidate>
+
+                            <!-- Datos personales -->
+                            <fieldset class="cv-fieldset">
+                                <legend><i class="fas fa-user"></i> Datos Personales</legend>
+
+                                <div class="cv-form-row">
+                                    <div class="cv-form-group">
+                                        <label for="cv_nombre">Nombre Completo <span class="required-star">*</span></label>
+                                        <div class="cv-input-wrap">
+                                            <i class="fas fa-user cv-input-icon"></i>
+                                            <input type="text" id="cv_nombre" name="nombre"
+                                                placeholder="Ej. María González López" required autocomplete="name">
+                                        </div>
+                                        <span class="cv-field-error" id="err_nombre"></span>
+                                    </div>
+
+                                    <div class="cv-form-group">
+                                        <label for="cv_cedula">Cédula de Identidad <span class="required-star">*</span></label>
+                                        <div class="cv-input-wrap">
+                                            <i class="fas fa-id-badge cv-input-icon"></i>
+                                            <input type="text" id="cv_cedula" name="cedula"
+                                                placeholder="Ej. V-12345678" required pattern="[VEve]-?\d{6,8}"
+                                                autocomplete="off">
+                                        </div>
+                                        <span class="cv-field-error" id="err_cedula"></span>
+                                    </div>
+                                </div>
+
+                                <div class="cv-form-row">
+                                    <div class="cv-form-group">
+                                        <label for="cv_email">Correo Electrónico <span class="required-star">*</span></label>
+                                        <div class="cv-input-wrap">
+                                            <i class="fas fa-envelope cv-input-icon"></i>
+                                            <input type="email" id="cv_email" name="email"
+                                                placeholder="correo@ejemplo.com" required autocomplete="email">
+                                        </div>
+                                        <span class="cv-field-error" id="err_email"></span>
+                                    </div>
+
+                                    <div class="cv-form-group">
+                                        <label for="cv_telefono">Teléfono de Contacto</label>
+                                        <div class="cv-input-wrap">
+                                            <i class="fas fa-phone cv-input-icon"></i>
+                                            <input type="tel" id="cv_telefono" name="telefono"
+                                                placeholder="Ej. 0412-1234567" autocomplete="tel">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="cv-form-group">
+                                    <label for="cv_area">Área de Interés / Especialidad</label>
+                                    <div class="cv-input-wrap">
+                                        <i class="fas fa-briefcase cv-input-icon"></i>
+                                        <select id="cv_area" name="area">
+                                            <option value="">Selecciona un área...</option>
+                                            <option value="Investigación Científica">Investigación Científica</option>
+                                            <option value="Nutrición y Salud">Nutrición y Salud</option>
+                                            <option value="Estadística y Demografía">Estadística y Demografía</option>
+                                            <option value="Trabajo Social">Trabajo Social</option>
+                                            <option value="Tecnología e Informática">Tecnología e Informática</option>
+                                            <option value="Administración">Administración</option>
+                                            <option value="Otra">Otra</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </fieldset>
+
+                            <!-- Subida de CV -->
+                            <fieldset class="cv-fieldset">
+                                <legend><i class="fas fa-file-pdf"></i> Documento Currículum Vitae</legend>
+
+                                <div class="cv-drop-zone" id="cvDropZone">
+                                    <input type="file" id="cv_archivo" name="cv_pdf" accept="application/pdf" required
+                                        style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;cursor:pointer;"
+                                        id="cv_file_input">
+                                    <div class="cv-drop-zone__content" id="cvDropContent">
+                                        <i class="fas fa-cloud-upload-alt"></i>
+                                        <p class="cv-drop-zone__title">Arrastra tu CV aquí <span class="required-star">*</span></p>
+                                        <p class="cv-drop-zone__subtitle">o haz clic para seleccionar</p>
+                                        <span class="cv-drop-zone__hint">Solo PDF · Máximo 5 MB</span>
+                                    </div>
+                                    <div class="cv-drop-zone__preview" id="cvDropPreview" style="display:none;">
+                                        <i class="fas fa-file-pdf cv-drop-zone__preview-icon"></i>
+                                        <div class="cv-drop-zone__preview-info">
+                                            <span id="cvFileName" class="cv-drop-zone__preview-name"></span>
+                                            <span id="cvFileSize" class="cv-drop-zone__preview-size"></span>
+                                        </div>
+                                        <button type="button" class="cv-drop-zone__remove" id="cvRemoveFile"
+                                            title="Quitar archivo">
+                                            <i class="fas fa-times"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <span class="cv-field-error" id="err_cv"></span>
+                            </fieldset>
+
+                            <!-- CAPTCHA Matemático -->
+                            <fieldset class="cv-fieldset cv-fieldset--captcha">
+                                <legend><i class="fas fa-shield-alt"></i> Verificación de Seguridad</legend>
+                                <p class="cv-captcha-desc">Resuelve esta operación para confirmar que eres humano:</p>
+
+                                <div class="cv-captcha-box">
+                                    <div class="cv-captcha-question">
+                                        <span id="captchaA" class="captcha-num"></span>
+                                        <span class="captcha-op" id="captchaOp"></span>
+                                        <span id="captchaB" class="captcha-num"></span>
+                                        <span class="captcha-eq">=</span>
+                                    </div>
+                                    <div class="cv-input-wrap cv-captcha-input">
+                                        <i class="fas fa-calculator cv-input-icon"></i>
+                                        <input type="number" id="cv_captcha" name="captcha_respuesta"
+                                            placeholder="Tu respuesta..." required autocomplete="off">
+                                    </div>
+                                    <button type="button" class="cv-captcha-refresh" id="captchaRefresh"
+                                        title="Nueva operación">
+                                        <i class="fas fa-redo"></i>
+                                    </button>
+                                </div>
+                                <span class="cv-field-error" id="err_captcha"></span>
+                            </fieldset>
+
+                            <!-- Botón enviar -->
+                            <button type="submit" class="cv-btn-submit" id="cvBtnSubmit">
+                                <i class="fas fa-paper-plane"></i>
+                                <span>Enviar mi Currículum</span>
+                                <div class="cv-btn-loader" id="cvBtnLoader"></div>
+                            </button>
+
+                        </form>
+
+                        <!-- Mensaje de éxito -->
+                        <div class="cv-success" id="cvSuccess" style="display:none;">
+                            <div class="cv-success__icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <h3>¡CV Recibido Exitosamente!</h3>
+                            <p>Tu currículum ha sido registrado en nuestra base de datos. Nuestro equipo de Recursos
+                                Humanos revisará tu perfil y se pondrá en contacto contigo si hay una oportunidad que
+                                se ajuste a tu experiencia.</p>
+                            <div class="cv-success__actions">
+                                <button class="cv-btn-secondary" onclick="resetCVForm()">
+                                    <i class="fas fa-plus"></i> Enviar otro CV
+                                </button>
+                                <a href="index.html" class="cv-btn-primary">
+                                    <i class="fas fa-home"></i> Ir al Inicio
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Mensaje de error -->
+                        <div class="cv-error-msg" id="cvErrorMsg" style="display:none;"></div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer" role="contentinfo">
+        <div class="container site-footer__inner">
+            <div class="site-footer__copyright">
+                <i class="fas fa-copyright"></i>
+                <span>COPYRIGHT – CONTENIDO DE LIBRE REPRODUCCIÓN · FUNDACREDESA © 2024</span>
+            </div>
+            <nav class="site-footer__links" aria-label="Pie de página">
+                <a href="publicaciones.html">Publicaciones</a>
+                <a href="estadisticas.html">Estadísticas</a>
+                <a href="tel:+582122613765" title="Llamar a Fundacredesa">Contacto</a>
+            </nav>
+        </div>
+    </footer>
+
+    <script src="../js/curricula.js" defer></script>
+<script src="../js/devpanel.js" defer></script>
+</body>
+
+</html>
+

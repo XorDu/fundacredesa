@@ -1,0 +1,166 @@
+/* ==========================================
+   CSS EXCLUSIVO PARA: /pages/nosotros.html
+   Implementa layouts para el Perfil Institucional y grilla de Video
+   ========================================== */
+
+/* SECCIÓN HERO INSTITUCIONAL */
+
+.container__hero {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    gap: 20px;
+    text-align: justify;
+    padding: 0 16px;
+}
+
+.nosotros-hero {
+    background-color: var(--dark);
+    color: #fff;
+    padding: 40px 20px;
+    text-align: center;
+    border-bottom: 5px solid var(--orange);
+}
+
+.background_img {
+    background-image: linear-gradient(rgba(0, 0, 0, 0), rgb(0, 0, 0)), url("../assets/images/entrada_fundacredesa.jpeg");
+    background-size: cover;
+    background-position: center;
+    color:#fff
+}
+.nosotros-hero__title {
+    font-family: var(--font-ui);
+    font-size: 2.0rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+    letter-spacing: -0.5px;
+}
+
+.nosotros-hero__subtitle {
+    font-family: var(--font-text);
+    font-size: 0.9rem;
+    font-weight: 100;
+    opacity: 0.9;
+    max-width: 1000px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* SECCIÓN MULTIMEDIA (VIDEO) */
+.nosotros-media {
+    padding: 60px 20px;
+    background-color: var(--gray-bg);
+}
+
+.media-container {
+    max-width: 900px;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    position: relative;
+    border: 1px solid var(--border);
+}
+
+.video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%;
+    /* Relación 16:9 perfecta HD */
+    height: 0;
+    overflow: hidden;
+    background-color: #000;
+}
+
+.video-wrapper iframe,
+.video-wrapper video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    object-fit: cover;
+}
+
+.media-caption {
+    padding: 20px 30px;
+    background-color: #fff;
+    border-left: 4px solid var(--teal);
+}
+
+.media-caption h3 {
+    font-family: var(--font-ui);
+    color: var(--dark);
+    margin-bottom: 8px;
+    font-size: 1.3rem;
+}
+
+.media-caption p {
+    color: var(--gray);
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* SECCIÓN INFORMACIÓN (MISIÓN/VISIÓN) */
+.nosotros-info {
+    padding: 60px 20px;
+    background-color: #fff;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.info-card {
+    background: #fff;
+    padding: 35px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.info-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+    border-color: var(--teal);
+}
+
+.info-card__icon {
+    font-size: 2.5rem;
+    color: var(--orange);
+    margin-bottom: 20px;
+}
+
+.info-card__title {
+    font-family: var(--font-ui);
+    font-size: 1.5rem;
+    color: var(--dark);
+    margin-bottom: 15px;
+}
+
+.info-card__text {
+    color: var(--gray);
+    line-height: 1.7;
+    font-size: 1rem;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+    .nosotros-hero__title {
+        font-size: 2.2rem;
+    }
+
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .media-caption {
+        padding: 15px 20px;
+    }
+}

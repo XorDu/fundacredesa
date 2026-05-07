@@ -1,0 +1,171 @@
+{
+    "name": "Corpus Fundacredesa",
+    "locale": "es",
+    "data": [
+        {
+            "intent": "fundacredesa.que_es",
+            "utterances": [
+                "¿Qué es Fundacredesa?",
+                "¿De qué trata Fundacredesa?",
+                "¿Cuál es el objetivo de Fundacredesa?",
+                "Dime sobre Fundacredesa",
+                "¿A qué se dedica Fundacredesa?",
+                "Explicame que es Fundacredesa",
+                "¿Qué significa Fundacredesa?"
+            ],
+            "answers": [
+                "FUNDACREDESA (Fundación Centro de Estudios sobre Crecimiento y Desarrollo de la Población Venezolana) es una institución científica creada en 1976, pionera en el estudio biológico, psicológico y social del venezolano, orientando el desarrollo humano, la nutrición y el crecimiento de la Nación."
+            ]
+        },
+        {
+            "intent": "fundacredesa.mision",
+            "utterances": [
+                "¿Cuál es la misión de Fundacredesa?",
+                "Dime la misión",
+                "Misión de la institución",
+                "¿Cual es el proposito de la fundacion?",
+                "Mision"
+            ],
+            "answers": [
+                "Dedicada a generar, divulgar y aplicar conocimientos científicos sobre el crecimiento, desarrollo físico y estado nutricional de la población venezolana en el contexto de sus condiciones de vida, para orientar la formulación de políticas públicas asertivas."
+            ]
+        },
+        {
+            "intent": "fundacredesa.vision",
+            "utterances": [
+                "¿Cuál es la visión de Fundacredesa?",
+                "Dime la visión",
+                "Visión de la institución",
+                "Hacia donde va Fundacredesa",
+                "Vision"
+            ],
+            "answers": [
+                "Ser el Centro de Investigación Científica de Referencia Nacional e Internacional, rector indiscutible en la generación de conocimiento bio-sicosocial de la población venezolana, con un equipo humano de altísimo nivel ético y excelencia."
+            ]
+        },
+        {
+            "intent": "fundacredesa.presidente",
+            "utterances": [
+                "¿Quién es el presidente de Fundacredesa?",
+                "Actual presidente",
+                "¿Quién dirige Fundacredesa?",
+                "¿Quién es la máxima autoridad?",
+                "Director de Fundacredesa",
+                "Presidenta"
+            ],
+            "answers": [
+                "La Dra. Antonieta Caporale es la actual Presidenta de FUNDACREDESA, guiando a la institución bajo un enfoque de salud pública, investigación científica social y desarrollo humano."
+            ]
+        },
+        {
+            "intent": "fundacredesa.ubicacion",
+            "utterances": [
+                "¿Dónde están ubicados?",
+                "Sede de fundacredesa",
+                "¿Cuál es la dirección de Fundacredesa?",
+                "¿Dónde queda Fundacredesa?",
+                "Ubicación"
+            ],
+            "answers": [
+                "Nuestra sede principal se encuentra en Caracas, Venezuela. Desde allí coordinamos operativos y estudios a nivel nacional abarcando distintos estados del país."
+            ]
+        },
+        {
+            "intent": "fundacredesa.proyectos",
+            "utterances": [
+                "¿Qué proyectos tienen?",
+                "¿Cuáles son sus proyectos?",
+                "Dime sobre los proyectos de Fundacredesa",
+                "¿Qué investigaciones hacen?",
+                "Proyectos y estudios",
+                "Hablame de las investigaciones"
+            ],
+            "answers": [
+                "Desarrollamos proyectos clave como PsicoEduca (salud mental en comunidades), Memory Vision (evaluación neuropsicológica virtual) y diversos censos sobre condiciones de vida, crecimiento físico y desarrollo psicomotor de los venezolanos."
+            ]
+        },
+        {
+            "intent": "fundacredesa.psicoeduca",
+            "utterances": [
+                "¿Qué es PsicoEduca?",
+                "Dime sobre PsicoEduca",
+                "Hablame del proyecto PsicoEduca",
+                "Proyecto Psico Educa",
+                "Informacion de PsicoEduca"
+            ],
+            "answers": [
+                "PsicoEduca es un proyecto de FUNDACREDESA enfocado en la psicoeducación para promover la salud mental en comunidades venezolanas. Se centra en el diagnóstico y apoyo en casos de ansiedad, depresión e ideaciones suicidas."
+            ]
+        },
+        {
+            "intent": "fundacredesa.memoryvision",
+            "utterances": [
+                "¿Qué es Memory Vision?",
+                "Dime sobre Memory Vision",
+                "Hablame del proyecto Memory Vision",
+                "Proyecto Memory Vision",
+                "Informacion de MemoryVision"
+            ],
+            "answers": [
+                "Memory Vision es un proyecto innovador de FUNDACREDESA para la evaluación cognitiva y neuropsicológica. Utiliza herramientas digitales para el monitoreo de la memoria y funciones ejecutivas en distintos grupos de edad."
+            ]
+        },
+        {
+            "intent": "fundacredesa.contacto",
+            "utterances": [
+                "¿Cómo los contacto?",
+                "Teléfono de Fundacredesa",
+                "Correo de Fundacredesa",
+                "Redes sociales",
+                "¿Tienen instagram o twitter?",
+                "Contactar",
+                "Email"
+            ],
+            "answers": [
+                "Puedes contactarnos escribiendo a fundacredesa5520@gmail.com o siguiéndonos en nuestras redes sociales: Instagram (@fundacredesa) y X/Twitter (@fundacredesa_)."
+            ]
+        },
+        {
+            "intent": "saludo",
+            "utterances": [
+                "Hola",
+                "Buenos dias",
+                "Buenas tardes",
+                "Buenas noches",
+                "Saludos",
+                "Que tal",
+                "Buen dia"
+            ],
+            "answers": [
+                "¡Hola! Soy la Inteligencia Artificial de FUNDACREDESA. Estoy listo para responder cualquier pregunta sobre nuestros estudios, historia, proyectos y autoridades. ¿En qué puedo ayudarte?"
+            ]
+        },
+        {
+            "intent": "despedida",
+            "utterances": [
+                "Adios",
+                "Chao",
+                "Hasta luego",
+                "Nos vemos",
+                "Gracias y adios",
+                "Me voy"
+            ],
+            "answers": [
+                "¡Hasta luego! Recuerda que FUNDACREDESA está aquí para velar por el desarrollo bio-psicosocial de Venezuela. ¡Vuelve pronto!"
+            ]
+        },
+        {
+            "intent": "agradecimiento",
+            "utterances": [
+                "Gracias",
+                "Muchas gracias",
+                "Te lo agradezco",
+                "Muy util, gracias",
+                "Excelente informacion"
+            ],
+            "answers": [
+                "¡De nada! Es un placer para mí asistir en la socialización de la investigación de FUNDACREDESA."
+            ]
+        }
+    ]
+}

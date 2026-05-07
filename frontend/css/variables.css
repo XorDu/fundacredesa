@@ -1,0 +1,40 @@
+/* ================================================================
+   FUNDACREDESA - variables.css
+   Paleta institucional oficial
+   ================================================================ */
+:root {
+    /* Colores principales */
+    --orange: #E87722;
+    --orange-dark: #CC6000;
+    --orange-light: #F5A044;
+    --teal: #00B5CC;
+    --teal-dark: #0099AC;
+
+    /* Grises institucionales */
+    --nav-bg: #5E6169;
+    --white: #FFFFFF;
+    --dark: #1A1A1A;
+    --gray: #5E6169;
+    --gray-light: #AAAAAA;
+    --gray-bg: #F2F2F2;
+    --border: #DDDDDD;
+
+    /* Semánticos */
+    --success: #388E3C;
+    --danger: #C62828;
+
+    /* Tipografía */
+    --font-body: 'Poppins', sans-serif;
+    --font-ui: 'Inter', sans-serif;
+
+    /* Radios y sombras */
+    --radius: 6px;
+    --radius-sm: 4px;
+    --shadow-sm: 0 1px 4px rgba(0, 0, 0, .10);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, .12);
+    --shadow-lg: 0 8px 32px rgba(0, 0, 0, .16);
+
+    /* Transiciones */
+    --t-fast: .15s ease;
+    --t-normal: .3s ease;
+}

@@ -1,0 +1,116 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fundacredesa – Publicaciones</title>
+  <link rel="icon" href="../assets/images/logo_fundacredesa.png" type="image/png">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Componentes CSS -->
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/header.css">
+  <link rel="stylesheet" href="../css/content.css">
+  <link rel="stylesheet" href="../css/publicaciones.css">
+  <link rel="stylesheet" href="../css/chatbot.css">
+<link rel="stylesheet" href="../css/devpanel.css">
+</head>
+
+<body style="background:var(--gray-bg);">
+
+  <!-- HEADER PRINCIPAL: Logo + Banner diagonal -->
+  <div class="header-main">
+        <div class="container header-main__inner">
+            <a href="index.html" class="header-main__logo">
+                <img src="../assets/images/cintillo.png" alt="Cintillo Institucional" class="header-main__logo-img">
+                <!--<img src="../assets/images/logo_fundacredesa.png" alt="Fundacredesa" class="header-main__logo-img">-->
+                <div class="header-main__logo-text">
+                </div>
+            </a>
+            
+        </div>
+    </div>
+
+  <!-- NAVEGACIÓN -->
+  <nav class="site-nav" id="site-nav">
+    <div class="container site-nav__inner">
+      <a href="index.html" class="header-main__logo">
+        <img src="../assets/images/logo_fundacredesa.png" alt="Fundacredesa" class="header-main__logo-img">
+      </a>
+      <button class="site-nav__toggle" id="nav-toggle"><i class="fas fa-bars"></i></button>
+      <ul class="site-nav__list" id="nav-list">
+        <li class="site-nav__item"><a href="index.html" class="site-nav__link">Inicio</a></li>
+        <li class="site-nav__separator" role="separator"></li>
+        <li class="site-nav__item"><a href="nosotros.html" class="site-nav__link">FUNDACREDESA</a></li>
+        <li class="site-nav__separator" role="separator"></li>
+        <li class="site-nav__item"><a href="estadisticas.html" class="site-nav__link">Estadísticas</a></li>
+        <li class="site-nav__separator" role="separator"></li>
+        <li class="site-nav__item"><a href="publicaciones.html" class="site-nav__link active">Publicaciones</a></li>
+        <li class="site-nav__separator" role="separator"></li>
+        <li class="site-nav__item"><a href="investigaciones.html" class="site-nav__link">Investigaciones</a></li>
+        <li class="site-nav__separator" role="separator"></li>
+        <li class="site-nav__item"><a href="proyectos.html" class="site-nav__link">Proyectos</a></li>
+      </ul>
+    </div>
+  </nav>
+
+<!-- REDES SOCIALES FLOTANTES -->
+    <aside class="social-sidebar" aria-label="Redes sociales">
+        <a href="https://www.facebook.com/people/Fundacredesa/100069182470822/"
+            class="social-sidebar__btn social-sidebar__btn--fb" aria-label="Facebook"><i
+                class="fab fa-facebook-f"></i></a>
+        <a href="https://www.instagram.com/fundacredesa_" class="social-sidebar__btn social-sidebar__btn--ig"
+            aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://x.com/FundacredesaR" class="social-sidebar__btn social-sidebar__btn--tw"
+            aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+        <a href="https://www.tiktok.com/@fundacredesa_" class="social-sidebar__btn social-sidebar__btn--tt"
+            aria-label="Tiktok"><i class="fab fa-tiktok"></i></a>
+        <a href="https://www.youtube.com/@fundacredesa1730" class="social-sidebar__btn social-sidebar__btn--yt" aria-label="YouTube"><i
+                class="fab fa-youtube"></i></a>
+    </aside>
+
+  <main style="padding: 30px 0;">
+    <div class="container">
+      <div class="section-tag section-tag--orange">PUBLICACIONES CIENTÍFICAS</div>
+      <p class="pub-intro" style="margin-bottom: 5px;">Repositorio de estudios e investigaciones sobre la población
+        venezolana, desarrollados por Fundacredesa.</p>
+
+      <!-- Contenedor dinámico de Filtros por Categoría UI Tabs -->
+      <div class="tabs-container" id="pub-tabs" style="display:flex; flex-wrap:wrap; gap:10px; margin-bottom: 25px;">
+        <button class="btn btn-outline"
+          style="background:var(--teal); color:white; border-color:var(--teal)">Todas</button>
+        <!-- Se llenará via Fetch -->
+      </div>
+
+      <div class="pub-grid" id="pub-grid">
+        <div style="text-align:center; grid-column: 1/-1; padding: 50px;">
+          <i class="fas fa-spinner fa-spin fa-3x" style="color:var(--teal)"></i>
+          <p style="margin-top:15px; color:var(--gray)">Obteniendo repositorio desde la Base de Datos...</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="container site-footer__inner">
+      <div class="site-footer__copyright">
+        <i class="fas fa-copyright"></i>
+        <span>COPYRIGHT – CONTENIDO DE LIBRE REPRODUCCIÓN · FUNDACREDESA © 2024</span>
+      </div>
+      <nav class="site-footer__links" aria-label="Pie de página">
+        <a href="publicaciones.html">Publicaciones</a>
+        <a href="estadisticas.html">Estadísticas</a>
+        <a href="tel:+582122613765" title="Llamar a Fundacredesa">Contacto</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="../js/main.js" defer></script>
+<script src="../js/devpanel.js" defer></script>
+</body>
+
+</html>

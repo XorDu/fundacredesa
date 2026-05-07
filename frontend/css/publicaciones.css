@@ -1,0 +1,152 @@
+/* ── PUBLICACIONES ── */
+.pub-intro {
+    font-size: .82rem;
+    color: var(--gray);
+    margin-bottom: 20px;
+}
+
+.pub-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+    gap: 18px;
+}
+
+.pub-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    transition: box-shadow var(--t-fast);
+}
+
+.pub-card:hover {
+    box-shadow: var(--shadow-md);
+}
+
+.pub-card__cover {
+    width: 88px;
+    flex-shrink: 0;
+    background: var(--gray-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.pub-card__cover img {
+    width: 88px;
+    height: 120px;
+    object-fit: cover;
+}
+
+.pub-card__cover-fallback {
+    width: 88px;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.8rem;
+}
+
+.pub-card__info {
+    flex: 1;
+    padding: 11px 13px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 120px;
+}
+
+.pub-card__title {
+    font-size: .8rem;
+    font-weight: 700;
+    color: var(--orange);
+    line-height: 1.3;
+    margin-bottom: 4px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.pub-card__desc {
+    font-size: .71rem;
+    color: var(--gray);
+    line-height: 1.45;
+    flex: 1;
+    margin-bottom: 8px;
+}
+
+.pub-card__btn {
+    align-self: flex-end;
+    background: var(--orange);
+    color: white;
+    font-size: .68rem;
+    font-weight: 700;
+    padding: 5px 12px;
+    border-radius: var(--radius-sm);
+    text-transform: uppercase;
+    letter-spacing: .4px;
+    transition: background var(--t-fast);
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.pub-card__btn:hover {
+    background: var(--orange-dark);
+}
+
+/* ── RESPONSIVE GENERAL ── */
+@media (max-width: 900px) {
+    .map-wrap {
+        grid-template-columns: 1fr;
+    }
+
+    .map-info-panel {
+        min-height: auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-slide .hero-slide__body {
+        height: 240px;
+    }
+
+    .hero-slider {
+        max-height: 240px;
+    }
+
+    .hero-slide__body h2 {
+        font-size: 1.2rem;
+    }
+
+    .section-grid--2 {
+        grid-template-columns: 1fr;
+    }
+
+    .pub-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .noticia-card {
+        flex: 0 0 calc(50% - 7px);
+    }
+}
+
+@media (max-width: 480px) {
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .stat-mini-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}

@@ -1,0 +1,241 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fundacredesa – Investigaciones</title>
+    <meta name="description"
+        content="Fundación Centro de Estudios sobre Crecimiento y Desarrollo de la Población Venezolana. Socializando el Saber Científico.">
+    <link rel="icon" href="../assets/images/logo_fundacredesa.png" type="image/png">
+
+    <!-- Fuentes -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- CSS Modulares -->
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <!-- Componentes de index -->
+    <link rel="stylesheet" href="../css/content.css">
+    <link rel="stylesheet" href="../css/investigaciones.css">
+    <link rel="stylesheet" href="../css/noticias.css">
+    <link rel="stylesheet" href="../css/chatbot.css">
+<link rel="stylesheet" href="../css/devpanel.css">
+</head>
+
+<body>
+
+    <!-- LOADING -->
+    <div id="loading" class="loading" aria-hidden="true">
+        <img src="../assets/images/logo_fundacredesa.png" alt="Fundacredesa" class="loading__logo">
+        <div class="loading__spinner"></div>
+    </div>
+
+    <!-- HEADER PRINCIPAL: Logo + Banner diagonal -->
+    <div class="header-main">
+        <div class="container header-main__inner">
+            <a href="index.html" class="header-main__logo">
+                <img src="../assets/images/cintillo.png" alt="Cintillo Institucional" class="header-main__logo-img">
+                <!--<img src="../assets/images/logo_fundacredesa.png" alt="Fundacredesa" class="header-main__logo-img">-->
+                <div class="header-main__logo-text">
+                </div>
+            </a>
+            
+        </div>
+    </div>
+
+    <!-- NAVEGACIÓN -->
+    <nav class="site-nav" id="site-nav" role="navigation" aria-label="Menú principal">
+        <div class="container site-nav__inner">
+            <a href="index.html" class="header-main__logo">
+                <img src="../assets/images/logo_fundacredesa.png" alt="Fundacredesa" class="header-main__logo-img">
+            </a>
+            <button class="site-nav__toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-list">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="site-nav__list" id="nav-list">
+                <li class="site-nav__item"><a href="index.html" class="site-nav__link">Inicio</a></li>
+                <li class="site-nav__separator" role="separator"></li>
+                <li class="site-nav__item"><a href="nosotros.html" class="site-nav__link">FUNDACREDESA</a></li>
+                <li class="site-nav__separator" role="separator"></li>
+                <li class="site-nav__item"><a href="estadisticas.html" class="site-nav__link">Estadísticas</a></li>
+                <li class="site-nav__separator" role="separator"></li>
+                <li class="site-nav__item"><a href="publicaciones.html" class="site-nav__link">Publicaciones</a></li>
+                <li class="site-nav__separator" role="separator"></li>
+                <li class="site-nav__item"><a href="investigaciones.html" class="site-nav__link">Investigaciones</a></li>
+                <li class="site-nav__separator" role="separator"></li>
+                <li class="site-nav__item"><a href="proyectos.html" class="site-nav__link">Proyectos</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- REDES SOCIALES FLOTANTES -->
+    <aside class="social-sidebar" aria-label="Redes sociales">
+        <a href="https://www.facebook.com/people/Fundacredesa/100069182470822/"
+            class="social-sidebar__btn social-sidebar__btn--fb" aria-label="Facebook"><i
+                class="fab fa-facebook-f"></i></a>
+        <a href="https://www.instagram.com/fundacredesa_" class="social-sidebar__btn social-sidebar__btn--ig"
+            aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://x.com/FundacredesaR" class="social-sidebar__btn social-sidebar__btn--tw"
+            aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+        <a href="https://www.tiktok.com/@fundacredesa_" class="social-sidebar__btn social-sidebar__btn--tt"
+            aria-label="Tiktok"><i class="fab fa-tiktok"></i></a>
+        <a href="https://www.youtube.com/@fundacredesa1730" class="social-sidebar__btn social-sidebar__btn--yt" aria-label="YouTube"><i
+                class="fab fa-youtube"></i></a>
+    </aside>
+
+    <main>
+        <!-- SECCIÓN HERO: Título Principal -->
+        <section class="investigaciones-hero__resume">
+            <div class="container">
+                <h1 class="investigaciones-hero__title-resume">Investigaciones</h1>
+                <div class="container-hero">
+                    <p class="investigaciones-hero__subtitle-resume">
+                        TEXTO DE EJEMPLO, REEMPLAZAR
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Crecimiento y Desarrollo -->
+        <section class="investigaciones-hero background_img-cyd" id="Crecimiento y Desarrollo">
+            <div class="container">
+                <h1 class="investigaciones-hero__title">Crecimiento y Desarrollo Humano</h1>
+                <div class="noticias-carousel-wrap">
+                    <button class="noticias-btn noticias-btn--prev" onclick="noticiasCarouselMove(-1)" aria-label="Anterior"><i class="fas fa-chevron-left"></i></button>
+                    <div class="noticias-carousel" aria-label="Investigaciones">
+                        <div class="noticias-track" id="noticias-track">
+                            <article class="noticia-card">
+                                <div class="noticia-card__thumb" style="background:linear-gradient(135deg,#E87722,#F5A044);"><i class="fas fa-child"></i></div>
+                                <div class="noticia-card__body">
+                                    <p class="noticia-card__title">Crecimiento y Desarrollo Humano</p>
+                                    <a href="#" class="noticia-card__more" style="text-decoration:none; color:var(--gray); font-size:0.8rem; line-height:1.4; display:block; padding-top:8px;">Patrones nacionales de referencia para el desarrollo infantil venezolano.</a>
+                                </div>
+                            </article>
+                            
+                            <article class="noticia-card">
+                                <div class="noticia-card__thumb" style="background:linear-gradient(135deg,#00B5CC,#0099AC);"><i class="fas fa-brain"></i></div>
+                                <div class="noticia-card__body">
+                                    <p class="noticia-card__title">Salud Mental</p>
+                                    <a href="#" class="noticia-card__more" style="text-decoration:none; color:var(--gray); font-size:0.8rem; line-height:1.4; display:block; padding-top:8px;">Prevalencia de trastornos mentales y factores de riesgo en la población.</a>
+                                </div>
+                            </article>
+
+                            <article class="noticia-card">
+                                <div class="noticia-card__thumb" style="background:linear-gradient(135deg,#C62828,#E53935);"><i class="fas fa-home"></i></div>
+                                <div class="noticia-card__body">
+                                    <p class="noticia-card__title">Condiciones de Vida</p>
+                                    <a href="#" class="noticia-card__more" style="text-decoration:none; color:var(--gray); font-size:0.8rem; line-height:1.4; display:block; padding-top:8px;">Caracterización de las condiciones en comunidades venezolanas.</a>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                    <button class="noticias-btn noticias-btn--next" onclick="noticiasCarouselMove(1)" aria-label="Siguiente"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Salud Mental -->
+        <section class="investigaciones-hero background_img-sm" id="Salud Mental">
+            <div class="container">
+                <h1 class="investigaciones-hero__title">Salud Mental</h1>
+                <div class="noticias-carousel-wrap">
+                    <button class="noticias-btn noticias-btn--prev" onclick="noticiasCarouselMove(-1)" aria-label="Anterior"><i class="fas fa-chevron-left"></i></button>
+                    <div class="noticias-carousel" aria-label="Investigaciones">
+                        <div class="noticias-track" id="noticias-track">
+                            <article class="noticia-card">
+                                <div class="noticia-card__thumb" style="background:linear-gradient(135deg,#E87722,#F5A044);"><i class="fas fa-child"></i></div>
+                                <div class="noticia-card__body">
+                                    <p class="noticia-card__title">Crecimiento y Desarrollo</p>
+                                    <a href="#" class="noticia-card__more" style="text-decoration:none; color:var(--gray); font-size:0.8rem; line-height:1.4; display:block; padding-top:8px;">Patrones nacionales de referencia para el desarrollo infantil venezolano.</a>
+                                </div>
+                            </article>
+                            
+                            <article class="noticia-card">
+                                <div class="noticia-card__thumb" style="background:linear-gradient(135deg,#00B5CC,#0099AC);"><i class="fas fa-brain"></i></div>
+                                <div class="noticia-card__body">
+                                    <p class="noticia-card__title">Salud Mental</p>
+                                    <a href="#" class="noticia-card__more" style="text-decoration:none; color:var(--gray); font-size:0.8rem; line-height:1.4; display:block; padding-top:8px;">Prevalencia de trastornos mentales y factores de riesgo en la población.</a>
+                                </div>
+                            </article>
+
+                            <article class="noticia-card">
+                                <div class="noticia-card__thumb" style="background:linear-gradient(135deg,#C62828,#E53935);"><i class="fas fa-home"></i></div>
+                                <div class="noticia-card__body">
+                                    <p class="noticia-card__title">Condiciones de Vida</p>
+                                    <a href="#" class="noticia-card__more" style="text-decoration:none; color:var(--gray); font-size:0.8rem; line-height:1.4; display:block; padding-top:8px;">Caracterización de las condiciones en comunidades venezolanas.</a>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                    <button class="noticias-btn noticias-btn--next" onclick="noticiasCarouselMove(1)" aria-label="Siguiente"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Condiciones de Vida -->
+        <section class="investigaciones-hero background_img-cv" id="Condiciones de Vida">
+            <div class="container">
+                <h1 class="investigaciones-hero__title">Condiciones de Vida</h1>
+                <div class="noticias-carousel-wrap">
+                    <button class="noticias-btn noticias-btn--prev" onclick="noticiasCarouselMove(-1)" aria-label="Anterior"><i class="fas fa-chevron-left"></i></button>
+                    <div class="noticias-carousel" aria-label="Investigaciones">
+                        <div class="noticias-track" id="noticias-track">
+                            <article class="noticia-card">
+                                <div class="noticia-card__thumb" style="background:linear-gradient(135deg,#E87722,#F5A044);"><i class="fas fa-child"></i></div>
+                                <div class="noticia-card__body">
+                                    <p class="noticia-card__title">Crecimiento y Desarrollo</p>
+                                    <a href="#" class="noticia-card__more" style="text-decoration:none; color:var(--gray); font-size:0.8rem; line-height:1.4; display:block; padding-top:8px;">Patrones nacionales de referencia para el desarrollo infantil venezolano.</a>
+                                </div>
+                            </article>
+                            
+                            <article class="noticia-card">
+                                <div class="noticia-card__thumb" style="background:linear-gradient(135deg,#00B5CC,#0099AC);"><i class="fas fa-brain"></i></div>
+                                <div class="noticia-card__body">
+                                    <p class="noticia-card__title">Salud Mental</p>
+                                    <a href="#" class="noticia-card__more" style="text-decoration:none; color:var(--gray); font-size:0.8rem; line-height:1.4; display:block; padding-top:8px;">Prevalencia de trastornos mentales y factores de riesgo en la población.</a>
+                                </div>
+                            </article>
+
+                            <article class="noticia-card">
+                                <div class="noticia-card__thumb" style="background:linear-gradient(135deg,#C62828,#E53935);"><i class="fas fa-home"></i></div>
+                                <div class="noticia-card__body">
+                                    <p class="noticia-card__title">Condiciones de Vida</p>
+                                    <a href="#" class="noticia-card__more" style="text-decoration:none; color:var(--gray); font-size:0.8rem; line-height:1.4; display:block; padding-top:8px;">Caracterización de las condiciones en comunidades venezolanas.</a>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                    <button class="noticias-btn noticias-btn--next" onclick="noticiasCarouselMove(1)" aria-label="Siguiente"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </section>
+        
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer" role="contentinfo">
+        <div class="container site-footer__inner">
+            <div class="site-footer__copyright">
+                <i class="fas fa-copyright"></i>
+                <span>COPYRIGHT – CONTENIDO DE LIBRE REPRODUCCIÓN · FUNDACREDESA © 2024</span>
+            </div>
+            <nav class="site-footer__links" aria-label="Pie de página">
+                <a href="publicaciones.html">Publicaciones</a>
+                <a href="estadisticas.html">Estadísticas</a>
+                <a href="tel:+582122613765" title="Llamar a Fundacredesa">Contacto</a>
+            </nav>
+        </div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script src="../js/main.js" defer></script>
+
+<script src="../js/devpanel.js" defer></script>
+</body>
+
+</html>

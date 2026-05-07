@@ -1,0 +1,231 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fundacredesa – Estadísticas</title>
+  <link rel="icon" href="../assets/images/logo_fundacredesa.png" type="image/png">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Componentes CSS -->
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/header.css">
+  <link rel="stylesheet" href="../css/content.css">
+  <link rel="stylesheet" href="../css/estadisticas.css">
+  <link rel="stylesheet" href="../css/mapa.css">
+  <link rel="stylesheet" href="../css/chatbot.css">
+<link rel="stylesheet" href="../css/devpanel.css">
+</head>
+
+<body>
+  <!-- LOADING -->
+  <div id="loading" class="loading" aria-hidden="true">
+    <img src="../assets/images/logo_fundacredesa.png" alt="Fundacredesa" class="loading__logo">
+    <div class="loading__spinner"></div>
+  </div>
+
+  <!-- HEADER PRINCIPAL: Logo + Banner diagonal -->
+   <div class="header-main">
+        <div class="container header-main__inner">
+            <a href="index.html" class="header-main__logo">
+                <img src="../assets/images/cintillo.png" alt="Cintillo Institucional" class="header-main__logo-img">
+                <!--<img src="../assets/images/logo_fundacredesa.png" alt="Fundacredesa" class="header-main__logo-img">-->
+                <div class="header-main__logo-text">
+                </div>
+            </a>
+            
+        </div>
+    </div>
+
+  <!-- NAVEGACIÓN -->
+    <nav class="site-nav" id="site-nav" role="navigation" aria-label="Menú principal">
+        <div class="container site-nav__inner">
+            <a href="index.html" class="header-main__logo">
+                <img src="../assets/images/logo_fundacredesa.png" alt="Fundacredesa" class="header-main__logo-img">
+            </a>
+            <button class="site-nav__toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-list">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="site-nav__list" id="nav-list">
+                <li class="site-nav__item"><a href="index.html" class="site-nav__link">Inicio</a></li>
+                <li class="site-nav__separator" role="separator"></li>
+                <li class="site-nav__item"><a href="nosotros.html" class="site-nav__link">FUNDACREDESA</a></li>
+                <li class="site-nav__separator" role="separator"></li>
+                <li class="site-nav__item"><a href="estadisticas.html" class="site-nav__link">Estadísticas</a></li>
+                <li class="site-nav__separator" role="separator"></li>
+                <li class="site-nav__item"><a href="publicaciones.html" class="site-nav__link">Publicaciones</a></li>
+                <li class="site-nav__separator" role="separator"></li>
+                <li class="site-nav__item"><a href="investigaciones.html" class="site-nav__link">Investigaciones</a></li>
+                <li class="site-nav__separator" role="separator"></li>
+                <li class="site-nav__item"><a href="proyectos.html" class="site-nav__link">Proyectos</a></li>                
+            </ul>
+          </div>
+    </nav>
+
+  <!-- REDES SOCIALES FLOTANTES -->
+    <aside class="social-sidebar" aria-label="Redes sociales">
+        <a href="https://www.facebook.com/people/Fundacredesa/100069182470822/"
+            class="social-sidebar__btn social-sidebar__btn--fb" aria-label="Facebook"><i
+                class="fab fa-facebook-f"></i></a>
+        <a href="https://www.instagram.com/fundacredesa_" class="social-sidebar__btn social-sidebar__btn--ig"
+            aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://x.com/FundacredesaR" class="social-sidebar__btn social-sidebar__btn--tw"
+            aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+        <a href="https://www.tiktok.com/@fundacredesa_" class="social-sidebar__btn social-sidebar__btn--tt"
+            aria-label="Tiktok"><i class="fab fa-tiktok"></i></a>
+        <a href="https://www.youtube.com/@fundacredesa1730" class="social-sidebar__btn social-sidebar__btn--yt" aria-label="YouTube"><i
+                class="fab fa-youtube"></i></a>
+    </aside>
+
+  <main style="background:var(--gray-bg); padding: 30px 0;">
+    <div class="container">
+      <div class="section-tag section-tag--orange">INDICADORES NACIONALES</div>
+
+      <!-- TARJETAS DE INDICADORES -->
+      <div class="stats-grid">
+        <div class="stat-card animate-on-scroll">
+          <div class="stat-card__num">53</div>
+          <div class="stat-card__label">de 177 personas</div>
+          <div class="stat-card__desc">Síntomas de ansiedad y depresión</div>
+          <div class="stat-card__location">Parroquia La Vega, Caracas</div>
+          <div class="progress-bar-wrap">
+            <div class="progress-bar" data-width="30"></div>
+          </div>
+        </div>
+        <div class="stat-card animate-on-scroll">
+          <div class="stat-card__num">30%</div>
+          <div class="stat-card__label">Prevalencia estimada</div>
+          <div class="stat-card__desc">Trastornos de salud mental</div>
+          <div class="stat-card__location">Población venezolana</div>
+          <div class="progress-bar-wrap">
+            <div class="progress-bar" data-width="30"></div>
+          </div>
+        </div>
+        <div class="stat-card animate-on-scroll">
+          <div class="stat-card__num">85%</div>
+          <div class="stat-card__label">Alto Impacto Social</div>
+          <div class="stat-card__desc">Crisis económica y migración</div>
+          <div class="stat-card__location">Factores de riesgo principal</div>
+          <div class="progress-bar-wrap">
+            <div class="progress-bar" data-width="85"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MAPA DE VENEZUELA -->
+      <section class="map-section">
+        <h2 class="map-section__title"><i class="fas fa-map-marked-alt"></i> Mapa Interactivo de Estudios</h2>
+        <p class="map-section__subtitle">Selecciona un estado para ver el detalle de los operativos, censos e
+          investigaciones realizadas.</p>
+        <div class="map-wrap">
+          <div class="map-svg-container" id="svg-map-wrapper">
+            <!-- AQUÍ SE INYECTARÁ EL SVG DESDE ARCHIVO -->
+          </div>
+          <div class="map-info-panel" id="map-info-panel" aria-live="polite">
+            <h3><i class="fas fa-info-circle"></i> Información por Estado</h3>
+            <span class="map-placeholder">Haz clic en un estado del mapa para ver los hallazgos e investigaciones
+              geolocalizadas.</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- GRÁFICOS -->
+      <div class="charts-grid">
+        <div class="chart-card">
+          <h3 class="chart-card__title">
+            <i class="fas fa-chart-pie"></i> Distribución de Síntomas
+          </h3>
+          <div class="chart" id="symptoms-chart"></div>
+        </div>
+        <div class="chart-card">
+          <h3 class="chart-card__title">
+            <i class="fas fa-chart-bar"></i> Factores de Riesgo
+          </h3>
+          <div class="chart" id="risk-factors-chart"></div>
+        </div>
+      </div>
+
+      <!-- ALERTA -->
+      <div class="alert-box">
+        <div class="alert-box__icon"><i class="fas fa-exclamation-triangle"></i></div>
+        <div>
+          <h4 class="alert-box__title">Datos Preocupantes</h4>
+          <ul class="alert-box__list">
+            <li>Economía inestable: Impacto directo en el bienestar mental.</li>
+            <li>Migración masiva: Separación familiar y pérdida de vínculos.</li>
+            <li>Secuelas de la pandemia: Aislamiento prolongado e incertidumbre.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- CHATBOT IA -->
+      <section class="ai-chat-section">
+        <h2 class="ai-chat-section__title"><i class="fas fa-robot"></i> Asistente Institucional de Datos</h2>
+        <p class="ai-chat-section__desc">Pregunta sobre nuestros indicadores, métodos e investigaciones publicadas (API
+          MagicLoops).</p>
+        <div class="ai-chat-box">
+          <div class="ai-messages" id="ai-messages">
+            <div class="ai-msg ai-msg--bot">
+              <div class="ai-msg__avatar"><i class="fas fa-robot"></i></div>
+              <div class="ai-msg__bubble">¡Hola! Soy el asistente virtual de Fundacredesa. ¿Qué información estadística
+                o investigación deseas consultar hoy?</div>
+            </div>
+          </div>
+          <div class="ai-chat-input">
+            <textarea id="ai-input" placeholder="Escribe tu consulta sobre estadísticas o estudios de Fundacredesa..."
+              rows="1"></textarea>
+            <button class="ai-chat-input__btn" id="ai-send-btn" onclick="enviarMensajeIA()">
+              <i class="fas fa-paper-plane"></i> Enviar
+            </button>
+          </div>
+        </div>
+        <div class="ai-suggested">
+          <button class="ai-sq" onclick="usarPregunta(this)">¿Cuáles son los principales hallazgos en salud
+            mental?</button>
+          <button class="ai-sq" onclick="usarPregunta(this)">¿Qué estudios recientes tienen sobre Talla y Peso en
+            Venezuela?</button>
+          <button class="ai-sq" onclick="usarPregunta(this)">Dime las estadísticas del proyecto PsicoEduca</button>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="container site-footer__inner">
+      <div class="site-footer__copyright">
+        <i class="fas fa-copyright"></i>
+        <span>COPYRIGHT – CONTENIDO DE LIBRE REPRODUCCIÓN · FUNDACREDESA © 2024</span>
+      </div>
+      <nav class="site-footer__links" aria-label="Pie de página">
+        <a href="publicaciones.html">Publicaciones</a>
+        <a href="estadisticas.html">Estadísticas</a>
+        <a href="tel:+582122613765" title="Llamar a Fundacredesa">Contacto</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="../js/main.js" defer></script>
+  <!-- Script para inyectar el SVG -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      fetch('../assets/map/venezuela.svg')
+        .then(res => res.text())
+        .then(svgCode => {
+          const wrapper = document.getElementById('svg-map-wrapper');
+          if (wrapper) wrapper.innerHTML = svgCode;
+
+          // Inicializar los eventos del mapa después de inyectarlo
+          if (window.initMap) window.initMap();
+        })
+        .catch(err => console.error("Error al cargar mapa SVG:", err));
+    });
+  </script>
+<script src="../js/devpanel.js" defer></script>
+</body>
+
+</html>

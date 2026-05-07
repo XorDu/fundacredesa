@@ -1,0 +1,326 @@
+/* ================================================================
+   FUNDACREDESA — devpanel.css
+   Panel flotante "Equipo Desarrollador" en el footer
+   ================================================================ */
+
+/* Botón trigger en el footer */
+.dev-trigger {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.18);
+    color: rgba(255,255,255,0.65);
+    padding: 5px 13px;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-family: var(--font-ui);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    letter-spacing: 0.3px;
+    white-space: nowrap;
+}
+
+.dev-trigger:hover {
+    background: rgba(0,181,204,0.18);
+    border-color: var(--teal);
+    color: var(--teal);
+}
+
+.dev-trigger i {
+    font-size: 0.8rem;
+}
+
+/* ── OVERLAY ── */
+.dev-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.65);
+    z-index: 9000;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    align-items: center;
+    justify-content: center;
+    animation: devFadeIn 0.25s ease;
+}
+
+.dev-overlay.active {
+    display: flex;
+}
+
+@keyframes devFadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* ── PANEL PRINCIPAL ── */
+.dev-panel {
+    background: #fff;
+    border-radius: 20px;
+    width: min(92vw, 720px);
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 25px 60px rgba(0,0,0,0.35);
+    animation: devSlideUp 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+}
+
+@keyframes devSlideUp {
+    from { transform: translateY(40px) scale(0.95); opacity: 0; }
+    to   { transform: translateY(0) scale(1);       opacity: 1; }
+}
+
+/* Header del panel */
+.dev-panel__header {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 60%, var(--teal-dark) 100%);
+    padding: 28px 30px 22px;
+    border-radius: 20px 20px 0 0;
+    text-align: center;
+    position: relative;
+}
+
+.dev-panel__close {
+    position: absolute;
+    top: 14px;
+    right: 16px;
+    background: rgba(255,255,255,0.1);
+    border: none;
+    color: rgba(255,255,255,0.7);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+.dev-panel__close:hover {
+    background: rgba(255,255,255,0.2);
+    color: white;
+    transform: rotate(90deg);
+}
+
+.dev-panel__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: rgba(0,181,204,0.2);
+    border: 1px solid rgba(0,181,204,0.4);
+    color: var(--teal);
+    padding: 4px 14px;
+    border-radius: 50px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    font-family: var(--font-ui);
+    margin-bottom: 10px;
+}
+
+.dev-panel__title {
+    font-family: var(--font-ui);
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 4px;
+}
+
+.dev-panel__subtitle {
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.55);
+    font-family: var(--font-body);
+}
+
+/* ── PIRÁMIDE DEL EQUIPO ── */
+.dev-pyramid {
+    padding: 28px 24px 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+/* Fila de la pirámide */
+.dev-row {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+/* Tarjeta individual */
+.dev-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 18px 16px 14px;
+    width: 130px;
+    cursor: default;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    position: relative;
+}
+
+.dev-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 28px rgba(0,0,0,0.12);
+    border-color: var(--teal);
+}
+
+/* Nivel 1 (jefe) — más grande */
+.dev-card--lead {
+    width: 150px;
+    background: linear-gradient(145deg, #f0fdfa, #fff);
+    border-color: rgba(0,181,204,0.3);
+    border-width: 2px;
+}
+
+.dev-card--lead:hover {
+    border-color: var(--teal);
+}
+
+/* Avatar */
+.dev-avatar {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--teal);
+    box-shadow: 0 4px 12px rgba(0,181,204,0.25);
+    transition: transform 0.25s ease;
+}
+
+.dev-card--lead .dev-avatar {
+    width: 88px;
+    height: 88px;
+    border-color: var(--orange);
+    box-shadow: 0 4px 16px rgba(232,119,34,0.3);
+}
+
+.dev-card:hover .dev-avatar {
+    transform: scale(1.06);
+}
+
+/* Badge de rol */
+.dev-role-badge {
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--teal);
+    color: white;
+    font-size: 0.6rem;
+    font-weight: 700;
+    padding: 2px 9px;
+    border-radius: 50px;
+    white-space: nowrap;
+    font-family: var(--font-ui);
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+}
+
+.dev-card--lead .dev-role-badge {
+    background: var(--orange);
+}
+
+/* Nombre y puesto */
+.dev-name {
+    font-family: var(--font-ui);
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--dark);
+    text-align: center;
+    line-height: 1.2;
+}
+
+.dev-position {
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    color: var(--gray);
+    text-align: center;
+    line-height: 1.4;
+}
+
+/* Separador tipo flecha entre filas */
+.dev-separator {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #cbd5e1;
+    font-size: 0.75rem;
+    font-family: var(--font-ui);
+}
+
+.dev-separator::before,
+.dev-separator::after {
+    content: '';
+    width: 60px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, #cbd5e1);
+}
+
+.dev-separator::after {
+    background: linear-gradient(to left, transparent, #cbd5e1);
+}
+
+/* Footer del panel */
+.dev-panel__footer {
+    border-top: 1px solid #f1f5f9;
+    padding: 14px 24px;
+    text-align: center;
+    font-size: 0.72rem;
+    color: var(--gray-light);
+    font-family: var(--font-body);
+    background: #fafafa;
+    border-radius: 0 0 20px 20px;
+}
+
+.dev-panel__footer span {
+    color: var(--teal);
+    font-weight: 600;
+}
+
+/* Tech chips */
+.dev-tech-chips {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 0 24px 20px;
+}
+
+.dev-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: #f1f5f9;
+    color: var(--dark);
+    border: 1px solid #e2e8f0;
+    padding: 3px 10px;
+    border-radius: 50px;
+    font-size: 0.7rem;
+    font-family: var(--font-ui);
+    font-weight: 600;
+}
+
+.dev-chip i {
+    font-size: 0.65rem;
+    color: var(--teal);
+}
+
+/* Responsive */
+@media (max-width: 500px) {
+    .dev-card { width: 110px; padding: 14px 10px 12px; }
+    .dev-card--lead { width: 130px; }
+    .dev-avatar { width: 60px; height: 60px; }
+    .dev-card--lead .dev-avatar { width: 74px; height: 74px; }
+    .dev-name { font-size: 0.78rem; }
+    .dev-position { font-size: 0.65rem; }
+}
