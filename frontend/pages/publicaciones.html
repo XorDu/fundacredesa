@@ -22,55 +22,91 @@
 
 <body class="pub-body">
 
-  <!-- HEADER PRINCIPAL: Logo + Banner diagonal -->
-  <div class="header-main">
+    <!-- HEADER PRINCIPAL: Logo + Buscador + Mega Menú Toggle -->
+    <header class="header-main">
         <div class="container header-main__inner">
             <a href="index.html" class="header-main__logo">
                 <img src="../assets/images/cintillo.png" alt="Cintillo Institucional" class="header-main__logo-img">
-                <!--<img src="../assets/images/logo_fundacredesa.png" alt="Fundacredesa" class="header-main__logo-img">-->
-                <div class="header-main__logo-text">
-                </div>
             </a>
             
+            <!-- Buscador y Hamburguesa -->
+            <div class="header-main__actions">
+                <div class="header-search">
+                    <input type="text" class="header-search__input" placeholder="¿Qué quieres buscar?" id="globalSearchInput">
+                    <button class="header-search__btn" aria-label="Buscar"><i class="fas fa-search"></i></button>
+                </div>
+                <button class="mega-menu-toggle" id="megaMenuToggle" aria-expanded="false" aria-controls="nav-list" aria-label="Abrir menú">
+                    <span class="mega-menu-toggle__bar"></span>
+                    <span class="mega-menu-toggle__bar"></span>
+                    <span class="mega-menu-toggle__bar"></span>
+                </button>
+            </div>
         </div>
-    </div>
+        
+        <!-- MEGA MENÚ INTERACTIVO: 6 Columnas Naranja -->
+        <div class="mega-menu" id="megaMenu" aria-hidden="true">
+            <div class="mega-menu__grid">
+                <!-- Columna 1: INICIO -->
+                <div class="mega-menu__column">
+                    <h4 class="mega-menu__title">Inicio</h4>
+                    <ul class="mega-menu__links">
+                        <li><a href="index.html"><i class="fas fa-home"></i> Página Principal</a></li>
+                        <li><a href="index.html#noticias-section"><i class="fas fa-bullhorn"></i> Noticias Recientes</a></li>
+                        <li><a href="index.html#publicaciones-home"><i class="fas fa-book-open"></i> Biblioteca Digital</a></li>
+                        <li><a href="index.html#proyectos-home"><i class="fas fa-tasks"></i> Proyectos Realizados</a></li>
+                    </ul>
+                </div>
+                <!-- Columna 2: FUNDACREDESA -->
+                <div class="mega-menu__column">
+                    <h4 class="mega-menu__title">FUNDACREDESA</h4>
+                    <ul class="mega-menu__links">
+                        <li><a href="nosotros.html"><i class="fas fa-info-circle"></i> ¿Quiénes somos?</a></li>
+                        <li><a href="nosotros.html#mision-vision"><i class="fas fa-bullseye"></i> Misión y Visión</a></li>
+                        <li><a href="nosotros.html#historia"><i class="fas fa-history"></i> Nuestra Historia</a></li>
+                        <li><a href="nosotros.html#presidenta"><i class="fas fa-user-tie"></i> Nuestra Presidenta</a></li>
+                    </ul>
+                </div>
+                <!-- Columna 3: ESTADÍSTICAS -->
+                <div class="mega-menu__column">
+                    <h4 class="mega-menu__title">Estadísticas</h4>
+                    <ul class="mega-menu__links">
+                        <li><a href="estadisticas.html"><i class="fas fa-chart-line"></i> Indicadores Nacionales</a></li>
+                        <li><a href="estadisticas.html#estudios"><i class="fas fa-child"></i> Estudios Nutricionales</a></li>
+                        <li><a href="estadisticas.html#poblacion"><i class="fas fa-users-rectangle"></i> Crecimiento Humano</a></li>
+                    </ul>
+                </div>
+                <!-- Columna 4: PUBLICACIONES -->
+                <div class="mega-menu__column">
+                    <h4 class="mega-menu__title">Publicaciones</h4>
+                    <ul class="mega-menu__links">
+                        <li><a href="publicaciones.html"><i class="fas fa-graduation-cap"></i> Artículos Científicos</a></li>
+                        <li><a href="publicaciones.html#libros"><i class="fas fa-copy"></i> Libros y Manuales</a></li>
+                        <li><a href="publicaciones.html#boletines"><i class="fas fa-newspaper"></i> Boletines Digitales</a></li>
+                    </ul>
+                </div>
+                <!-- Columna 5: INVESTIGACIONES -->
+                <div class="mega-menu__column">
+                    <h4 class="mega-menu__title">Investigaciones</h4>
+                    <ul class="mega-menu__links">
+                        <li><a href="investigaciones.html#Crecimiento%20y%20Desarrollo"><i class="fas fa-baby"></i> Desarrollo Infantil</a></li>
+                        <li><a href="investigaciones.html#Salud%20Mental"><i class="fas fa-brain"></i> Salud Mental</a></li>
+                        <li><a href="investigaciones.html#Condiciones%20de%20Vida"><i class="fas fa-house-chimney-window"></i> Condiciones de Vida</a></li>
+                    </ul>
+                </div>
+                <!-- Columna 6: PROYECTOS -->
+                <div class="mega-menu__column">
+                    <h4 class="mega-menu__title">Proyectos</h4>
+                    <ul class="mega-menu__links">
+                        <li><a href="proyectos.html#PsicoEduca"><i class="fas fa-heart-pulse"></i> PsicoEduca</a></li>
+                        <li><a href="proyectos.html#Memory%20Vision"><i class="fas fa-eye-low-vision"></i> Memory Vision</a></li>
+                        <li><a href="proyectos.html#CondicionesVida"><i class="fas fa-users-gear"></i> Condiciones de Vida</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
 
-  <!-- NAVEGACIÓN -->
-  <nav class="site-nav" id="site-nav">
-    <div class="container site-nav__inner">
-      <a href="index.html" class="header-main__logo">
-        <img src="../assets/images/logo_fundacredesa.png" alt="Fundacredesa" class="header-main__logo-img">
-      </a>
-      <button class="site-nav__toggle" id="nav-toggle"><i class="fas fa-bars"></i></button>
-      <ul class="site-nav__list" id="nav-list">
-        <li class="site-nav__item"><a href="index.html" class="site-nav__link">Inicio</a></li>
-        <li class="site-nav__separator" role="separator"></li>
-        <li class="site-nav__item"><a href="nosotros.html" class="site-nav__link">FUNDACREDESA</a></li>
-        <li class="site-nav__separator" role="separator"></li>
-        <li class="site-nav__item"><a href="estadisticas.html" class="site-nav__link">Estadísticas</a></li>
-        <li class="site-nav__separator" role="separator"></li>
-        <li class="site-nav__item"><a href="publicaciones.html" class="site-nav__link active">Publicaciones</a></li>
-        <li class="site-nav__separator" role="separator"></li>
-        <li class="site-nav__item"><a href="investigaciones.html" class="site-nav__link">Investigaciones</a></li>
-        <li class="site-nav__separator" role="separator"></li>
-        <li class="site-nav__item"><a href="proyectos.html" class="site-nav__link">Proyectos</a></li>
-      </ul>
-    </div>
-  </nav>
 
-<!-- REDES SOCIALES FLOTANTES -->
-    <aside class="social-sidebar" aria-label="Redes sociales">
-        <a href="https://www.facebook.com/people/Fundacredesa/100069182470822/"
-            class="social-sidebar__btn social-sidebar__btn--fb" 
-            aria-label="Facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
-        <a href="https://www.instagram.com/fundacredesa_" class="social-sidebar__btn social-sidebar__btn--ig"
-            aria-label="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
-        <a href="https://www.tiktok.com/@fundacredesa_" class="social-sidebar__btn social-sidebar__btn--tt"
-            aria-label="Tiktok" target="_blank"><i class="fab fa-tiktok"></i></a>
-        <a href="https://www.youtube.com/@fundacredesa1730" class="social-sidebar__btn social-sidebar__btn--yt"
-            aria-label="YouTube" target="_blank"><i
-                class="fab fa-youtube"></i></a>
-    </aside>
 
   <main class="pub-main">
     <div class="container">
@@ -101,19 +137,71 @@
     </div>
   </main>
 
-  <footer class="site-footer" role="contentinfo">
-    <div class="container site-footer__inner">
-      <div class="site-footer__copyright">
-        <i class="fas fa-copyright"></i>
-        <span>COPYRIGHT – CONTENIDO DE LIBRE REPRODUCCIÓN · FUNDACREDESA © 2024</span>
-      </div>
-      <nav class="site-footer__links" aria-label="Pie de página">
-        <a href="publicaciones.html">Publicaciones</a>
-        <a href="estadisticas.html">Estadísticas</a>
-        <a href="tel:+582122613765" title="Llamar a Fundacredesa">Contacto</a>
-      </nav>
-    </div>
-  </footer>
+    <!-- FOOTER -->
+    <footer class="site-footer" role="contentinfo">
+        <!-- Barra Superior Institucional -->
+        <div class="site-footer__top-bar">
+            <div class="container">
+                <span>FUNDACREDESA | Fundación Centro de Estudios sobre Crecimiento y Desarrollo de la Población Venezolana | RIF: G-20003780-6</span>
+            </div>
+        </div>
+
+        <!-- Grid de 3 Columnas -->
+        <div class="container site-footer__main">
+            <!-- Columna 1: Contacto -->
+            <div class="footer-column">
+                <h4 class="footer-column__title">Contacto</h4>
+                <div class="footer-column__content">
+                    <p><i class="fas fa-envelope"></i> <a href="mailto:contacto@fundacredesa.gob.ve">contacto@fundacredesa.gob.ve</a></p>
+                    <p><i class="fas fa-phone-alt"></i> <a href="tel:+582122613765">+58 (212) 261.37.65</a></p>
+                    <p><i class="fas fa-map-marker-alt"></i> Entre 6ta. y 7ma. transversal de Altamira., Qta. Fundacredesa Av. 8, Caracas, Distrito Capital.</p>
+                    
+                    <!-- Redes Sociales en Formato Diamante -->
+                    <div class="footer-socials">
+                        <a href="https://www.facebook.com/people/Fundacredesa/100069182470822/" class="footer-socials__btn" aria-label="Facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/fundacredesa_" class="footer-socials__btn" aria-label="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.tiktok.com/@fundacredesa_" class="footer-socials__btn" aria-label="Tiktok" target="_blank"><i class="fab fa-tiktok"></i></a>
+                        <a href="https://www.youtube.com/@fundacredesa1730" class="footer-socials__btn" aria-label="YouTube" target="_blank"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Columna 2: Aquí encontrarás -->
+            <div class="footer-column">
+                <h4 class="footer-column__title">Aquí encontrarás</h4>
+                <div class="footer-column__content">
+                    <ul class="footer-column__links">
+                        <li><i class="fas fa-chevron-right"></i> <a href="index.html">Inicio</a></li>
+                        <li><i class="fas fa-chevron-right"></i> <a href="nosotros.html">FUNDACREDESA</a></li>
+                        <li><i class="fas fa-chevron-right"></i> <a href="estadisticas.html">Estadísticas</a></li>
+                        <li><i class="fas fa-chevron-right"></i> <a href="publicaciones.html">Publicaciones</a></li>
+                        <li><i class="fas fa-chevron-right"></i> <a href="investigaciones.html">Investigaciones</a></li>
+                        <li><i class="fas fa-chevron-right"></i> <a href="proyectos.html">Proyectos</a></li>
+                        <li><i class="fas fa-chevron-right"></i> <button id="devTrigger" class="footer-dev-link"><i class="fas fa-users-cog"></i> Desarrolladores</button></li>
+                    </ul>
+                    <div class="footer-column__developers" style="margin-top: 10px; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 10px;">
+                        <span style="font-size: 0.68rem; color: rgba(255,255,255,0.6); display: block;"><i class="fas fa-code"></i> Desarrollado por el equipo de Tecnología de Fundacredesa</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Columna 3: Horarios -->
+            <div class="footer-column">
+                <h4 class="footer-column__title">Horarios</h4>
+                <div class="footer-column__content">
+                    <p class="footer-column__hours-box"><i class="far fa-clock"></i> 8:00 AM – 4:00 PM<br>Lunes a Viernes</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Franja de Copyright -->
+        <div class="site-footer__bottom-bar">
+            <div class="container site-footer__bottom-inner">
+                <i class="fas fa-copyright"></i>
+                <span>© Copyright 2026 - Todos los derechos reservados</span>
+            </div>
+        </div>
+    </footer>
 
   <script src="../js/main.js" defer></script>
 <script src="../js/devpanel.js" defer></script>

@@ -24,27 +24,61 @@ window.addEventListener('load', () => {
     }, 700);
 });
 
-/* ── 2. NAVEGACIÓN MÓVIL ─────────────────────────────────────────── */
-(function initNav() {
-    const toggle = document.getElementById('nav-toggle');
-    const navList = document.getElementById('nav-list');
-    if (!toggle || !navList) return;
+/* ── 2. MEGA MENÚ INTERACTIVO ────────────────────────────────────── */
+(function initMegaMenu() {
+    const toggle = document.getElementById('megaMenuToggle');
+    const megaMenu = document.getElementById('megaMenu');
+    const searchBtn = document.querySelector('.header-search__btn');
+    const searchInput = document.getElementById('globalSearchInput');
+
+    if (!toggle || !megaMenu) return;
 
     toggle.addEventListener('click', () => {
-        const open = navList.classList.toggle('open');
-        toggle.setAttribute('aria-expanded', String(open));
+        const isOpen = megaMenu.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', String(isOpen));
+        
+        // Bloquear scroll del body al abrir el mega menú para mejorar la experiencia
+        if (isOpen) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = '';
+        }
     });
 
-    navList.querySelectorAll('.site-nav__link').forEach(link =>
-        link.addEventListener('click', () => navList.classList.remove('open'))
-    );
-
-    // Marcar enlace activo por URL
-    const current = location.pathname.split('/').pop() || 'index.html';
-    navList.querySelectorAll('.site-nav__link').forEach(link => {
-        const href = link.getAttribute('href')?.split('/').pop() || '';
-        if (href === current) link.classList.add('active');
+    // Cerrar menú al hacer clic en un enlace
+    megaMenu.querySelectorAll('.mega-menu__links a').forEach(link => {
+        link.addEventListener('click', () => {
+            megaMenu.classList.remove('open');
+            toggle.setAttribute('aria-expanded', 'false');
+            document.body.style.overflow = '';
+        });
     });
+
+    // Buscador interactivo inteligente del cintillo superior
+    function realizarBusquedaGlobal() {
+        if (!searchInput) return;
+        const term = searchInput.value.trim().toLowerCase();
+        if (term.length > 0) {
+            const links = Array.from(megaMenu.querySelectorAll('.mega-menu__links a'));
+            const matches = links.filter(link => link.textContent.toLowerCase().includes(term));
+            
+            if (matches.length > 0) {
+                location.href = matches[0].getAttribute('href');
+            } else {
+                alert(`No se encontraron secciones específicas para: "${term}".\nPrueba con palabras clave como "misión", "historia", "proyectos", "publicaciones" o "estudios".`);
+            }
+        }
+    }
+
+    if (searchBtn && searchInput) {
+        searchBtn.addEventListener('click', realizarBusquedaGlobal);
+        searchInput.addEventListener('keydown', e => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                realizarBusquedaGlobal();
+            }
+        });
+    }
 })();
 
 /* ── 3. BÚSQUEDA ─────────────────────────────────────────────────── */
@@ -145,8 +179,10 @@ document.getElementById('search-input')?.addEventListener('keydown', e => {
 
     function maxOffset() {
         const cards = track.querySelectorAll('.noticia-card').length;
-        const visible = window.innerWidth > 1000 ? 5
-            : window.innerWidth > 700 ? 3 : 2;
+        const card = track.querySelector('.noticia-card');
+        if (!card) return 0;
+        const gap = parseInt(getComputedStyle(track).gap || '14');
+        const visible = Math.round((track.parentElement.offsetWidth + gap) / (card.offsetWidth + gap)) || 1;
         return Math.max(0, cards - visible);
     }
 

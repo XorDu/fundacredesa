@@ -174,3 +174,65 @@ dialog button{
 .thumb-gradient-green { background: linear-gradient(135deg, #2E7D32, #1B5E20); }
 .thumb-gradient-teal-dark { background: linear-gradient(135deg, #00897B, #004D40); }
 .thumb-gradient-purple { background: linear-gradient(135deg, #6A1B9A, #4A148C); }
+
+/* ── DISTRIBUCIÓN ADAPTATIVA DE LA PÁGINA DE INICIO (Publicaciones + Noticias) ── */
+.home-main-grid {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr;
+    gap: 30px;
+    margin-top: 10px;
+}
+
+.home-column-left {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.home-column-right {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    min-width: 0; /* Previene el desbordamiento del flexbox hijo (carrusel) */
+}
+
+.home-pub-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* Modificaciones específicas para la versión compacta del carrusel de noticias en el lateral */
+.home-column-right .noticias-carousel-wrap {
+    padding: 0 10px;
+}
+
+.home-column-right .noticia-card {
+    flex: 0 0 calc(50% - 7px); /* Ocupa exactamente la mitad del carrusel lateral (2 visibles) */
+}
+
+/* Responsividad para pantallas medianas (se apilan las columnas) */
+@media (max-width: 992px) {
+    .home-main-grid {
+        grid-template-columns: 1fr;
+        gap: 36px;
+    }
+    
+    .home-column-right .noticia-card {
+        flex: 0 0 calc(33.333% - 10px); /* 3 tarjetas visibles cuando está a pantalla completa */
+    }
+}
+
+/* Responsividad para móviles */
+@media (max-width: 768px) {
+    .home-column-right .noticia-card {
+        flex: 0 0 calc(50% - 7px); /* 2 tarjetas visibles */
+    }
+}
+
+@media (max-width: 480px) {
+    .home-column-right .noticia-card {
+        flex: 0 0 100%; /* 1 sola tarjeta visible en pantallas muy pequeñas */
+    }
+}
+
